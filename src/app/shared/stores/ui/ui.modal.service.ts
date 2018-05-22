@@ -3,9 +3,10 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
 
-import { AppStore, AppSettings } from '$shared';
-import { ApiService } from '$api';
 import { UIStoreActions } from './ui.actions';
+import { AppSettings } from 'src/app/shared/app.settings';
+import { AppStore } from 'src/app/shared/stores/store';
+import { ApiService } from 'src/app/shared/stores/api';
 
 import { ConfirmationModalComponent, LogoutModalComponent } from '$modals';
 
