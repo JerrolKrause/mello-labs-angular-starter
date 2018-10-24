@@ -15,6 +15,15 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
   to { opacity: 1; transform: scale(1) rotate(0deg); left: 0; top: 0; }
 }
 
+.anim-menu-bg { transition: 0.3s ease; position: relative;
+  & > * { position: relative; z-index: 2; }
+  &:not(.active):before { background: $brand-primary-lt; background-image: linear-gradient(to bottom,$brand-primary-lt 0%, $brand-primary 100%); transition: 0.2s ease-out; display: block; content: ' '; position: absolute; clip-path: polygon(0 0, 100% 0%, 10% 100%, 0% 100%); z-index: 1; top: 0; left: 0; bottom: 0; width: 0; }
+  &.active:hover { color: #21d0ff; }
+  &:not(.active):hover { color: #fff; transition: 0.3s ease;
+    &:before { width: 100%; clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%); }
+  }
+}
+
 //Hover zoom animation with drop shadow
 .anim-pop{
     @include transition( 0.2s);

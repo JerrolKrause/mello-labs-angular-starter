@@ -15,3 +15,14 @@ ngb-tabset {
     }
   }
 }
+
+.mat-tab-group.mat-primary {
+  &.mat-tab-sm {
+    .mat-tab-label { padding: 0 1rem; height: 2rem; font-size: .75rem; }
+  }
+  &.mat-tab-right { }
+  .mat-tab-label { min-width: initial; color: $interact-primary; transition: ease .3s;
+    &:hover { opacity: 1; }
+  }
+  .mat-ink-bar { background-color: $brand-primary; }
+}

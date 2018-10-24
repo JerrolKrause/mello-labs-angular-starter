@@ -1,5 +1,6 @@
 // Global branded styling. App specific styling should NOT go in this file
 body{font-family: "Open Sans", sans-serif;color: #484F59; background-color: #f9fafd;}
+.container { max-width: 1280px; }
 code{display:block;padding:0.5rem;}
 section { padding: 1rem; background: white; padding-bottom: 0.2rem; margin-bottom: 1rem; border: 1px solid #dee0e8;
     &.nopad {padding:0; }
