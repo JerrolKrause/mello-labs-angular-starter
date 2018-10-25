@@ -10,7 +10,7 @@ $easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
 $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 // Rotate scale and fade in
-.anim-rotate-in { animation: rotateIn .3s $easeOutQuart; animation-delay: .1s; animation-fill-mode: forwards; position: relative; opacity: 0; transform: scale(.6) rotate(30deg); position: relative; left: 30px; top: 30px; }
+.anim-rotate-in { animation: rotateIn .3s $easeOutQuart; animation-delay: .1s; animation-fill-mode: forwards; position: relative; opacity: 0; transform: scale(.4) rotate(30deg); position: relative; left: 30px; top: 30px; }
 @keyframes rotateIn {
   to { opacity: 1; transform: scale(1) rotate(0deg); left: 0; top: 0; }
 }
