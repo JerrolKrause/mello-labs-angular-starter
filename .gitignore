@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/documentation
 
 # dependencies
 /node_modules
@@ -45,6 +46,4 @@ Thumbs.db
 obj/
 angular-starter.csproj
 App.config
-package-lock.json
 yarn-error.log
-documentation/
