@@ -1,4 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  ViewChild,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, ColumnApi } from 'ag-grid-community';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
@@ -14,10 +23,9 @@ const defaultsDeep = require('lodash/defaultsDeep');
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent implements OnInit {
-
   @ViewChild('grid') grid: AgGridNg2;
   @ViewChild('gridContainer') gridContainer: ElementRef;
 
@@ -37,23 +45,22 @@ export class GridComponent implements OnInit {
       statusPanels: [{ statusPanel: 'statusBarComponent', align: 'left', key: 'statusBarComponent' }],
     },
   };
-  @Input() set gridOptions(options: GridOptions) {
+  @Input()
+  set gridOptions(options: GridOptions) {
     this._gridOptions = defaultsDeep(this._gridOptions, options);
   }
   get gridOptions() {
     return this._gridOptions;
   }
 
-  //private _gridFilterTerm:string;
-  @Input() set gridFilterTerm(term:string){
-    //this._gridFilterTerm = term;
-    if(this.grid && this.grid.api){
+  @Input()
+  set gridFilterTerm(term: string) {
+    if (this.grid && this.grid.api) {
       this.grid.api.setQuickFilter(term);
     }
-  };
+  }
 
   @Input() gridState: GridState;
-  
   @Input() rowData: any[];
   @Input() columns: any[];
   @Input() columnDefs: any[];
@@ -72,17 +79,15 @@ export class GridComponent implements OnInit {
   @Output() stateChange = new EventEmitter<GridState>();
   @Output() rowsSelected = new EventEmitter<any[]>();
 
-  
   public gridColumnApi: ColumnApi;
   public gridLoaded: boolean;
   public gridAllowUpdate = true;
   public gridComponents = { statusBarComponent: GridStatusBarComponent };
   public gridStatusComponent: GridStatusBarComponent;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    
     // On window resize event, fit the grid columns to the screen
     fromEvent(window, 'resize')
       .pipe(debounceTime(100))
@@ -124,6 +129,8 @@ export class GridComponent implements OnInit {
     this.gridStatusComponent = (<any>this).gridOptions.api
       .getStatusPanel('statusBarComponent')
       .getFrameworkComponentInstance();
+    // Attach reset method to status component so the status method
+    this.gridStatusComponent.reset = this.gridReset.bind(this);
     // Grid is ready, restore default state if any
     this.gridStateRestore();
   }
@@ -148,14 +155,13 @@ export class GridComponent implements OnInit {
     }
   }
 
-  /** When the grid is resized, NEED DEBOUNCE */
+  /** When the grid is resized */
+  @debounce(100, {
+    leading: false,
+    trailing: true,
+  })
   public gridSizeChanged() {
     // console.log('Grid Resized')
-  }
-
-  /** Filter global option */
-  public gridFilterGlobal() {
-    this.grid.api.setQuickFilter(this.gridFilterTerm);
   }
 
   /**
@@ -165,6 +171,18 @@ export class GridComponent implements OnInit {
   public gridSelectionChanged() {
     const rows = this.grid.api.getSelectedNodes().map(node => node.data);
     this.rowsSelected.emit(rows);
+  }
+
+  /** Reset the grid state */
+  public gridReset() {
+    this.gridAllowUpdate = false;
+    this.grid.api.setSortModel(null);
+    this.grid.api.setFilterModel(null);
+    this.gridColumnApi.resetColumnState();
+    this.getGridState();
+    this.gridStatusComponent.gridStateChange(this.gridState);
+    this.gridAllowUpdate = true;
+    this.gridFit();
   }
 
   /**
@@ -179,11 +197,7 @@ export class GridComponent implements OnInit {
   public gridStateChanged($event: any) {
     // console.log('gridStateChanged', $event.type, this.gridAllowUpdate);
     if (this.gridAllowUpdate) {
-      this.gridState = {
-        columns: this.gridColumnApi.getColumnState(),
-        sorts: this.grid.api.getSortModel(),
-        filters: this.grid.api.getFilterModel(),
-      };
+      this.getGridState();
 
       if ($event.type === 'columnResized') {
         this.gridFit();
@@ -193,14 +207,22 @@ export class GridComponent implements OnInit {
       if (this.gridLoaded) {
         // Pass gridstate to status component
         this.gridStatusComponent.gridStateChange(this.gridState);
-        this.stateChange.emit(this.gridState);
       }
     }
     this.gridAllowUpdate = true;
   }
 
-   /** Restore the grid state */
-   public gridStateRestore() {
+  public getGridState() {
+    this.gridState = {
+      columns: this.gridColumnApi.getColumnState(),
+      sorts: this.grid.api.getSortModel(),
+      filters: this.grid.api.getFilterModel(),
+    };
+    this.stateChange.emit(this.gridState);
+  }
+
+  /** Restore the grid state */
+  public gridStateRestore() {
     if (this.grid && this.gridColumnApi) {
       if (this.gridState.columns) {
         this.gridColumnApi.setColumnState(this.gridState.columns);
@@ -223,5 +245,4 @@ export class GridComponent implements OnInit {
       this.grid.api.onFilterChanged();
     }
   }
-
 }

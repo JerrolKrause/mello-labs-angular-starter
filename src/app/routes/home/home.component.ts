@@ -122,6 +122,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public gridStateSave(gridState: GridState) {
     this.gridState = gridState;
     this.ui.gridStateChange(gridState);
+    console.log(gridState);
   }
 
   public rowsSelected(rows:Models.User[]){
