@@ -212,6 +212,7 @@ export class GridComponent implements OnInit {
     this.gridAllowUpdate = true;
   }
 
+  /** Get grid state and emit to parent */
   public getGridState() {
     this.gridState = {
       columns: this.gridColumnApi.getColumnState(),
@@ -234,6 +235,8 @@ export class GridComponent implements OnInit {
         this.grid.api.setFilterModel(this.gridState.filters);
         this.grid.api.onFilterChanged();
       }
+      // If restoring gridstate, update status component
+      this.gridStatusComponent.gridStateChange(this.gridState);
     }
   }
 

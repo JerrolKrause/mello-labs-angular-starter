@@ -60,7 +60,7 @@ export class GridStatusBarComponent implements OnInit {
   }
 
   /** Reset all sorts/filters/groups. Reference is passed by grid.component.ts */
-  public reset() { }
+  public reset() {}
 
   /** Remove sorting */
   public removeSort() {

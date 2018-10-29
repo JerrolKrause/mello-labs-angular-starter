@@ -1,13 +1,7 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MenuItemDef } from 'ag-grid-community';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-
 
 import { ApiService } from '$api';
 import { UIStoreService } from '$ui';
@@ -22,7 +16,6 @@ import { columns } from './columns';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
   public columns = columns;
   public gridState: GridState = {};
   public gridOptions = {};
@@ -38,12 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public isEditing: boolean;
   public sidebarOpen = false;
 
-
-  constructor(
-    private api: ApiService,
-    public ui: UIStoreService,
-    private fb: FormBuilder,
-  ) { }
+  constructor(private api: ApiService, public ui: UIStoreService, private fb: FormBuilder) {}
 
   public ngOnInit() {
     // Get users and load into store
@@ -92,14 +80,14 @@ export class HomeComponent implements OnInit, OnDestroy {
           {
             name: 'Red',
             icon: '<i class="fa fa-tag red"></i>',
-            action: function () {
+            action: function() {
               params.context.this.contextAction(params.value, params.node.data);
             },
           },
           {
             name: 'Green',
             icon: '<i class="fa fa-tag green"></i>',
-            action: function () {
+            action: function() {
               params.context.this.contextAction(params.value, params.node.data);
             },
           },
@@ -122,10 +110,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public gridStateSave(gridState: GridState) {
     this.gridState = gridState;
     this.ui.gridStateChange(gridState);
-    console.log(gridState);
   }
 
-  public rowsSelected(rows:Models.User[]){
+  public rowsSelected(rows: Models.User[]) {
     console.log(rows);
   }
 
@@ -184,5 +171,5 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   // Must be present even if not used for unsubs
-  ngOnDestroy() { }
+  ngOnDestroy() {}
 }
