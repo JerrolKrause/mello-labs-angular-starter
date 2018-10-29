@@ -24,7 +24,6 @@ export class GridStatusBarComponent implements OnInit {
   ngOnInit() {
     this.grid = this.params;
     this.gridColumnApi = this.params.columnApi;
-    console.log(this)
   }
 
   /**

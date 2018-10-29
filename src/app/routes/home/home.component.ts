@@ -51,14 +51,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // Rehydrate grid from UI state
     this.ui.select.gridState$.subscribe(gridState => {
+      console.log(gridState);
       // Make sure this isn't the multiscreen originator and that the new state passed down doesn't match the current state
       if (!this.ui.screen && gridState !== this.gridState) {
         this.gridState = gridState;
-        // this.gridStateRestore();
-        //this.gridFit();
-        //if (this.gridStatusComponent) {
-        //  this.gridStatusComponent.gridStateChange(this.gridState);
-        //}
       }
     });
 
@@ -124,8 +120,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   /** Save the grid state */
-  public gridStateSave() {
-    this.ui.gridStateChange(this.gridState);
+  public gridStateSave(gridState: GridState) {
+    console.log(gridState)
+    this.gridState = gridState;
+    this.ui.gridStateChange(gridState);
+  }
+
+  public rowsSelected(rows:Models.User[]){
+    console.log(rows);
   }
 
   /**

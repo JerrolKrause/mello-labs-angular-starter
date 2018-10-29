@@ -44,6 +44,7 @@
           <app-grid style="height:calc(100vh - 150px)"
                            class="ag-theme-balham"
                            [gridOptions]="gridOptions"
+                           [gridState]="gridState"
                            [rowData]="route.users.data"
                            [columnDefs]="columns"
                            [animateRows]="true"
@@ -55,7 +56,9 @@
                            [groupUseEntireRow]="true"
                            [getContextMenuItems]="gridContextMenu"
                            rowGroupPanelShow="onlyWhenGrouping"
-                           rowSelection="multiple">
+                           rowSelection="multiple"
+                           (stateChange)="gridStateSave($event)"
+                           (rowsSelected)="rowsSelected($event)">
           </app-grid>
 
           <!-- Phone number template -->
