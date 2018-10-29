@@ -41,5 +41,6 @@
     "fullTemplateTypeCheck": true,
     "preserveWhitespaces": false
   },
-  "exclude": [ "e2e" ]
+  "include": [ "src/**/*" ],
+  "exclude": [ "e2e", "**/*.spec.ts", "node_modules", "node_modules/**/*" ]
 }

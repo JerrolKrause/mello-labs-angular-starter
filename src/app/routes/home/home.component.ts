@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public columns = columns;
   public gridState: GridState = {};
+  public gridOptions = {};
   public gridFilterTerm = '';
   public gridRowsSelected: Models.User[];
 

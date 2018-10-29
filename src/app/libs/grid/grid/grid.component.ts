@@ -5,8 +5,10 @@ import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { debounce } from 'helpful-decorators';
 
-//import { GridTemplateRendererComponent } from '../grid-template-renderer/grid-template-renderer.component';
 import { GridStatusBarComponent } from '../grid-status-bar/grid-status-bar.component';
+//import { GridTemplateRendererComponent } from '../grid-template-renderer/grid-template-renderer.component';
+
+const defaultsDeep = require('lodash/defaultsDeep');
 
 @Component({
   selector: 'app-grid',
@@ -19,7 +21,8 @@ export class GridComponent implements OnInit {
   @ViewChild('grid') grid: AgGridNg2;
   @ViewChild('gridContainer') gridContainer: ElementRef;
 
-  @Input() gridOptions: GridOptions = {
+  /** Hold and set default options for grid*/
+  private _gridOptions: GridOptions = {
     context: {
       this: this,
     },
@@ -31,24 +34,30 @@ export class GridComponent implements OnInit {
       filter: 'agTextColumnFilter', // Make every column use 'text' filter by default
     },
     statusBar: {
-      statusPanels: [{ statusPanel: 'statusBarComponent', align: 'left' }],
+      statusPanels: [{ statusPanel: 'statusBarComponent', align: 'left', key: 'statusBarComponent' }],
     },
   };
-  @Input() rowData: any;
-  @Input() columns: any;
-  @Input() columnDefs: any;
-  @Input() animateRows: any;
-  @Input() enableSorting: any;
-  @Input() enableFilter: any;
-  @Input() enableColResize: any;
-  @Input() enableRangeSelection: any;
+  @Input() set gridOptions(options: GridOptions) {
+    this._gridOptions = defaultsDeep(this._gridOptions, options);
+  }
+  get gridOptions() {
+    return this._gridOptions;
+  }
+
+  @Input() rowData: any[];
+  @Input() columns: any[];
+  @Input() columnDefs: any[];
+  @Input() animateRows: boolean;
+  @Input() enableSorting: boolean;
+  @Input() enableFilter: boolean;
+  @Input() enableColResize: boolean;
+  @Input() enableRangeSelection: boolean;
   @Input() rememberGroupStateWhenNewData: any;
-  @Input() groupUseEntireRow: any;
+  @Input() groupUseEntireRow: boolean;
   @Input() getContextMenuItems: any;
   @Input() frameworkComponents: any;
   @Input() rowGroupPanelShow: any;
   @Input() rowSelection: any;
-
   @Input() gridFilterTerm: any;
 
   public gridState: GridState = {};
@@ -56,11 +65,15 @@ export class GridComponent implements OnInit {
   public gridLoaded: boolean;
   public gridAllowUpdate = true;
   public gridComponents = { statusBarComponent: GridStatusBarComponent };
-  
+  public gridStatusComponent: GridStatusBarComponent;
 
   constructor() { }
 
   ngOnInit() {
+
+    if (!this.gridOptions) {
+      this.gridOptions = {};
+    }
    
     // On window resize event, fit the grid columns to the screen
     fromEvent(window, 'resize')
@@ -73,6 +86,7 @@ export class GridComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    console.log(this.gridComponents);
     //// Attach custom cell templates to the appropriate column
     //const columns = this.columns.map(column => {
     //  if (column.field === 'phone') {
@@ -93,13 +107,16 @@ export class GridComponent implements OnInit {
     //this.grid.api.setColumnDefs(columns);
   }
 
+  /**
+   * When the grid is ready and has finished loading
+   * @param params
+   */
   public gridReady(params: any) {
     this.gridColumnApi = params.columnApi;
-    //// Set reference to status component so state can be pushed
-    //this.gridStatusComponent = (<any>this).grid.api
-    //  .getStatusPanel('statusBarComponent')
-    //  .getFrameworkComponentInstance();
-    //this.gridStateRestore();
+    // Set reference to status component so state can be pushed
+    this.gridStatusComponent = (<any>this).gridOptions.api
+      .getStatusPanel('statusBarComponent')
+      .getFrameworkComponentInstance();
   }
 
   /** After the grid has loaded data */
@@ -122,7 +139,6 @@ export class GridComponent implements OnInit {
     }
   }
 
-
   /** When the grid is resized, NEED DEBOUNCE */
   public gridSizeChanged() {
     // console.log('Grid Resized')
@@ -131,10 +147,6 @@ export class GridComponent implements OnInit {
   /** Filter global option */
   public gridFilterGlobal() {
     this.grid.api.setQuickFilter(this.gridFilterTerm);
-  }
-
-  public doCoolStuff(test: any) {
-    console.log(test);
   }
 
   /**
@@ -170,7 +182,7 @@ export class GridComponent implements OnInit {
       // Only save state after grid has been fully loaded
       if (this.gridLoaded) {
         // Pass gridstate to status component
-        //this.gridStatusComponent.gridStateChange(this.gridState);
+        this.gridStatusComponent.gridStateChange(this.gridState);
       }
     }
     this.gridAllowUpdate = true;
@@ -182,67 +194,6 @@ export class GridComponent implements OnInit {
     if (this.gridState.filters) {
       this.grid.api.setFilterModel(this.gridState.filters);
       this.grid.api.onFilterChanged();
-    }
-  }
-
-  /**
-   * Create the context menu
-   * @param params
-   
-  public gridContextMenu(params: any) {
-    // console.log(params.value, params.node.data) // Cell value and row object
-    return <MenuItemDef[]>[
-      'copy',
-      'copyWithHeaders',
-      'paste',
-      'separator',
-      {
-        name: 'Tags',
-        icon: '<i class="fa fa-tags"></i>',
-        subMenu: [
-          {
-            name: 'Red',
-            icon: '<i class="fa fa-tag red"></i>',
-            action: function () {
-              params.context.this.contextAction(params.value, params.node.data);
-            },
-          },
-          {
-            name: 'Green',
-            icon: '<i class="fa fa-tag green"></i>',
-            action: function () {
-              params.context.this.contextAction(params.value, params.node.data);
-            },
-          },
-        ],
-      },
-      'separator',
-      'export',
-    ];
-  }
-  */
-
-  /**
-   * An action to perform on a context menu click
-   * @param params
-   */
-  public contextAction(value: string, row: any) {
-    console.log(value, row);
-  }
-
-  /** Restore the grid state */
-  public gridStateRestore() {
-    if (this.grid && this.gridColumnApi) {
-      if (this.gridState.columns) {
-        this.gridColumnApi.setColumnState(this.gridState.columns);
-      }
-      if (this.gridState.sorts) {
-        this.grid.api.setSortModel(this.gridState.sorts);
-      }
-      if (this.gridState.filters) {
-        this.grid.api.setFilterModel(this.gridState.filters);
-        this.grid.api.onFilterChanged();
-      }
     }
   }
 

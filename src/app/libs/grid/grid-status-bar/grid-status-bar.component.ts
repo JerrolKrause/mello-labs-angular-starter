@@ -24,6 +24,7 @@ export class GridStatusBarComponent implements OnInit {
   ngOnInit() {
     this.grid = this.params;
     this.gridColumnApi = this.params.columnApi;
+    console.log(this)
   }
 
   /**
@@ -47,7 +48,7 @@ export class GridStatusBarComponent implements OnInit {
       // Get the active groups
       this.gridGroups = this.gridState.columns.filter((column: any) => column.rowGroupIndex !== null);
 
-      this.ref.markForCheck();
+      this.ref.detectChanges();
     }
   }
 

@@ -17,8 +17,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>9e4a497c-d24f-4b1a-b34d-6558e0e43066</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>src\app\libs\grid\grid\grid.component.ts</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -63,6 +62,8 @@
     <Content Include="src\app\components\masterpage\single\layout-single.component.html" />
     <Content Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.html" />
     <Content Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.scss" />
+    <Content Include="src\app\libs\grid\grid\grid.component.html" />
+    <Content Include="src\app\libs\grid\grid\grid.component.scss" />
     <Content Include="src\app\routes\home\home.component.html" />
     <Content Include="src\app\routes\home\home.component.scss" />
     <Content Include="src\app\routes\login\login.component.html" />
@@ -164,6 +165,7 @@
     <Folder Include="src\app\libs\grid\" />
     <Folder Include="src\app\libs\grid\grid-status-bar\" />
     <Folder Include="src\app\libs\grid\grid-template-renderer\" />
+    <Folder Include="src\app\libs\grid\grid\" />
     <Folder Include="src\app\libs\grid\pipes\" />
     <Folder Include="src\app\routes\" />
     <Folder Include="src\app\routes\home\" />
@@ -261,6 +263,8 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\app\libs\grid\grid.module.ts" />
     <TypeScriptCompile Include="src\app\libs\grid\grid.service.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid\grid.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid\grid.component.ts" />
     <TypeScriptCompile Include="src\app\libs\grid\pipes\text-case.pipe.ts" />
     <TypeScriptCompile Include="src\app\libs\index.ts" />
     <TypeScriptCompile Include="src\app\routes\home\columns.ts" />
