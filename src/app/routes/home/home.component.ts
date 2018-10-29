@@ -3,22 +3,14 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   OnDestroy,
-  ViewChild,
-  TemplateRef,
-  AfterViewInit,
-  ElementRef,
 } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { AgGridNg2 } from 'ag-grid-angular';
-import { GridOptions, ColumnApi, MenuItemDef } from 'ag-grid-community';
+import { MenuItemDef } from 'ag-grid-community';
 import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
-import { debounce } from 'helpful-decorators';
+
 
 import { ApiService } from '$api';
 import { UIStoreService } from '$ui';
-import { GridService } from '$libs';
 import { Models } from '$models';
 import { columns } from './columns';
 
@@ -29,36 +21,15 @@ import { columns } from './columns';
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('grid') grid: AgGridNg2;
-  @ViewChild('gridContainer') gridContainer: ElementRef;
+export class HomeComponent implements OnInit, OnDestroy {
 
-  public gridColumnApi: ColumnApi;
-  public gridOptions: GridOptions = {
-    context: {
-      this: this,
-    },
-    // A default column definition with properties that get applied to every column
-    defaultColDef: {
-      width: 150, // Set every column width
-      editable: false, // Make every column editable
-      enableRowGroup: true, // Make every column groupable
-      filter: 'agTextColumnFilter', // Make every column use 'text' filter by default
-    },
-    statusBar: {
-      statusPanels: [{ statusPanel: 'statusBarComponent', align: 'left' }],
-    },
-  };
+  public columns = columns;
   public gridState: GridState = {};
-  public gridComponents = { statusBarComponent: this.gridSvc.statusBar };
-  public gridLoaded = false;
   public gridFilterTerm = '';
   public gridRowsSelected: Models.User[];
-  /** Allow the grid to update state. Disable to prevent infinite loops IE during column resizing */
-  public gridAllowUpdate = true;
 
-  @ViewChild('phone') cellTemplatePhone: TemplateRef<any>;
-  @ViewChild('delete') cellTemplateDelete: TemplateRef<any>;
+  //@ViewChild('phone') cellTemplatePhone: TemplateRef<any>;
+  //@ViewChild('delete') cellTemplateDelete: TemplateRef<any>;
 
   public users$ = this.api.select.users$;
   public sidebarOpen$ = this.ui.select.sidebarOpen$;
@@ -66,16 +37,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public isEditing: boolean;
   public sidebarOpen = false;
 
-  public columns = columns;
-
-  private gridStatusComponent: any;
 
   constructor(
     private api: ApiService,
     public ui: UIStoreService,
     private fb: FormBuilder,
-    private gridSvc: GridService,
-  ) {}
+  ) { }
 
   public ngOnInit() {
     // Get users and load into store
@@ -86,22 +53,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       // Make sure this isn't the multiscreen originator and that the new state passed down doesn't match the current state
       if (!this.ui.screen && gridState !== this.gridState) {
         this.gridState = gridState;
-        this.gridStateRestore();
-        this.gridFit();
-        if (this.gridStatusComponent) {
-          this.gridStatusComponent.gridStateChange(this.gridState);
-        }
+        // this.gridStateRestore();
+        //this.gridFit();
+        //if (this.gridStatusComponent) {
+        //  this.gridStatusComponent.gridStateChange(this.gridState);
+        //}
       }
     });
-
-    // On window resize event, fit the grid columns to the screen
-    fromEvent(window, 'resize')
-      .pipe(debounceTime(100))
-      .subscribe(() => {
-        if (this.gridLoaded && this.gridOptions.api) {
-          this.gridFit();
-        }
-      });
 
     // Formgroup
     this.formMain = this.fb.group({
@@ -116,122 +74,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit() {
-    // Attach custom cell templates to the appropriate column
-    const columns = this.columns.map(column => {
-      if (column.field === 'phone') {
-        column.cellRendererFramework = this.gridSvc.templateRenderer;
-        column.cellRendererParams = {
-          ngTemplate: this.cellTemplatePhone,
-          // grouping: () => { } // TODO: Custom renderer for group headers
-        };
-      }
-      if (column.field === 'delete') {
-        column.cellRendererFramework = this.gridSvc.templateRenderer;
-        column.cellRendererParams = {
-          ngTemplate: this.cellTemplateDelete,
-        };
-      }
-      return column;
-    });
-    this.gridOptions.api.setColumnDefs(columns);
-  }
-
-  /**
-   * When the grid is ready
-   * @param params
-   */
-  public gridReady(params: any) {
-    // console.log(params)
-    this.gridColumnApi = params.columnApi;
-    // Set reference to status component so state can be pushed
-    this.gridStatusComponent = (<any>this).gridOptions.api
-      .getStatusPanel('statusBarComponent')
-      .getFrameworkComponentInstance();
-    this.gridStateRestore();
-  }
-
-  /** After the grid has loaded data */
-  public gridFirstDataRendered() {
-    this.gridLoaded = true;
-    this.gridFit();
-  }
-
-  /** Have the columns fill the available space if less than grid width */
-  public gridFit() {
-    if (this.gridColumnApi && this.gridContainer && this.gridContainer.nativeElement) {
-      const widthCurrent = this.gridColumnApi.getColumnState().reduce((a, b) => a + b.width, 0);
-      const widthGrid = this.gridContainer.nativeElement.offsetWidth;
-      if (widthCurrent < widthGrid && this.gridAllowUpdate && this.gridLoaded) {
-        // Disable allow update to prevent loop
-        this.gridAllowUpdate = false;
-        // Resize columns to fit screen
-        this.gridOptions.api.sizeColumnsToFit();
-      }
-    }
-  }
-
-  /** When the grid is resized, NEED DEBOUNCE */
-  public gridSizeChanged() {
-    // console.log('Grid Resized')
-  }
-
-  /** Filter global option */
-  public gridFilterGlobal() {
-    this.grid.api.setQuickFilter(this.gridFilterTerm);
-  }
-
   public doCoolStuff(test: any) {
     console.log(test);
-  }
-
-  /**
-   * Get selected rows out of the datagrid
-   * @param event
-   */
-  public gridSelectionChanged() {
-    this.gridRowsSelected = this.grid.api.getSelectedNodes().map(node => node.data);
-  }
-
-  /**
-   * On grid state changes such as sorting, filtering and grouping
-   * Added debounce since some events fire quickly like resizing
-   * @param $event
-   */
-  @debounce(100, {
-    leading: false,
-    trailing: true,
-  })
-  public gridStateChanged($event: any) {
-    // console.log('gridStateChanged', $event.type, this.gridAllowUpdate);
-    if (this.gridAllowUpdate) {
-      this.gridState = {
-        columns: this.gridColumnApi.getColumnState(),
-        sorts: this.grid.api.getSortModel(),
-        filters: this.grid.api.getFilterModel(),
-      };
-
-      if ($event.type === 'columnResized') {
-        this.gridFit();
-      }
-
-      // Only save state after grid has been fully loaded
-      if (this.gridLoaded) {
-        // Pass gridstate to status component
-        this.gridStatusComponent.gridStateChange(this.gridState);
-        this.gridStateSave();
-      }
-    }
-    this.gridAllowUpdate = true;
-  }
-
-  /** When data in the grid changes */
-  public gridRowDataChanged() {
-    // Whenever data is loaded into the grid the filters are wiped out. Check if filters are present and reload them
-    if (this.gridState.filters) {
-      this.grid.api.setFilterModel(this.gridState.filters);
-      this.grid.api.onFilterChanged();
-    }
   }
 
   /**
@@ -252,14 +96,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           {
             name: 'Red',
             icon: '<i class="fa fa-tag red"></i>',
-            action: function() {
+            action: function () {
               params.context.this.contextAction(params.value, params.node.data);
             },
           },
           {
             name: 'Green',
             icon: '<i class="fa fa-tag green"></i>',
-            action: function() {
+            action: function () {
               params.context.this.contextAction(params.value, params.node.data);
             },
           },
@@ -281,22 +125,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   /** Save the grid state */
   public gridStateSave() {
     this.ui.gridStateChange(this.gridState);
-  }
-
-  /** Restore the grid state */
-  public gridStateRestore() {
-    if (this.grid && this.gridColumnApi) {
-      if (this.gridState.columns) {
-        this.gridColumnApi.setColumnState(this.gridState.columns);
-      }
-      if (this.gridState.sorts) {
-        this.grid.api.setSortModel(this.gridState.sorts);
-      }
-      if (this.gridState.filters) {
-        this.grid.api.setFilterModel(this.gridState.filters);
-        this.grid.api.onFilterChanged();
-      }
-    }
   }
 
   /**
@@ -354,5 +182,5 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Must be present even if not used for unsubs
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }

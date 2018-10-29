@@ -7,6 +7,7 @@ import 'ag-grid-enterprise';
 
 import { GridService } from './grid.service';
 
+import { GridComponent } from './grid/grid.component';
 import { GridTemplateRendererComponent } from './grid-template-renderer/grid-template-renderer.component';
 import { GridStatusBarComponent } from './grid-status-bar/grid-status-bar.component';
 import { TextCasePipe } from './pipes/text-case.pipe';
@@ -18,8 +19,8 @@ LicenseManager.setLicenseKey(environment.licenses.agGrid);
 @NgModule({
   imports: [CommonModule, AgGridModule.withComponents([GridTemplateRendererComponent])],
   providers: [GridService],
-  declarations: [GridTemplateRendererComponent, GridStatusBarComponent, TextCasePipe],
-  exports: [AgGridModule, GridTemplateRendererComponent, GridStatusBarComponent],
+  declarations: [GridTemplateRendererComponent, GridStatusBarComponent, TextCasePipe, GridComponent],
+  exports: [AgGridModule, GridTemplateRendererComponent, GridStatusBarComponent, GridComponent],
   entryComponents: [GridStatusBarComponent],
 })
 export class GridModule {}

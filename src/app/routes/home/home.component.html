@@ -41,9 +41,7 @@
     <div class="row">
       <div class="col-12" [ngClass]="route.sidebarOpen ? 'col-md-8' : 'col-md-12' ">
 
-        <div style="position:relative;" #gridContainer>
-          <ag-grid-angular #grid
-                           style="height:calc(100vh - 150px)"
+          <app-grid style="height:calc(100vh - 150px)"
                            class="ag-theme-balham"
                            [gridOptions]="gridOptions"
                            [rowData]="route.users.data"
@@ -55,23 +53,10 @@
                            [enableRangeSelection]="true"
                            [rememberGroupStateWhenNewData]="true"
                            [groupUseEntireRow]="true"
-                           [frameworkComponents]="gridComponents"
                            [getContextMenuItems]="gridContextMenu"
                            rowGroupPanelShow="onlyWhenGrouping"
-                           rowSelection="multiple"
-                           (selectionChanged)="gridSelectionChanged()"
-                           (gridSizeChanged)="gridSizeChanged()"
-                           (rowDataChanged)="gridRowDataChanged()"
-                           (sortChanged)="gridStateChanged($event)"
-                           (filterChanged)="gridStateChanged($event)"
-                           (columnPinned)="gridStateChanged($event)"
-                           (columnResized)="gridStateChanged($event)"
-                           (columnMoved)="gridStateChanged($event)"
-                           (columnRowGroupChanged)="gridStateChanged($event)"
-                           (rowGroupOpened)="gridStateChanged($event)"
-                           (firstDataRendered)="gridFirstDataRendered()"
-                           (gridReady)="gridReady($event)">
-          </ag-grid-angular>
+                           rowSelection="multiple">
+          </app-grid>
 
           <!-- Phone number template -->
           <ng-template #phone let-row>
@@ -86,7 +71,6 @@
             </app-launch-modal>
           </ng-template>
 
-        </div>
       </div>
       <div class="col-12 col-md-4" *ngIf="route.sidebarOpen">
         <a class="float-right" (click)="userStopEdit()" *ngIf="isEditing"><i class="fa fa-user-plus" aria-hidden="true"></i> Add New User</a>
