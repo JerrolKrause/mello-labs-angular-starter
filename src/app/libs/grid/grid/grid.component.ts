@@ -44,7 +44,16 @@ export class GridComponent implements OnInit {
     return this._gridOptions;
   }
 
+  //private _gridFilterTerm:string;
+  @Input() set gridFilterTerm(term:string){
+    //this._gridFilterTerm = term;
+    if(this.grid && this.grid.api){
+      this.grid.api.setQuickFilter(term);
+    }
+  };
+
   @Input() gridState: GridState;
+  
   @Input() rowData: any[];
   @Input() columns: any[];
   @Input() columnDefs: any[];
@@ -59,7 +68,6 @@ export class GridComponent implements OnInit {
   @Input() frameworkComponents: any;
   @Input() rowGroupPanelShow: any;
   @Input() rowSelection: any;
-  @Input() gridFilterTerm: any;
 
   @Output() stateChange = new EventEmitter<GridState>();
   @Output() rowsSelected = new EventEmitter<any[]>();

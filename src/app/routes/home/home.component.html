@@ -26,8 +26,8 @@
       <!-- Filter datatable-->
       <form class="form-inline mr-3 d-inline-block">
         <label class="icon icon-filter" style="position:relative;">
-          <input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter" [(ngModel)]="gridFilterTerm" (ngModelChange)="gridFilterGlobal()" />
-          <a (click)="gridFilterTerm = null; gridFilterGlobal()" *ngIf="gridFilterTerm" style="position:absolute;right: 10px;top: 4px;"><i class="fa fa-remove"></i></a>
+          <input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter" [(ngModel)]="gridFilterTerm"/>
+          <a (click)="gridFilterTerm = null" *ngIf="gridFilterTerm" style="position:absolute;right: 10px;top: 4px;"><i class="fa fa-remove"></i></a>
         </label>
       </form>
 
@@ -45,6 +45,7 @@
                            class="ag-theme-balham"
                            [gridOptions]="gridOptions"
                            [gridState]="gridState"
+                           [gridFilterTerm]="gridFilterTerm"
                            [rowData]="route.users.data"
                            [columnDefs]="columns"
                            [animateRows]="true"
