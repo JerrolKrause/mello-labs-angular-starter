@@ -45,8 +45,10 @@ export class GridStatusBarComponent implements OnInit {
       }
 
       // Get the active groups
-      this.gridGroups = this.gridState.columns.filter((column: any) => column.rowGroupIndex !== null);
-
+      if (this.gridState && this.gridState.columns) {
+        this.gridGroups = this.gridState.columns.filter((column: any) => column.rowGroupIndex !== null);
+      }
+      
       this.ref.detectChanges();
     }
   }
