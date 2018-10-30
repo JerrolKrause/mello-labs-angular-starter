@@ -69,9 +69,35 @@ label { cursor: pointer; display: block;
   &.mat-form-field-can-float.mat-form-field-should-float {
     .mat-form-field-label { color: $bg-primary; }
   }
+  .mat-form-field-underline { z-index: 2; margin-left: 2px; margin-right: 2px; width: calc(100% - 4px); }
+  .mat-form-field-infix { padding-left: .5rem; padding-right: .5rem;
+    input { position: relative; z-index: 2; }
+    span { z-index: 2; }
+    .mat-form-field-label { padding-left: .5rem; }
+    &:before { position: absolute; left: 0; right: 0; bottom: -1px; top: 2px; z-index: 1; display: block; content: ' '; background-color: #f8fafc; border: 1px solid #e6e9eb; border-bottom: 0; border-top-left-radius: .25rem; border-top-right-radius: .25rem; border-radius: .25rem; }
+  }
+  &.mat-form-field {
+    &:after { content: none; }
+    &.mat-form-field.ng-valid {
+      .mat-form-field-infix { position: relative;
+        &:after { font-family: 'FontAwesome'; position: absolute; z-index: 2; right: 5px; top: 10px; content: "\f164"; cursor: default; color: green; animation: bounceIn .3s $easeInOutBack; animation-fill-mode: both; }
+      }
+      .mat-form-field-label { }
+      .mat-form-field-underline { color: green; }
+    }
 
-  &.ng-valid.mat-form-field-can-float.mat-form-field-should-float {
-    .mat-form-field-label { color: green; }
-    .mat-form-field-underline { background-color: green; }
+    &.mat-form-field.ng-invalid.ng-touched {
+      .mat-form-field-infix { position: relative;
+        &:after { font-family: 'FontAwesome'; position: absolute; z-index: 2; right: 7px; top: 9px; content: "\f071"; cursor: default; color: red; animation: bounceIn .3s $easeInOutBack; animation-fill-mode: both; }
+      }
+      .mat-form-field-label { }
+      .mat-form-field-underline { }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(.4); }
+      90% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
   }
 }

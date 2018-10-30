@@ -7,9 +7,8 @@
 
         <app-counter class="mr-2"></app-counter>
 
-        <button mat-stroked-button class="mr-2" title="Toggle multi-screen view"
-                [ngClass]="{ 'enabled' : ui.select.multiScreen$ | async }"
-                (click)="ui.multiScreenToggle()">
+        <button mat-stroked-button class="mr-2" title="Toggle multi-screen view" [ngClass]="{ 'enabled' : ui.select.multiScreen$ | async }"
+          (click)="ui.multiScreenToggle()">
           <i aria-hidden="true" class="fa fa-external-link-square"></i>
         </button>
 
@@ -22,12 +21,14 @@
       <button mat-raised-button class="mat-reverse mr-2" (click)="usersRefresh()" [disabled]="route?.users?.loading">
         <i class="fa fa-refresh"></i>
       </button>
-    
+
       <!-- Filter datatable-->
       <form class="form-inline mr-3 d-inline-block">
         <label class="icon icon-filter" style="position:relative;">
-          <input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter" [(ngModel)]="gridFilterTerm"/>
-          <a (click)="gridFilterTerm = null" *ngIf="gridFilterTerm" style="position:absolute;right: 10px;top: 4px;"><i class="fa fa-remove"></i></a>
+          <input class="form-control form-control-sm filterSearch" type="text" name="filterGlobal" placeholder="Filter"
+            [(ngModel)]="gridFilterTerm" />
+          <a (click)="gridFilterTerm = null" *ngIf="gridFilterTerm" style="position:absolute;right: 10px;top: 4px;"><i
+              class="fa fa-remove"></i></a>
         </label>
       </form>
 
@@ -41,83 +42,76 @@
     <div class="row">
       <div class="col-12" [ngClass]="route.sidebarOpen ? 'col-md-8' : 'col-md-12' ">
 
-          <app-grid style="height:calc(100vh - 150px)"
-                           class="ag-theme-balham"
-                           [gridOptions]="gridOptions"
-                           [gridState]="gridState"
-                           [gridFilterTerm]="gridFilterTerm"
-                           [rowData]="route.users.data"
-                           [columnDefs]="columns"
-                           [animateRows]="true"
-                           [enableSorting]="true"
-                           [enableFilter]="true"
-                           [enableColResize]="true"
-                           [enableRangeSelection]="true"
-                           [rememberGroupStateWhenNewData]="true"
-                           [groupUseEntireRow]="true"
-                           [getContextMenuItems]="gridContextMenu"
-                           rowGroupPanelShow="onlyWhenGrouping"
-                           rowSelection="multiple"
-                           (stateChange)="gridStateSave($event)"
-                           (rowsSelected)="rowsSelected($event)">
-          </app-grid>
+        <app-grid style="height:calc(100vh - 150px)" class="ag-theme-balham" [gridOptions]="gridOptions" [gridState]="gridState"
+          [gridFilterTerm]="gridFilterTerm" [rowData]="route.users.data" [columnDefs]="columns" [animateRows]="true"
+          [enableSorting]="true" [enableFilter]="true" [enableColResize]="true" [enableRangeSelection]="true"
+          [rememberGroupStateWhenNewData]="true" [groupUseEntireRow]="true" [getContextMenuItems]="gridContextMenu"
+          rowGroupPanelShow="onlyWhenGrouping" rowSelection="multiple" (stateChange)="gridStateSave($event)"
+          (rowsSelected)="rowsSelected($event)">
+        </app-grid>
 
-          <!-- Phone number template -->
-          <ng-template #phone let-row>
-            <a href="tel:{{ row?.phone | phoneNumber : true }}">{{ row?.phone | phoneNumber }}</a>
-          </ng-template>
+        <!-- Phone number template -->
+        <ng-template #phone let-row>
+          <a href="tel:{{ row?.phone | phoneNumber : true }}">{{ row?.phone | phoneNumber }}</a>
+        </ng-template>
 
-          <!-- Delete template -->
-          <ng-template #delete let-row>
-            <app-launch-modal modal="ConfirmationModalComponent" size="lg" data="Are you sure you want to delete this user?" [isButton]="false"
-                              (success)="userDelete()">
-              <i class="fa fa-remove"></i> Delete
-            </app-launch-modal>
-          </ng-template>
+        <!-- Delete template -->
+        <ng-template #delete let-row>
+          <app-launch-modal modal="ConfirmationModalComponent" size="lg" data="Are you sure you want to delete this user?"
+            [isButton]="false" (success)="userDelete()">
+            <i class="fa fa-remove"></i> Delete
+          </app-launch-modal>
+        </ng-template>
 
       </div>
       <div class="col-12 col-md-4" *ngIf="route.sidebarOpen">
-        <a class="float-right" (click)="userStopEdit()" *ngIf="isEditing"><i class="fa fa-user-plus" aria-hidden="true"></i> Add New User</a>
-        <h2 *ngIf="!isEditing"> <i class="fa fa-user-plus" aria-hidden="true"></i> Add User</h2>
-        <h2 *ngIf="isEditing"><i class="fa fa-user" aria-hidden="true"></i> Updating User</h2>
-        <hr />
 
-        <form [formGroup]="formMain" novalidate (ngSubmit)="userSubmit()">
+        <mat-card>
 
-          <mat-form-field>
-            <input matInput placeholder="Username" formControlName="username" required>
-            <mat-error *ngIf="formMain?.controls?.username.hasError('required')">
-              This field is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+          <a class="float-right" (click)="userStopEdit()" *ngIf="isEditing"><i class="fa fa-user-plus" aria-hidden="true"></i>
+            Add New User</a>
+          <h2 *ngIf="!isEditing"> <i class="fa fa-user-plus" aria-hidden="true"></i> Add User</h2>
+          <h2 *ngIf="isEditing"><i class="fa fa-user" aria-hidden="true"></i> Updating User</h2>
+          <hr />
 
-          <mat-form-field>
-            <input matInput placeholder="Name" formControlName="name" required>
-          </mat-form-field>
+          <form [formGroup]="formMain" novalidate (ngSubmit)="userSubmit()">
 
-          <mat-form-field>
-            <input matInput placeholder="Website" formControlName="website">
-          </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Username" formControlName="username" required>
+              <mat-error *ngIf="formMain?.controls?.username.hasError('required')">
+                This field is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
 
-          <mat-form-field>
-            <input matInput placeholder="Email" formControlName="email">
-          </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="name" required>
+            </mat-form-field>
 
-          <mat-form-field>
-            <input matInput placeholder="Phone" formControlName="phone">
-          </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Website" formControlName="website">
+            </mat-form-field>
 
-          <button type="submit" class="btn btn-primary float-right" [disabled]="route?.users?.modifying || formMain.invalid" [ngClass]="{ 'btn-waiting' : route?.users?.modifying }">
-            <ng-container *ngIf="!isEditing">
-              <i class="fa fa-user-plus" aria-hidden="true"></i> Add User
-            </ng-container>
-            <ng-container *ngIf="isEditing">
-              <i class="fa fa-user" aria-hidden="true"></i> Update User
-            </ng-container>
-          </button>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
 
-        </form>
+            <mat-form-field>
+              <input matInput placeholder="Phone" formControlName="phone">
+            </mat-form-field>
 
+            <div class="text-right">
+                <button type="submit" mat-raised-button class="mat-reverse" [disabled]="route?.users?.modifying || formMain.invalid"
+                [ngClass]="{ 'mat-waiting' : route?.users?.modifying }">
+                <ng-container *ngIf="!isEditing">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+                </ng-container>
+                <ng-container *ngIf="isEditing">
+                  <i class="fa fa-user" aria-hidden="true"></i> Update User
+                </ng-container>
+              </button>
+            </div>
+          </form>
+        </mat-card>
       </div>
     </div>
 
@@ -127,5 +121,3 @@
 </div>
 
 <!--    -->
-
-

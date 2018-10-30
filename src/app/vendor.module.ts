@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   MatIconModule,
   MatMenuModule,
@@ -12,6 +11,9 @@ import {
   MatButtonModule,
   MatDialogModule,
   MatExpansionModule,
+  MatTabsModule,
+  MatCardModule,
+  MatStepperModule,
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +25,6 @@ import {
     ReactiveFormsModule,
 
     // Vendors
-    //NgbModule.forRoot(), // ngBootstrap
     // Angular Materials
     MatIconModule,
     MatMenuModule,
@@ -33,6 +34,9 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
+    MatTabsModule,
+    MatCardModule,
+    MatStepperModule,
   ],
   exports: [
     RouterModule,
@@ -46,6 +50,9 @@ import {
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
+    MatTabsModule,
+    MatCardModule,
+    MatStepperModule,
   ],
   declarations: [],
 })

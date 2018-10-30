@@ -80,5 +80,13 @@ body {
       .mat-button-wrapper { color: dimgray !important; }
       &:after { display: none; }
     }
+    &.mat-waiting {
+      .fa { display: none; }
+      &:before { font-family: FontAwesome; content: "\f110"; animation: fa-spin 2s infinite linear; display: inline-block; position: relative; left: -3px; }
+    }
+    &.mat-waiting-after {
+      .fa { display: none; }
+      &:after { font-family: FontAwesome; content: "\f110"; animation: fa-spin 2s infinite linear; display: inline-block; position: relative; left: -3px; }
+    }
   }
 }
