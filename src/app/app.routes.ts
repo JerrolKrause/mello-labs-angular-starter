@@ -52,6 +52,12 @@ export const ROUTES: Routes = [
         loadChildren: './routes/monolith/monolith.module#MonolithModule',
         canActivate: [AuthGuard],
       },
+      {
+        path: 'base',
+        pathMatch: 'full',
+        loadChildren: './routes/base/base.module#BaseModule',
+        canActivate: [AuthGuard],
+      },
 
       // Empty path string for homepage ('') needs to be LAST otherwise it catches all other routes
       { path: '', pathMatch: 'full', loadChildren: './routes/home/home.module#HomeModule', canActivate: [AuthGuard] },
