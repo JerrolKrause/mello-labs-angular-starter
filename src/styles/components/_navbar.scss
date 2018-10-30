@@ -14,6 +14,8 @@ header {
     .search-field { width: 8rem; }
   }
 
+  .nav-mobile-only{margin-top:1rem;padding-top:1rem;border-top:1px solid #ccc;}
+
   .navbar { margin-bottom: 1rem; padding: 0; padding-bottom: .20rem;
     .navbar-nav > .nav-item .nav-link, .form-inline > a:not([href]):not([tabindex]) { color: white;
       &.active { border-bottom: 2px solid white; padding-bottom: .25rem; }

@@ -1,4 +1,5 @@
-<button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation" (click)="isOpen = !isOpen">
+<button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbar-main" aria-expanded="false"
+  aria-label="Toggle navigation" (click)="isOpen = !isOpen">
   <i class="fa fa-bars" aria-hidden="true"></i>
 </button>
 
@@ -8,16 +9,26 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+          <i class="fa fa-tachometer mr-1" aria-hidden="true"></i> Dashboard
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/monolith" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-          <i class="fa fa-cubes" aria-hidden="true"></i> Monolith
+          <i class="fa fa-cubes mr-1" aria-hidden="true"></i> Monolith
         </a>
       </li>
 
     </ul>
+
+    <!-- Mobile only utility nav from dropdown in appMenu -->
+    <ul class="navbar-nav mr-auto d-block d-lg-none nav-mobile-only">
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">
+          <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out
+        </a>
+      </li>
+    </ul>
+
     <div class="form-inline my-2 my-lg-0">
       <!-- App update notification via service worker -->
       <ng-container *ngIf="hasSW && hasUpdate$ | async as hasUpdate">
@@ -28,7 +39,8 @@
 
       <a [matMenuTriggerFor]="appMenu">
         <i class="fa fa-user mr-1"></i>
-        <span>{{ userName }}</span>
+        <span class="mr-1">{{ userName }}</span>
+        <i class="fa fa-caret-down mr-1"></i>
       </a>
       <mat-menu #appMenu="matMenu" xPosition="after">
         <button mat-menu-item (click)="logOut()">

@@ -59,6 +59,7 @@ button { cursor: pointer; }
 
 // Material buttons
 body {
+  button.mat-menu-item:focus {outline:initial;}
   .mat-button, .mat-raised-button, .mat-flat-button, .mat-stroked-button, .mat-icon-button { transition: .3s ease-out; font-weight: normal ; position: relative; overflow: hidden; background-image: linear-gradient(to top, #fff 0%, #fff 100%); color: $interact-primary; min-width: initial; line-height: 1.85rem; padding: 0 .55rem;
     &:hover { color: #fff; }
     &:focus { outline: initial; }
