@@ -1,14 +1,5 @@
 //Animations
 
-// Easing Animations
-// https://matthewlein.com/tools/ceaser
-// USAGE:  .anim{ transition: 0.7s $easeInOutBack; }
-$easeInBack: cubic-bezier(0.600, -0.280, 0.735, 0.045);
-$easeInQuart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
-$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
-$easeInOutQuart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
-$easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550);
-
 // Rotate scale and fade in
 .anim-rotate-in { animation: rotateIn .3s $easeOutQuart; animation-delay: .1s; animation-fill-mode: forwards; position: relative; opacity: 0; transform: scale(.4) rotate(30deg); position: relative; left: 30px; top: 30px; }
 @keyframes rotateIn {
