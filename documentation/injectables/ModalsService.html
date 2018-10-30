@@ -1,0 +1,753 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ModalsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/components/modals/modals.service.ts</code>
+        </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalList">modalList</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalRef">modalRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalRef$">modalRef$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onClose">onClose</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open">open</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(store: Store<AppStore.Root>, settings: <a href="../injectables/AppSettings.html">AppSettings</a>, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/modals/modals.service.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;AppStore.Root&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>settings</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/AppSettings.html" target="_self" >AppSettings</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onClose"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            onClose
+                            </b>
+                            <a href="#onClose"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>onClose()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/components/modals/modals.service.ts:110</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>When the modal window is closed, remove from store</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="open"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            open
+                            </b>
+                            <a href="#open"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>open(modalId: <a href="../undefineds/modals.html">modals</a>, persist: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, size: "sm" | "lg" | "xl" | "full", data?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/modals/modals.service.ts:72</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open a modal window</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modalId</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#modals" target="_self" >modals</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>The class name of the modal window</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>persist</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Should the modal persist on reload or otherwise have its state managed by the UI store</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>size</td>
+                                                        <td>
+                                                                    <code>&quot;sm&quot; | &quot;lg&quot; | &quot;xl&quot; | &quot;full&quot;</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>&#x27;lg&#x27;</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Modal size</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>Primary set of data to pass to the modal</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog
+                            </b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>dialog:     <code>MatDialog</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/modals/modals.service.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalList"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalList
+                            </b>
+                            <a href="#modalList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalList:     <code>literal type</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    ConfirmationModalComponent: ConfirmationModalComponent,
+    LogoutModalComponent: LogoutModalComponent,
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/modals/modals.service.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>List of component references of available modals </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalRef
+                            </b>
+                            <a href="#modalRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalRef:     <code>MatDialogRef&lt;any&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialogRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/modals/modals.service.ts:24</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the STATIC currently open modal. This reference is used for static non persistant modals </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalRef$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalRef$
+                            </b>
+                            <a href="#modalRef$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalRef$:     <code>BehaviorSubject&lt;any&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>BehaviorSubject&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject(null)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/modals/modals.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the STORE OBSERVABLE currently open modal. This reference is used for modals persisted in the UI store </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+
+import { ConfirmationModalComponent, LogoutModalComponent } from &#x27;$modals&#x27;;
+import { BehaviorSubject } from &#x27;rxjs/internal/BehaviorSubject&#x27;;
+import { AppSettings, AppStore } from &#x27;$shared&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { MatDialog, MatDialogRef } from &#x27;@angular/material&#x27;;
+import { UIStoreActions } from &#x27;$ui&#x27;;
+
+/** Sample Usage:
+this.ui.modals.open(&#x27;ConfirmationModalComponent&#x27;, false, &#x27;lg&#x27;, &#x27;Are you sure you want to delete this user?&#x27;, &#x27;Delete User&#x27;).result.then(
+	() &#x3D;&gt; console.log(&#x27;Modal Closed&#x27;),
+	() &#x3D;&gt; console.log(&#x27;Modal Dismissed&#x27;));
+*/
+
+// List modals here by component name
+type modals &#x3D; &#x27;LogoutModalComponent&#x27; | &#x27;ConfirmationModalComponent&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class ModalsService {
+  /** Reference to the STATIC currently open modal. This reference is used for static non persistant modals */
+  public modalRef: MatDialogRef&lt;any&gt;;
+  /** Reference to the STORE OBSERVABLE currently open modal. This reference is used for modals persisted in the UI store */
+  public modalRef$: BehaviorSubject&lt;any&gt; &#x3D; new BehaviorSubject(null);
+  /** List of component references of available modals */
+  public modalList: { [key: string]: any } &#x3D; {
+    ConfirmationModalComponent: ConfirmationModalComponent,
+    LogoutModalComponent: LogoutModalComponent,
+  };
+
+  constructor(private store: Store&lt;AppStore.Root&gt;, private settings: AppSettings, public dialog: MatDialog) {
+    // Subscribe to the modal in the store and launch store modal if data is found. Also make sure token is present
+    this.store.select(storeElem &#x3D;&gt; storeElem.ui.modal).subscribe((modal: any) &#x3D;&gt; {
+      // Make sure modal exists AND that a token is present in app settings. This prevents a modal from persisting after logout
+      if (modal &amp;&amp; Object.keys(modal).length &amp;&amp; this.settings.token) {
+        // Store reference to the modal instance
+        let width &#x3D; &#x27;720px&#x27;;
+
+        switch (modal.size) {
+          case &#x27;sm&#x27;:
+            width &#x3D; &#x27;480px&#x27;;
+            break;
+          case &#x27;xl&#x27;:
+            width &#x3D; &#x27;1024px&#x27;;
+            break;
+          case &#x27;full&#x27;:
+            width &#x3D; &#x27;90%&#x27;;
+            break;
+        }
+        //const modalRef &#x3D; this.modalService.open(this.modalList[modal.modalId], modal.options);
+        const modalRef &#x3D; this.dialog.open(this.modalList[modal.modalId], {
+          width: width,
+          data: modal.data || null,
+        });
+
+        this.modalRef$.next(modalRef);
+        this.onClose();
+      }
+    });
+  }
+
+  /**
+   * Open a modal window
+   * @param modalId The class name of the modal window
+   * @param persist Should the modal persist on reload or otherwise have its state managed by the UI store
+   * @param size Modal size
+   * @param data Primary set of data to pass to the modal
+   * @param dataAlt Secondary set of data to pass to the modal
+   */
+  public open(modalId: modals, persist: boolean &#x3D; false, size: &#x27;sm&#x27; | &#x27;lg&#x27; | &#x27;xl&#x27; | &#x27;full&#x27; &#x3D; &#x27;lg&#x27;, data?: any) {
+    let width &#x3D; &#x27;720px&#x27;;
+
+    switch (size) {
+      case &#x27;sm&#x27;:
+        width &#x3D; &#x27;480px&#x27;;
+        break;
+      case &#x27;xl&#x27;:
+        width &#x3D; &#x27;1024px&#x27;;
+        break;
+      case &#x27;full&#x27;:
+        width &#x3D; &#x27;90%&#x27;;
+        break;
+    }
+
+    // If persist is set, load this modal into the store so state is managed by the UI store
+    if (persist) {
+      this.store.dispatch(
+        UIStoreActions.MODAL_OPEN({
+          modalId: modalId,
+          options: { size: &lt;any&gt;size },
+          data: data,
+        }),
+      );
+    } else {
+      // If persist is not set
+      // this.modalRef &#x3D; this.modalService.open(this.modalList[modalId], { size: &lt;any&gt;size, windowClass: windowClass });
+      this.modalRef &#x3D; this.dialog.open(this.modalList[modalId], {
+        width: width,
+        data: data,
+      });
+    }
+    return this.modalRef;
+  }
+
+  /**
+   * When the modal window is closed, remove from store
+   */
+  private onClose() {
+    this.modalRef$.subscribe(modal &#x3D;&gt; {
+      // Wait for promise that is returned when modal is closed or dismissed
+      modal.result.then(
+        () &#x3D;&gt; {
+          this.store.dispatch(UIStoreActions.MODAL_UNLOAD(null));
+        },
+        () &#x3D;&gt; {
+          // On modal dismiss, which is closed without performing an action
+          this.store.dispatch(UIStoreActions.MODAL_UNLOAD(null));
+        },
+      );
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ModalsService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

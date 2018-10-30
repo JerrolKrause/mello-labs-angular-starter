@@ -1,0 +1,202 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="angular-starter">Angular Starter</h1>
+<p>A rapid starter project for creating Angular single page apps. Contains Angular, lodash, Bootstrap 4, Ng-Bootstrap &amp; Ngrx-Store (Redux). Built with Angular CLI.</p>
+<p>Available online @ <a href="https://jerrolkrause.github.io/angular-starter/#/">https://jerrolkrause.github.io/angular-starter/#/</a>. </p>
+<h2 id="quick-start">Quick Start</h2>
+<div><pre class="line-numbers"><code class="language-bash"># Clone the repo
+git clone https://github.com/JerrolKrause/angular-starter.git
+
+# Rename directory from `angular-starter` to `your-app`
+
+# Change directory to the repo
+cd your-app
+
+# Install the repo with yarn or npm
+yarn
+npm i</code></pre></div><h2 id="usage">Usage</h2>
+<p>See Angular CLI github page for full usage: <a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></p>
+<div><pre class="line-numbers"><code class="language-bash"># Serve dev on http://localhost:4200/
+ng serve --aot
+
+# Build for prod. Files will appear in the dist folder
+ng build --prod
+
+# Serve prod build at http://127.0.0.1:8080/#/.
+# Requires http server which can be installed with `npm install http-server -g`
+npm run prod
+
+# Run prettier which will format the code in the entire project
+npm run format
+
+# Run prod build and then use webpack bundle analyzer to check bundle sizes and composition
+npm run stats
+
+# Automatically generate documentation
+npm run docs
+
+# Run e2e protractor tests
+ng e2e
+
+# Run e2e protractor tests without rebuilding every time (faster)
+ng e2e --s false
+
+# Update NPM dependencies via Angular CLI
+ng update
+
+# Deploy dist folder to git pages. Be sure to update deploy script in package.json
+npm run deploy</code></pre></div><h2 id="localizing-your-app">Localizing Your App</h2>
+<p><code>package.json</code></p>
+<ul>
+<li>If using github pages, update the <code>npm run deploy</code> command in this file to include the correct slug. IE replace <code>/angular-starter/</code> with your url</li>
+</ul>
+<p><code>src &gt; environments &gt; environment.ts</code> +
+<code>src &gt; environments &gt; environment.prod.ts</code></p>
+<ul>
+<li>Localize environment settings and properties in these files. Enable/disable app functionality as needed.</li>
+</ul>
+<p><code>src &gt; app &gt; shared &gt; app.settings.ts</code></p>
+<ul>
+<li>Add/change global app &amp; environment variables</li>
+</ul>
+<p><code>src &gt; index.html</code></p>
+<ul>
+<li>Update any header changes to the html in this file. IE logo, navigation, etc. This is a poor man&#39;s app-Shell since ng-bootstrap isn&#39;t compatible with SSR</li>
+</ul>
+<p><code>src &gt; manifest.json</code></p>
+<ul>
+<li>Change the site info in this file to be specific to your app. Make sure the start Url property matches your production URL</li>
+</ul>
+<p><code>src &gt; assets &gt; icons</code></p>
+<ul>
+<li>Change these icons to ones for your app</li>
+</ul>
+<p><code>src &gt;</code> <code>apple-touch-icon</code> + <code>favicon.ico</code> + <code>safari-pinned-tab.svg</code></p>
+<ul>
+<li>Change these icons to ones for your app</li>
+</ul>
+<p><code>src &gt; ngsw-config.json</code></p>
+<ul>
+<li>Update any dependencies needed for the service worker. Use asset groups for site resources &amp; use dataGroups for API calls</li>
+</ul>
+<h2 id="useful-tools">Useful Tools</h2>
+<h3 id="vscode-tools">VSCode Tools</h3>
+<ul>
+<li>Prettier: <a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode</a></li>
+<li>TS Lint: <a href="https://marketplace.visualstudio.com/items?itemName=eg2.tslint">https://marketplace.visualstudio.com/items?itemName=eg2.tslint</a></li>
+</ul>
+<h3 id="visual-studio-tools">Visual Studio Tools</h3>
+<ul>
+<li>Prettier: <a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.JavaScriptPrettier">https://marketplace.visualstudio.com/items?itemName=MadsKristensen.JavaScriptPrettier</a></li>
+<li>TS Lint (Note that this requires the project to be in a solution to work): <a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebAnalyzer">https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebAnalyzer</a></li>
+</ul>
+<h2 id="useful-info">Useful Info</h2>
+<p>Lazy load libraries. Normally libraries that are shared between lazy loaded routes are all bundled into a single master bundle. This approach will bundle them separately.</p>
+<ul>
+<li>Add a module in <code>app &gt; components &gt; libs &gt; *</code> that imports the library and then exports it</li>
+<li>Export the module in the barrel file in <code>app &gt; components &gt; libs &gt; index.ts</code></li>
+<li>In angular.json, add the path to the module in <code>projects &gt; architect &gt; build &gt; options &gt; lazyModules</code></li>
+<li>In the module where the library is needed, import the lazy loaded module from the barrel like <code>import { DatagridModule } from &#39;$libs&#39;;</code> and then add to the ngModule imports array</li>
+</ul>
+<p>When working with Yarn/NPM Link and your local NPM package src folders (uncompiled .ts), use the following boilerplate in your root tsconfig so that Angular CLI will compile and build on save and not throw an Angular package error</p>
+<div><pre class="line-numbers"><code class="language-bash">&quot;include&quot;: [
+    &quot;src/**/*&quot;,
+    &quot;node_modules/libName/**/*&quot;,
+]</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <script src="./js/menu-wc.js"></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

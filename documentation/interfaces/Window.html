@@ -1,0 +1,562 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>Window</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/libs/chart/chart.component.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#CanvasJS">CanvasJS</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="CanvasJS"></a>
+                                        <span class="name"><b>CanvasJS</b><a href="#CanvasJS"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>CanvasJS:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef,
+  Input,
+  OnChanges,
+  AfterViewInit,
+  OnDestroy,
+} from &#x27;@angular/core&#x27;;
+// import { formatDate, formatNumber, formatCurrency, formatPercent } from &#x27;@angular/common&#x27;;
+const defaultsDeep &#x3D; require(&#x27;lodash/defaultsDeep&#x27;);
+
+declare global {
+  interface Window {
+    CanvasJS: any;
+  }
+}
+
+// JS file source
+const chartSrc &#x3D; &#x27;assets/scripts/canvasjs.min.js&#x27;;
+
+@Component({
+  selector: &#x27;app-chart&#x27;,
+  templateUrl: &#x27;./chart.component.html&#x27;,
+  styleUrls: [&#x27;./chart.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+  /** TEMP */
+  @ViewChild(&#x27;element&#x27;) element: ElementRef;
+  @ViewChild(&#x27;tooltipCustom&#x27;) tooltipCustom: ElementRef;
+
+  @Input()
+  type:
+    | &#x27;line&#x27;
+    | &#x27;column&#x27;
+    | &#x27;bar&#x27;
+    | &#x27;area&#x27;
+    | &#x27;spline&#x27;
+    | &#x27;splineArea&#x27;
+    | &#x27;stepLine&#x27;
+    | &#x27;scatter&#x27;
+    | &#x27;bubble&#x27;
+    | &#x27;stackedColumn&#x27;
+    | &#x27;stackedBar&#x27;
+    | &#x27;stackedArea&#x27;
+    | &#x27;stackedColumn100&#x27;
+    | &#x27;stackedBar100&#x27;
+    | &#x27;stackedArea100&#x27;
+    | &#x27;pie&#x27;
+    | &#x27;doughnut&#x27; &#x3D;
+    &#x27;column&#x27;;
+  @Input() width: string;
+  @Input() height: string;
+  @Input() data: CanvasJS.ChartDataSeriesOptions[];
+  @Input() options: Partial&lt;CanvasJS.ChartOptions&gt;;
+  @Input() stacked: boolean;
+
+  /** Colors for data points in RGB */
+  @Input() colorSet: string;
+  @Input() colorGradient: [string, string];
+  @Input() colorsCustom: string[] &#x3D; [];
+
+  // Format Elements
+  @Input() formatTooltip: any;
+  @Input() formatTooltipTitle: any;
+  @Input() formatDatalabel: any;
+  @Input() formatXLabels: any;
+  @Input() formatYLabels: any;
+
+  // Show/Hide Elements
+  /** Show or hide the tooltip which appears when you hover over a chart entry */
+  @Input() showLegend &#x3D; true;
+  /** Show or hide the values that appear inside the chart */
+  @Input() showIndexLabel &#x3D; false;
+  /** Show or hide the tooltip which appears when you hover over a chart entry */
+  @Input() showTooltip &#x3D; true;
+  /** Show or hide the labels that appear on the X axis */
+  @Input() showXAxisLabels &#x3D; true;
+  /** Show or hide the labels that appear on the Y axis */
+  @Input() showYAxisLabels &#x3D; true;
+
+  // Titles
+  /** Title to show for the main chart */
+  @Input() titleChart: string;
+  /** Title to show for the X Axis, leave null for none */
+  @Input() titleXAxis: string;
+  /** Title to show for the Y Axis, leave null for none */
+  @Input() titleYAxis: string;
+
+  // Template
+  /** Supply a custom html template for the tooltip */
+  @Input() templateTooltip: any &#x3D; null;
+
+  /** Randomly generated uniqueID for the div that holds the chart. Allows for multiple charts per page */
+  public uniqueId &#x3D; &#x27;chart&#x27; + Math.floor(Math.random() * 1000000);
+
+  /** Chart reference */
+  private chart: CanvasJS.Chart;
+
+  /** If custom colors supplied, this is the auto-generated name of the color scheme */
+  private colorScheme: string;
+
+  /** After initial load */
+  private isLoaded &#x3D; false;
+
+  private styling &#x3D; {
+    fontFamily: &quot;&#x27;Helvetica Neue&#x27;, &#x27;Helvetica&#x27;, &#x27;Arial&#x27;, sans-serif&quot;,
+    fontSize: 10,
+    fontWeight: &#x27;normal&#x27;,
+  };
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.scriptsLoad();
+  }
+
+  ngOnChanges() {
+    // Only update chart
+    if (this.isLoaded) {
+      this.chartInit();
+    }
+  }
+
+  /**
+   * Check if Chart.js is loaded, if not, load it then initialize the chart in this component
+   */
+  public scriptsLoad() {
+    if (window.CanvasJS) {
+      this.chartInit(); // Chart.js already loaded, init chart
+      this.isLoaded &#x3D; true;
+    } else {
+      // Dynamically load chart module
+      const script &#x3D; document.createElement(&#x27;script&#x27;);
+      script.type &#x3D; &#x27;text/javascript&#x27;;
+      script.src &#x3D; chartSrc;
+      script.onload &#x3D; () &#x3D;&gt; {
+        this.chartInit();
+        this.isLoaded &#x3D; true;
+      }; // After load, init chart
+      document.head.appendChild(script);
+    }
+  }
+
+  /**
+   * Initialize the chart
+   */
+  private chartInit() {
+    if (this.element &amp;&amp; this.element.nativeElement &amp;&amp; window.CanvasJS) {
+      //  &amp;&amp; this.dataSets
+      // Clean up any previous references before reinitializing the chart
+      this.ngOnDestroy();
+
+      if (this.colorsCustom) {
+        this.colorScheme &#x3D; &#x27;customColors-&#x27; + this.colorsCustom.join;
+        window.CanvasJS.addColorSet(this.colorScheme, this.colorsCustom);
+      }
+
+      // Create chart from WINDOW reference not import
+      // Due to bug with plugins registered with global instance and not being available via imports
+      this.chart &#x3D; new window.CanvasJS.Chart(this.uniqueId, this.chartOptionsCreate());
+      this.chart.render();
+    }
+  }
+
+  /**
+   * Create the options needed by this chart
+   */
+  public chartOptionsCreate() {
+    // If color gradient is specified, create it to match datapoint range
+    if (this.colorGradient &amp;&amp; this.data &amp;&amp; this.data[0] &amp;&amp; this.data[0].dataPoints.length) {
+      this.colorsCustom &#x3D; this.getColorScheme(
+        this.colorGradient[0],
+        this.colorGradient[1],
+        this.data[0].dataPoints.length,
+      );
+    }
+
+    // If custom colors supplied, register with chart plugin
+    if (this.colorsCustom) {
+      this.colorScheme &#x3D; &#x27;customColors-&#x27; + this.colorsCustom.join;
+      window.CanvasJS.addColorSet(this.colorScheme, this.colorsCustom);
+    }
+
+    // Create default options
+    const options &#x3D; &lt;CanvasJS.ChartOptions&gt;{
+      animationEnabled: true,
+      exportEnabled: false,
+      animationDuration: 600,
+      title: {
+        text: this.titleChart,
+        fontSize: 18,
+        fontFamily: this.styling.fontFamily,
+        fontWeight: this.styling.fontWeight,
+      },
+      // theme: &quot;light2&quot;,
+      toolTip: {
+        enabled: this.showTooltip,
+        fontColor: this.formatTooltip ? this.formatTooltip : null,
+      },
+      legend: {
+        fontSize: this.styling.fontSize,
+        fontFamily: this.styling.fontFamily,
+        cursor: &#x27;pointer&#x27;,
+        // Enable the legend to toggle dataseries on or off
+        itemclick: e &#x3D;&gt; {
+          e.dataSeries.visible &#x3D; typeof e.dataSeries.visible &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27; || e.dataSeries.visible ? false : true;
+          this.chart.render();
+        },
+      },
+      colorSet: this.colorSet ? this.colorSet : this.colorScheme ? this.colorScheme : null, // Use built in color set if supplied, use custom colors if not
+      data: this.mapChartData(),
+      axisX: {
+        title: this.titleXAxis,
+        titleFontSize: 16,
+        interval: 1,
+        labelFontSize: this.styling.fontSize,
+        labelFontFamily: this.styling.fontFamily,
+        labelFormatter: val &#x3D;&gt; {
+          if (this.showXAxisLabels &#x3D;&#x3D;&#x3D; false) {
+            return &#x27;&#x27;; // If show labels is disabled, return empty string which hides the labels
+          } else if (this.formatXLabels) {
+            return this.formatXLabels(val); // If custom formatter supplied, format strings
+          }
+          return val.label; // Otherwise return default value
+        },
+      },
+      axisY: {
+        title: this.titleYAxis,
+        titleFontSize: 16,
+        labelFontSize: this.styling.fontSize,
+        labelFontFamily: this.styling.fontFamily,
+        labelFormatter: val &#x3D;&gt; {
+          if (this.showYAxisLabels &#x3D;&#x3D;&#x3D; false) {
+            return &#x27;&#x27;; // If show labels is disabled, return empty string which hides the labels
+          } else if (this.formatYLabels) {
+            return this.formatYLabels(val); // If custom formatter supplied, format strings
+          }
+          return val.value; // Otherwise return default value
+        },
+      },
+    };
+    // console.log(options)
+    // Return options object with overrides
+    return defaultsDeep(this.options, options);
+  }
+
+  /**  */
+  private mapChartData(): CanvasJS.ChartDataSeriesOptions[] {
+    return this.data.map(data &#x3D;&gt; {
+      return &lt;CanvasJS.ChartDataSeriesOptions&gt;{
+        type: this.type,
+        showInLegend: this.showLegend,
+        indexLabel: this.showIndexLabel ? &#x27;{y}&#x27; : null,
+        indexLabelFontSize: 10,
+        // indexLabelFontColor: &#x27;#fff&#x27;,
+        // legendText: this.data[0].label,
+        ...data,
+      };
+    });
+  }
+
+  /**
+   * Creates a gradient with a fixed number of steps in a string array
+   * @param startColor - Hex start color
+   * @param endColor - Hex end color
+   * @param steps - The number of hex colors to return
+   */
+  private getColorScheme(startColor: string, endColor: string, steps: number) {
+    const colorsCustom: string[] &#x3D; [];
+    for (var i &#x3D; 0; i &lt;&#x3D; steps; i++) {
+      colorsCustom.push(this.getGradientStep(startColor, endColor, i / steps));
+    }
+    return colorsCustom;
+  }
+
+  /**
+   * Get a color hex value between 2 input colors as part of a gradient
+   * @param startColor - Hex start color
+   * @param endColor - Hex end color
+   * @param percent
+   */
+  private getGradientStep(startColor: string, endColor: string, percent: number) {
+    // Strip the leading # if it&#x27;s there
+    startColor &#x3D; startColor.replace(/^\s*#|\s*$/g, &#x27;&#x27;);
+    endColor &#x3D; endColor.replace(/^\s*#|\s*$/g, &#x27;&#x27;);
+
+    // convert 3 char codes --&gt; 6, e.g. &#x60;E0F&#x60; --&gt; &#x60;EE00FF&#x60;
+    if (startColor.length &#x3D;&#x3D; 3) {
+      startColor &#x3D; startColor.replace(/(.)/g, &#x27;$1$1&#x27;);
+    }
+
+    if (endColor.length &#x3D;&#x3D; 3) {
+      endColor &#x3D; endColor.replace(/(.)/g, &#x27;$1$1&#x27;);
+    }
+
+    // Get colors
+    let startRed &#x3D; parseInt(startColor.substr(0, 2), 16),
+      startGreen &#x3D; parseInt(startColor.substr(2, 2), 16),
+      startBlue &#x3D; parseInt(startColor.substr(4, 2), 16);
+
+    let endRed &#x3D; parseInt(endColor.substr(0, 2), 16),
+      endGreen &#x3D; parseInt(endColor.substr(2, 2), 16),
+      endBlue &#x3D; parseInt(endColor.substr(4, 2), 16);
+
+    // Calculate new color
+    let diffRed &#x3D; endRed - startRed;
+    let diffGreen &#x3D; endGreen - startGreen;
+    let diffBlue &#x3D; endBlue - startBlue;
+
+    let diffRedStr &#x3D; (diffRed * percent + startRed).toString(16).split(&#x27;.&#x27;)[0];
+    let diffGreenStr &#x3D; (diffGreen * percent + startGreen).toString(16).split(&#x27;.&#x27;)[0];
+    let diffBlueStr &#x3D; (diffBlue * percent + startBlue).toString(16).split(&#x27;.&#x27;)[0];
+
+    // ensure 2 digits by color
+    if (diffRedStr.length &#x3D;&#x3D; 1) diffRedStr &#x3D; &#x27;0&#x27; + diffRed;
+    if (diffGreenStr.length &#x3D;&#x3D; 1) diffGreenStr &#x3D; &#x27;0&#x27; + diffGreenStr;
+    if (diffBlueStr.length &#x3D;&#x3D; 1) diffBlueStr &#x3D; &#x27;0&#x27; + diffBlueStr;
+
+    return &#x27;#&#x27; + diffRedStr + diffGreenStr + diffBlueStr;
+  }
+
+  /**
+   * Supply a formatter method OR an Angular pipe to the chart instance
+   * Used to format labels, values, datalabels, etc
+   * @param option
+   
+  public formatData(option: FormatData | Formatter) {
+    // Check if a custom formatter was supplied, if not use angular pipe
+    if (typeof option !&#x3D;&#x3D; &#x27;function&#x27; &amp;&amp; option.pipe) {
+      let format &#x3D; option.format;
+
+      if (!option.format) {
+        format &#x3D; &#x27;&#x27;;
+      }
+
+      switch (option.pipe) {
+        // Use decimal pipe
+        case &#x27;number&#x27;:
+          return (tooltipItem: Chart.ChartTooltipItem, _data: Chart.ChartData) &#x3D;&gt;
+            formatNumber(Number(tooltipItem.yLabel), &#x27;en-US&#x27;, format);
+        // Datepipe
+        case &#x27;date&#x27;:
+          return (tooltipItem: Chart.ChartTooltipItem, _data: Chart.ChartData) &#x3D;&gt;
+            formatDate(Number(tooltipItem.yLabel), format, &#x27;en-US&#x27;);
+        // Currency pipe
+        case &#x27;currency&#x27;:
+          return (tooltipItem: Chart.ChartTooltipItem, _data: Chart.ChartData) &#x3D;&gt;
+            formatCurrency(Number(tooltipItem.yLabel), &#x27;en-US&#x27;, &#x27;&#x27;, format);
+        // Percent pipe
+        case &#x27;percent&#x27;:
+          return (tooltipItem: Chart.ChartTooltipItem, _data: Chart.ChartData) &#x3D;&gt;
+            formatPercent(Number(tooltipItem.yLabel), &#x27;en-US&#x27;, format);
+        default:
+          console.warn(&#x27;Improper values supplied for chart formatter&#x27;, option);
+          break;
+      }
+    } else {
+      return &lt;Formatter&gt;option;
+    }
+
+  }
+  */
+
+  ngOnDestroy() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'Window.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

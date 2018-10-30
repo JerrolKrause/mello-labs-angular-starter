@@ -8,6 +8,7 @@
     "format-glob": "prettier --write",
     "ng": "ng",
     "build": "ng build",
+    "stats": "ng build --prod --stats-json && webpack-bundle-analyzer dist/browser/stats.json",
     "build:stats": "ng build --prod --stats-json",
     "bundle-report": "webpack-bundle-analyzer dist/browser/stats.json",
     "prod": "http-server ./dist/browser -o -g",

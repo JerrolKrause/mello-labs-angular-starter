@@ -1,0 +1,1020 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ChartsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/routes/qa/routes/charts/charts.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-charts</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>charts.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./charts.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataPoints">dataPoints</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataPointsCounts">dataPointsCounts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataPointsTopFive">dataPointsTopFive</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataPointsTransfersTotal">dataPointsTransfersTotal</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#frame">frame</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#labels">labels</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#user">user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#countsPerAgent">countsPerAgent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formatTooltip">formatTooltip</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#topFiveTransfers">topFiveTransfers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#transfersTotal">transfersTotal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countsPerAgent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            countsPerAgent
+                            </b>
+                            <a href="#countsPerAgent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>countsPerAgent()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formatTooltip"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            formatTooltip
+                            </b>
+                            <a href="#formatTooltip"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>formatTooltip(val: CanvasJS.ChartLabelFormatter)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:133</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>val</td>
+                                                        <td>
+                                                                    <code>CanvasJS.ChartLabelFormatter</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="topFiveTransfers"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            topFiveTransfers
+                            </b>
+                            <a href="#topFiveTransfers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>topFiveTransfers()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Map top 5 Transfers</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="transfersTotal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            transfersTotal
+                            </b>
+                            <a href="#transfersTotal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>transfersTotal()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:106</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Map total transfers </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataPoints"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dataPoints
+                            </b>
+                            <a href="#dataPoints"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>dataPoints:     <code>CanvasJS.ChartDataSeriesOptions[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>CanvasJS.ChartDataSeriesOptions[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataPointsCounts"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dataPointsCounts
+                            </b>
+                            <a href="#dataPointsCounts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>dataPointsCounts:     <code>CanvasJS.ChartDataSeriesOptions[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>CanvasJS.ChartDataSeriesOptions[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataPointsTopFive"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dataPointsTopFive
+                            </b>
+                            <a href="#dataPointsTopFive"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>dataPointsTopFive:     <code>CanvasJS.ChartDataSeriesOptions[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>CanvasJS.ChartDataSeriesOptions[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataPointsTransfersTotal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dataPointsTransfersTotal
+                            </b>
+                            <a href="#dataPointsTransfersTotal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>dataPointsTransfersTotal:     <code>CanvasJS.ChartDataSeriesOptions[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>CanvasJS.ChartDataSeriesOptions[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="frame"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            frame
+                            </b>
+                            <a href="#frame"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>frame:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labels"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            labels
+                            </b>
+                            <a href="#labels"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>labels:     <code>string[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            user
+                            </b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>user:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>user</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/routes/qa/routes/charts/charts.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ChangeDetectionStrategy } from &#x27;@angular/core&#x27;;
+import { user } from &#x27;./user&#x27;;
+import { transfers } from &#x27;./transfers&#x27;;
+
+@Component({
+  selector: &#x27;app-charts&#x27;,
+  templateUrl: &#x27;./charts.component.html&#x27;,
+  styleUrls: [&#x27;./charts.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ChartsComponent implements OnInit {
+  public frame &#x3D; 0;
+
+  public dataPoints: CanvasJS.ChartDataSeriesOptions[] &#x3D; [];
+  public dataPointsTransfersTotal: CanvasJS.ChartDataSeriesOptions[] &#x3D; [];
+  public dataPointsTopFive: CanvasJS.ChartDataSeriesOptions[] &#x3D; [];
+  public dataPointsCounts: CanvasJS.ChartDataSeriesOptions[] &#x3D; [];
+
+  public user &#x3D; user;
+  public labels: string[];
+
+  constructor() {}
+
+  ngOnInit() {
+    this.transfersTotal();
+
+    this.dataPointsCounts &#x3D; this.countsPerAgent();
+    this.dataPointsTopFive &#x3D; this.topFiveTransfers();
+  }
+
+  private countsPerAgent() {
+    const data &#x3D; [...transfers];
+    const date &#x3D; transfers[0].date;
+
+    const transfersTotal: { [key: string]: { label: string; y: number } } &#x3D; {};
+
+    data.forEach(elem &#x3D;&gt; {
+      if (elem.date &#x3D;&#x3D;&#x3D; date) {
+        if (!transfersTotal[elem.name]) {
+          transfersTotal[elem.name] &#x3D; {
+            label: elem.name,
+            y: 0,
+          };
+        }
+        transfersTotal[elem.name].y +&#x3D; elem.Transfers;
+      }
+    });
+
+    const dataPoints &#x3D; [];
+
+    for (let key in transfersTotal) {
+      dataPoints.push(transfersTotal[key]);
+    }
+
+    return &lt;CanvasJS.ChartDataSeriesOptions[]&gt;[
+      {
+        dataPoints: dataPoints.sort((a, b) &#x3D;&gt; {
+          if (a.y &lt; b.y) return -1;
+          if (a.y &gt; b.y) return 1;
+          return 0;
+        }),
+      },
+    ];
+  }
+
+  /**
+   * Map top 5 Transfers
+   */
+  private topFiveTransfers() {
+    const data &#x3D; [...transfers];
+
+    const transfersTotal: { [key: string]: { label: string; y: number } } &#x3D; {};
+
+    data.forEach(elem &#x3D;&gt; {
+      if (!transfersTotal[elem.name]) {
+        transfersTotal[elem.name] &#x3D; {
+          label: elem.name,
+          y: 0,
+        };
+      }
+      transfersTotal[elem.name].y +&#x3D; elem.Transfers;
+    });
+    const dataPoints &#x3D; [];
+
+    for (let key in transfersTotal) {
+      dataPoints.push(transfersTotal[key]);
+    }
+
+    const mapped &#x3D; &lt;CanvasJS.ChartDataSeriesOptions[]&gt;[
+      {
+        dataPoints: dataPoints
+          .sort((a, b) &#x3D;&gt; {
+            if (a.y &lt; b.y) return -1;
+            if (a.y &gt; b.y) return 1;
+            return 0;
+          })
+          .reverse(),
+      },
+    ];
+    mapped[0].dataPoints.length &#x3D; 10;
+    mapped[0].dataPoints.reverse();
+    return mapped;
+  }
+
+  /** Map total transfers */
+  private transfersTotal() {
+    const date &#x3D; transfers[0].date;
+    const transfersByAgent: { [key: string]: any[] } &#x3D; {};
+    transfers.forEach(user &#x3D;&gt; {
+      if (user.date &#x3D;&#x3D;&#x3D; date) {
+        const key &#x3D; user.date + &#x27;T&#x27; + user.Time;
+        if (!transfersByAgent[key]) {
+          transfersByAgent[key] &#x3D; [];
+        }
+        transfersByAgent[key].push(user);
+      }
+    });
+
+    this.dataPointsTransfersTotal &#x3D; [];
+    for (let key in transfersByAgent) {
+      this.dataPointsTransfersTotal.push({
+        name: transfersByAgent[key][0].Time,
+        dataPoints: transfersByAgent[key].map(transfer &#x3D;&gt; {
+          return &lt;CanvasJS.ChartDataPoint&gt;{
+            label: transfer.name,
+            y: transfer.Transfers,
+          };
+        }),
+      });
+    }
+  }
+
+  public formatTooltip(val: CanvasJS.ChartLabelFormatter): string {
+    //console.log(val)
+    return val.label + &#x27;!!&#x27;;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid pt-2&quot;&gt;
+
+  &lt;div class&#x3D;&quot;card card-sm mb-2&quot;&gt;
+    &lt;div class&#x3D;&quot;card-header&quot;&gt;
+      &lt;a (click)&#x3D;&quot;frame &#x3D; 0&quot;&gt;Total Transfers Today&lt;/a&gt; |
+      &lt;!--&lt;a (click)&#x3D;&quot;frame &#x3D; 1&quot;&gt;Transfers&lt;/a&gt; |--&gt;
+      &lt;a (click)&#x3D;&quot;frame &#x3D; 2&quot;&gt;Top 10 Transfers&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;app-chart *ngIf&#x3D;&quot;frame &#x3D;&#x3D;&#x3D; 0&quot;
+               [type]&#x3D;&quot;&#x27;bar&#x27;&quot;
+               [data]&#x3D;&quot;dataPointsCounts&quot;
+               [titleChart]&#x3D;&quot;&#x27;Total Transfers Today&#x27;&quot;
+               [colorGradient]&#x3D;&quot;[&#x27;#18569d&#x27;, &#x27;#d3001c&#x27;]&quot;
+               [showLegend]&#x3D;&quot;false&quot;
+               [height]&#x3D;&quot;&#x27;90vh&#x27;&quot;&gt;
+  &lt;/app-chart&gt;
+
+  &lt;app-chart *ngIf&#x3D;&quot;frame &#x3D;&#x3D;&#x3D; 1&quot;
+               [data]&#x3D;&quot;dataPointsTransfersTotal&quot;
+               [titleChart]&#x3D;&quot;&#x27;Transfers&#x27;&quot;
+               [showLegend]&#x3D;&quot;false&quot;
+               [height]&#x3D;&quot;&#x27;90vh&#x27;&quot;&gt;
+  &lt;/app-chart&gt;
+
+  &lt;app-chart *ngIf&#x3D;&quot;frame &#x3D;&#x3D;&#x3D; 2&quot;
+               [data]&#x3D;&quot;dataPointsTopFive&quot;
+               [type]&#x3D;&quot;&#x27;bar&#x27;&quot;
+               [colorGradient]&#x3D;&quot;[&#x27;#18569d&#x27;, &#x27;#d3001c&#x27;]&quot;
+               [titleChart]&#x3D;&quot;&#x27;Top 10 Transfers&#x27;&quot;
+               [showLegend]&#x3D;&quot;false&quot;
+               [height]&#x3D;&quot;&#x27;90vh&#x27;&quot;&gt;
+  &lt;/app-chart&gt;
+
+  &lt;!--
+
+  [formatXLabels]&#x3D;&quot;formatTooltip&quot;
+  [templateTooltip]&#x3D;&quot;tooltipTemplate&quot;
+   --&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid pt-2">  <div class="card card-sm mb-2">    <div class="card-header">      <a (click)="frame = 0">Total Transfers Today</a> |      <!--<a (click)="frame = 1">Transfers</a> |-->      <a (click)="frame = 2">Top 10 Transfers</a>    </div>  </div>  <app-chart *ngIf="frame === 0"               [type]="\'bar\'"               [data]="dataPointsCounts"               [titleChart]="\'Total Transfers Today\'"               [colorGradient]="[\'#18569d\', \'#d3001c\']"               [showLegend]="false"               [height]="\'90vh\'">  </app-chart>  <app-chart *ngIf="frame === 1"               [data]="dataPointsTransfersTotal"               [titleChart]="\'Transfers\'"               [showLegend]="false"               [height]="\'90vh\'">  </app-chart>  <app-chart *ngIf="frame === 2"               [data]="dataPointsTopFive"               [type]="\'bar\'"               [colorGradient]="[\'#18569d\', \'#d3001c\']"               [titleChart]="\'Top 10 Transfers\'"               [showLegend]="false"               [height]="\'90vh\'">  </app-chart>  <!--  [formatXLabels]="formatTooltip"  [templateTooltip]="tooltipTemplate"   --></div></div>'
+    var COMPONENTS = [{'name': 'ApiStateComponent', 'selector': 'app-api-state'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartComponent', 'selector': 'app-chart'},{'name': 'ChartsComponent', 'selector': 'app-charts'},{'name': 'ConfirmationModalComponent', 'selector': 'app-confirmation-modal'},{'name': 'CounterComponent', 'selector': 'app-counter'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GridComponent', 'selector': 'app-grid'},{'name': 'GridStatusBarComponent', 'selector': 'app-grid-status-bar'},{'name': 'GridTemplateRendererComponent', 'selector': 'app-template-renderer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeContextMenuComponent', 'selector': 'app-context-menu'},{'name': 'LaunchModalComponent', 'selector': 'app-launch-modal'},{'name': 'LayoutMainComponent', 'selector': 'app-layout-main'},{'name': 'LayoutSingleComponent', 'selector': 'app-layout-single'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoutModalComponent', 'selector': 'app-logout-modal'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NavSearchComponent', 'selector': 'app-nav-search'},{'name': 'NoContentComponent', 'selector': 'app-no-content'},{'name': 'QaComponent', 'selector': 'app-qa'}];
+    var DIRECTIVES = [{'name': 'FocusDirective', 'selector': '[appFocus]'},{'name': 'FullScreenDirective', 'selector': '[appFullScreen]'}];
+    var ACTUAL_COMPONENT = {'name': 'ChartsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ChartsComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
