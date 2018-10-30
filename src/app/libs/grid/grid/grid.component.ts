@@ -7,7 +7,7 @@ import {
   ElementRef,
   Output,
   EventEmitter,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, ColumnApi } from 'ag-grid-community';
@@ -23,7 +23,11 @@ const defaultsDeep = require('lodash/defaultsDeep');
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css','../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css','./grid.component.scss'],
+  styleUrls: [
+    '../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css',
+    '../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css',
+    './grid.component.scss',
+  ],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
