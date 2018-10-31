@@ -221,28 +221,24 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
         interval: 1,
         labelFontSize: this.styling.fontSize,
         labelFontFamily: this.styling.fontFamily,
-        labelFormatter: val => {
+        labelFormatter: (this.formatXLabels || this.showXAxisLabels === false) ? val => {
           if (this.showXAxisLabels === false) {
             return ''; // If show labels is disabled, return empty string which hides the labels
-          } else if (this.formatXLabels) {
-            return this.formatXLabels(val); // If custom formatter supplied, format strings
           }
-          return val.label; // Otherwise return default value
-        },
+          return this.formatXLabels(val); // If custom formatter supplied, format strings
+        } : null, // Otherwise return default value
       },
       axisY: {
         title: this.titleYAxis,
         titleFontSize: 16,
         labelFontSize: this.styling.fontSize,
         labelFontFamily: this.styling.fontFamily,
-        labelFormatter: val => {
+        labelFormatter: (this.formatYLabels || this.showYAxisLabels === false) ? val => {
           if (this.showYAxisLabels === false) {
             return ''; // If show labels is disabled, return empty string which hides the labels
-          } else if (this.formatYLabels) {
-            return this.formatYLabels(val); // If custom formatter supplied, format strings
           }
-          return val.value; // Otherwise return default value
-        },
+          return this.formatYLabels(val); // If custom formatter supplied, format strings
+        } : null, // Otherwise return default value
       },
     };
     // console.log(options)
