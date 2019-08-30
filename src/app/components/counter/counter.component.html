@@ -1,9 +1,0 @@
-<span class="counter">
-  <!-- The async pipe takes a second to load which results in a FOUC, use if statement to default to zero -->
-  <ng-container *ngIf="timer | async as timer; else zero">
-    {{ timer | duration }}
-  </ng-container>
-  <ng-template #zero>
-    {{ 0 | duration }}
-  </ng-template>
-</span>
