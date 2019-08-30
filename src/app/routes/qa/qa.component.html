@@ -1,0 +1,41 @@
+<div class="ui-container-fluid">
+  <h1>QA Testing Page</h1>
+  <p>Used for testing non-routable components.</p>
+  <a routerLink="charts">Charts</a> | <a routerLink="maps">Maps</a> | <a routerLink="tables">Tables</a> | <a routerLink="grid">Grid</a> |
+  <a routerLink="forms">Forms</a>  | <a routerLink="calendar">Calendar</a> 
+  <hr />
+  <p>Modals</p>
+  <button type="button" pButton (click)="modalConfirm()" label="Confirmation Window" class="mr-2"></button>
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+
+  <button type="button" pButton (click)="modalOpen()" label="Demo Modal" class="mr-2"></button>
+  <button type="button" pButton (click)="modalOpen2()" label="Logout Modal" class="mr-2"></button>
+  <button type="button" pButton (click)="modalOpen3()" label="Feedback Modal" class="mr-2"></button>
+  <hr />
+  <p>Counter</p>
+  <nts-counter></nts-counter>
+
+  <hr />
+  <p>Filter Pipe</p>
+  <div class="row">
+    <div class="col-6">
+      <p>Array of strings</p>
+      <input class="form-control" [(ngModel)]="filterFruit" id="filterPipeInput" />
+      <button class="btn btn-primary" (click)="filterFruit = ''" id="filterPipeInputBtn">Clear</button>
+      <ul id="filterPipeOutput">
+        <li *ngFor="let fruit of (fruits | filter: filterFruit)">{{ fruit }}</li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <p>Array of objects</p>
+      <input class="form-control" [(ngModel)]="filterFruitMore" id="filterPipeInputMore" />
+      <button class="btn btn-primary" (click)="filterFruitMore = ''" id="filterPipeInputMoreBtn">Clear</button>
+      <ul id="filterPipeOutputMore">
+        <li *ngFor="let fruit of (fruitsMore | filter: filterFruitMore:'name')">{{ fruit.name }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+  <p>Debounce Pipe</p>
+</div>

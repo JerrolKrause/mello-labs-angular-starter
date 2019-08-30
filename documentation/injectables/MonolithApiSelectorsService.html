@@ -1,0 +1,349 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>MonolithApiSelectorsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/routes/monolith/shared/stores/api/api.selectors.service.ts</code>
+        </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#users$">users$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(store: Store<MonolithStore.Root>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/routes/monolith/shared/stores/api/api.selectors.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;MonolithStore.Root&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="users$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            users$
+                            </b>
+                            <a href="#users$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>users$:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.store.select(selectors.users)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/routes/monolith/shared/stores/api/api.selectors.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Store, createSelector } from &#x27;@ngrx/store&#x27;;
+
+// import { Models } from &#x27;$models&#x27;;
+import { MonolithStore } from &#x27;../monolith.store&#x27;;
+// import { ApiMap } from &#x27;src/app/shared/stores/api&#x27;;
+// import { Observable, combineLatest } from &#x27;rxjs&#x27;;
+// import { map } from &#x27;rxjs/operators&#x27;;
+// const keyBy &#x3D; require(&#x27;lodash/keyBy&#x27;);
+
+// Mapped/source selectors for reuse or transforming data
+const selectors &#x3D; {
+  users: createSelector(
+    (state: MonolithStore.Root) &#x3D;&gt; state.api.users,
+    users &#x3D;&gt; {
+      if (users &amp;&amp; users.data) {
+        // Modify data before returning to selector
+      }
+      return users;
+    },
+  ),
+};
+
+@Injectable()
+export class MonolithApiSelectorsService {
+  public users$ &#x3D; this.store.select(selectors.users); // Memoized selector
+  // public users$ &#x3D; this.store.select(store &#x3D;&gt; store.api.users);
+
+  constructor(private store: Store&lt;MonolithStore.Root&gt;) {}
+
+  /**
+   * Returns a single unified API status for one or more API status calls.
+   * Useful for when the app needs multiple http calls and you only want a single status for all
+   * USAGE: this.api.getStatuses([
+      this.api.select.getState$(ApiProps.pod),
+      this.api.select.getState$(ApiProps.productType),
+    ])
+   * @param statuses - A single observable or an array of observables
+  
+  public getStatuses(statuses: Observable&lt;AppStore.ApiState&gt;[]) {
+    // If this is an array, pass the array, if single load into array for combineLatest
+    const statusesNew &#x3D; Array.isArray(statuses) ? statuses : [statuses];
+
+    return combineLatest(statusesNew).pipe(
+      map(status &#x3D;&gt; {
+        if (status) {
+          // Set default globals. Used to create final end state
+          let loading &#x3D; false;
+          let loaded &#x3D; false;
+          let loadError &#x3D; false;
+
+          // Loop through all input statuses and rollup individual status to global status
+          status.forEach(statusSingle &#x3D;&gt; {
+            if (statusSingle &amp;&amp; statusSingle.loading) {
+              loading &#x3D; true;
+            }
+            if (statusSingle &amp;&amp; statusSingle.loaded) {
+              loaded &#x3D; true;
+            }
+            if (statusSingle &amp;&amp; statusSingle.loadError) {
+              loadError &#x3D; statusSingle.loadError;
+            }
+          });
+
+          // Figure out which status state to return
+          // If any errors, return an error state
+          if (loadError) {
+            return {
+              loading: false,
+              loaded: false,
+              loadError: loadError,
+            };
+          } else if (loading) {
+            // If no errors but any endpoint is still loading, return loading
+            return {
+              loading: true,
+              loaded: false,
+              loadError: false,
+            };
+          } else if (loaded &amp;&amp; !loading &amp;&amp; !loadError) {
+            // If all endpoints return loaded and no errors of loading, return loaded
+            return {
+              loading: false,
+              loaded: true,
+              loadError: false,
+            };
+          } else {
+            return null;
+          }
+        } else {
+          return null;
+        }
+      }),
+    );
+  }
+   */
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'MonolithApiSelectorsService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

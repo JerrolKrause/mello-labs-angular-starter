@@ -1,0 +1,52 @@
+<div class="ui-container-fluid" *ngIf="{ users: users$ | async } as comp">
+  <nts-api-state [state]="comp.users">
+    <div class="d-flex">
+      <div class="ui-inputgroup mb-3 w-100">
+        <span class="ui-inputgroup-addon"><i class="fa fa-filter"></i></span>
+        <input type="text" pInputText placeholder="Filter grid results..." [(ngModel)]="gridFilterTerm" />
+      </div>
+      <div class="ml-auto text-right" style="width:500px;">
+        <p-button class="mr-2" label="Grid State 1" (click)="gridState = stateToggle.gridState1"></p-button>
+        <p-button class="mr-2" label="Grid State 2" (click)="gridState = stateToggle.gridState2"></p-button>
+        <p-button label="Grid State 3" (click)="gridState = stateToggle.gridState3"></p-button>
+      </div>
+    </div>
+    <nts-grid
+      #grid
+      style="height:calc(100vh - 150px);"
+      class="ag-theme-balham"
+      [rowData]="comp.users | entityToArray"
+      [columnDefs]="columns"
+      [rowUniqueId]="'id'"
+      [parentRef]="this"
+      [gridOptions]="gridOptions"
+      [gridState]="gridState"
+      [gridFilterTerm]="gridFilterTerm"
+      [animateRows]="true"
+      [enableSorting]="true"
+      [enableFilter]="true"
+      [enableColResize]="true"
+      [enableRangeSelection]="true"
+      [rememberGroupStateWhenNewData]="true"
+      [groupUseEntireRow]="true"
+      rowGroupPanelShow="onlyWhenGrouping"
+      rowSelection="multiple"
+      (stateChange)="gridStateChange($event)"
+      (rowsSelected)="rowsSelected($event)"
+      (selectedRowDataDisplayed)="selectedRowDataDisplayed($event)"
+      (gridIsReady)="initalLoanSelected()"
+    >
+      <!--
+        [getMainMenuItems]="gridCustomLinks"
+        [getContextMenuItems]="gridContextMenu"
+    -->
+
+      <!-- Cell template -->
+      <grid-column field="email">
+        <ng-template let-value="value" let-column="column" let-row="row" grid-cell-template>
+          <a>{{ value }}</a>
+        </ng-template>
+      </grid-column>
+    </nts-grid>
+  </nts-api-state>
+</div>

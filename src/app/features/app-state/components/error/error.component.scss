@@ -1,0 +1,25 @@
+#nts-error {
+  pre {
+    padding: 0.5rem;
+    background: #ffeeef;
+  }
+  .ui-accordion {
+    .ui-accordion-header {
+      margin-bottom: 0;
+      a {
+        background-color: #ffeeef;
+        border: #f8d7da;
+        color: #ffffff;
+        color: #721c24;
+        font-weight: normal;
+      }
+    }
+    .ui-accordion-content {
+      background-color: #ffeeef;
+      border: 0;
+    }
+    .ui-accordion-toggle-icon {
+      color: #721c24 !important;
+    }
+  }
+}

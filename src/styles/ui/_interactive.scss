@@ -1,0 +1,22 @@
+// Global branded styling. App specific styling should NOT go in this file
+a {
+  cursor: pointer;
+  color: $interact-primary-dk;
+  &:hover {
+  }
+  &:active {
+  }
+  &.disabled,
+  &.disabled .fa {
+    color: dimgray !important;
+    cursor: not-allowed !important;
+    border-color: #a7a7a7 !important;
+    background-color: #ededed !important;
+  }
+  &.grey {
+    color: #a2a2a2 !important;
+  }
+  &:not([href]):not([tabindex]) {
+    color: $interact-primary-dk;
+  }
+}

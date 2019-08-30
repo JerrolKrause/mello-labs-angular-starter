@@ -1,0 +1,40 @@
+<div class="container-fluid pt-2">
+  <div class="card card-sm mb-2">
+    <div class="card-header">
+      <a (click)="frame = 0">Total Transfers Today</a> |
+      <!--<a (click)="frame = 1">Transfers</a> |-->
+      <a (click)="frame = 2">Top 10 Transfers</a>
+    </div>
+  </div>
+
+  <app-chart
+    *ngIf="frame === 0"
+    [type]="'bar'"
+    [data]="dataPointsCounts"
+    [titleChart]="'Total Transfers Today'"
+    [colorGradient]="['#18569d', '#d3001c']"
+    [showLegend]="false"
+    [height]="'90vh'"
+  >
+  </app-chart>
+
+  <app-chart *ngIf="frame === 1" [data]="dataPointsTransfersTotal" [titleChart]="'Transfers'" [showLegend]="false" [height]="'90vh'">
+  </app-chart>
+
+  <app-chart
+    *ngIf="frame === 2"
+    [data]="dataPointsTopFive"
+    [type]="'bar'"
+    [colorGradient]="['#18569d', '#d3001c']"
+    [titleChart]="'Top 10 Transfers'"
+    [showLegend]="false"
+    [height]="'90vh'"
+  >
+  </app-chart>
+
+  <!--
+
+  [formatXLabels]="formatTooltip"
+  [templateTooltip]="tooltipTemplate"
+   -->
+</div>

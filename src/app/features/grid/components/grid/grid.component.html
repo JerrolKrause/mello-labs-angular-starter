@@ -1,0 +1,41 @@
+<div class="gridContainer" #gridContainer>
+  <ag-grid-angular
+    #grid
+    style="width: 100%;"
+    appDomObserver
+    [callback]="gridFit.bind(this)"
+    class="ag-theme-balham"
+    [gridOptions]="gridOptions"
+    [rowData]="rowData"
+    [animateRows]="animateRows"
+    [enableRangeSelection]="enableRangeSelection"
+    [rememberGroupStateWhenNewData]="rememberGroupStateWhenNewData"
+    [getMainMenuItems]="getMainMenuItems"
+    [groupUseEntireRow]="groupUseEntireRow"
+    [rememberGroupStateWhenNewData]="true"
+    [frameworkComponents]="gridComponents"
+    [getContextMenuItems]="getContextMenuItems"
+    [rowGroupPanelShow]="rowGroupPanelShow"
+    [rowSelection]="rowSelection"
+    [groupRemoveSingleChildren]="true"
+    [allowContextMenuWithControlKey]="true"
+    (rowClicked)="onRowSelected($event)"
+    (selectionChanged)="gridSelectionChanged()"
+    (cellContextMenu)="cellContextMenu($event)"
+    (rangeSelectionChanged)="gridRangeSelectionChanged($event)"
+    (rowDataChanged)="gridRowDataChanged()"
+    (rowGroupOpened)="gridEvent$.next($event.type)"
+    (sortChanged)="gridEvent$.next($event.type)"
+    (filterChanged)="gridEvent$.next($event.type)"
+    (columnPinned)="gridEvent$.next($event.type)"
+    (columnResized)="gridEvent$.next($event.type)"
+    (columnMoved)="gridEvent$.next($event.type)"
+    (columnRowGroupChanged)="gridEvent$.next($event.type)"
+    (firstDataRendered)="gridFirstDataRendered()"
+    (gridReady)="gridReady($event)"
+  >
+  </ag-grid-angular>
+  <!--
+    (rowGroupOpened)="gridStateChanged($event)"
+  -->
+</div>

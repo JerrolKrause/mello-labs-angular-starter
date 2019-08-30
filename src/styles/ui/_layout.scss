@@ -1,0 +1,18 @@
+// Global branded styling. App specific styling should NOT go in this file
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #484f59;
+  background-color: $grey;
+}
+.ui-container {
+  max-width: 1280px;
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.ui-container-fluid {
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .main-canvas-container {
+    flex-grow: 1;
+    //border: 1px solid #ccc;
+    //border-radius: 0.2rem;
+    //overflow: hidden;
+    //padding: 0.5rem;
+    //background: #fff;
+  }
+}

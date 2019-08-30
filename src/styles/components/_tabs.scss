@@ -1,0 +1,62 @@
+// Global branded styling. App specific styling should NOT go in this file
+body .ui-tabview {
+  .ui-tabview-panels {
+    padding: 0rem;
+    overflow-x: hidden;
+    clear: both;
+    border: 0;
+    .ui-tabview-panel {
+      padding: 1rem;
+      position: relative;
+      left: 0%;
+      animation: tabIntroAnim 0.85s $easeOutQuart;
+      animation-fill-mode: forwards;
+    }
+  }
+  .ui-tabview-nav li {
+  }
+}
+
+@keyframes tabIntroAnim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+.nav-tabs {
+  &.nav-tabs-sm {
+    font-size: 0.8rem;
+    .nav-link {
+      padding: 0.25em 0.5em;
+    }
+  }
+}
+
+.mat-tab-group.mat-primary {
+  .mat-tab-body-content {
+    overflow: initial;
+  }
+  &.mat-tab-sm {
+    .mat-tab-label {
+      padding: 0 1rem;
+      height: 2rem;
+      font-size: 0.75rem;
+    }
+  }
+  .mat-tab-label {
+    min-width: initial;
+    color: $interact-primary;
+    transition: ease 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .mat-ink-bar {
+    background-color: $brand-primary;
+  }
+}
+*/

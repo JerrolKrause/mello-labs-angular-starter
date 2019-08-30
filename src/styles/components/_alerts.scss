@@ -1,0 +1,25 @@
+// Global branded styling. App specific styling should NOT go in this file
+.alert {
+  &.icon:before {
+    font-family: FontAwesome;
+    margin-right: 5px;
+  }
+  &.alert-danger.icon:before,
+  &.alert-warning.icon:before {
+    content: '\f071';
+  }
+  &.alert-success.icon:before {
+    content: '\f164';
+  }
+
+  &.alert-sm {
+  }
+  &.alert-form {
+    padding: 0.4rem 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .close {
+    margin-left: 1rem;
+  }
+}

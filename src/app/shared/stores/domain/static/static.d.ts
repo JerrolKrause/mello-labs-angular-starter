@@ -1,0 +1,3 @@
+interface StaticState {
+  todos: any[];
+}

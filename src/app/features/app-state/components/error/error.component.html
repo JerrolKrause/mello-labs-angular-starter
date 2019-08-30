@@ -1,0 +1,20 @@
+<div class="ui-message ui-message-error ui-corner-all mb-0" *ngIf="error" id="nts-error">
+  <button type="button" class="close float-right" aria-label="Close" *ngIf="canClose" (click)="error = null">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <!-- Transclude the error message, default to span if none specified-->
+  <div class="p-2">
+    <div #ref><ng-content></ng-content></div>
+    <div *ngIf="!ref.innerHTML.trim()"><i class="fa fa-remove"></i> {{ error.message || 'An error has occured.' }}</div>
+
+    <div class="mt-3" *ngIf="errorShowDetails">
+      <!-- Show accordion not error on load-->
+      <p-accordion>
+        <p-accordionTab header="See error details">
+          <pre class="mb-0">{{ error | json }}</pre>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </div>
+</div>

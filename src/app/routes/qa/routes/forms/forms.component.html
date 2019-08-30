@@ -1,0 +1,290 @@
+<form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="ui-container-fluid">
+    <div class="ui-g">
+      <div class="ui-g-12 ui-lg-6">
+        <p-card class="d-block mb-3">
+          <div class="float-right">
+            <button type="submit" p-button class="mr-2" (click)="patchData()">Patch Data</button>
+            <button type="submit" p-button>Test Error State</button>
+          </div>
+
+          <h3>Standard Form Fields</h3>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Text
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field
+                placeholder="First Name"
+                formControlName="text"
+                hint="Your name must be between 5 and 10 characters long"
+              ></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Email
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Email Address" type="email" formControlName="email"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Number
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field
+                placeholder="Your age"
+                type="number"
+                formControlName="number"
+                hint="Please enter a number between 10 and 30"
+              ></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Password
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Password" type="password" formControlName="password"></nts-form-field>
+            </div>
+          </div>
+        </p-card>
+        <p-card class="d-block mb-3">
+          <h3>Custom Form Fields</h3>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Phone Number
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="phoneNumber" placeholder="Home Phone" formControlName="phoneNumber"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Currency
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="currency" placeholder="Annual Income" prefix="$" formControlName="currency"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              SSN
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="ssn" placeholder="Social Security Number" formControlName="ssn"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Date
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="date" placeholder="Date Of Birth" formControlName="date"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Colorpicker
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="colorpicker" formControlName="color"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Toggle
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="toggle" formControlName="toggle"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Button Group
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="buttonGroup" formControlName="buttonGroup" [options]="options"></nts-form-field>
+            </div>
+          </div>
+        </p-card>
+
+        <p-card>
+          <h3>Field Options</h3>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Kitchen Sink
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field
+                placeholder="Monthly Amount"
+                prefix="$"
+                suffix=".com"
+                hint="This is a hint"
+                tooltip="This is a tooltip"
+              ></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Prefix
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Monthly Amount" prefix="$"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Suffix
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Monthly Amount" suffix=".com"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Prefix + Suffix
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Monthly Amount" prefix="$" suffix=".00"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Tooltip
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="First name" tooltip="As it appears on your drivers license"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Hint
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="First name" hint="As it appears on your drivers license"></nts-form-field>
+            </div>
+          </div>
+
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Min/Max Character Length
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field placeholder="Age" [minlength]="2" [maxlength]="5" hint="Between 2 and 5 characters"></nts-form-field>
+            </div>
+          </div>
+
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Min/Max Number Range<br />
+              <small><em>type="number" only</em></small>
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field
+                placeholder="Age"
+                type="number"
+                [min]="10"
+                [max]="20"
+                [maxlength]="2"
+                hint="Between 2 and 5 characters"
+              ></nts-form-field>
+            </div>
+          </div>
+
+          <hr />
+          <h3>Placeholder Options</h3>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Floating
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="phoneNumber" placeholder="Home Phone"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              Standard
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="phoneNumber" [placeholderFloat]="false" placeholder="Home Phone"></nts-form-field>
+            </div>
+          </div>
+          <div class="ui-g align-self-center align-content-center">
+            <div class="ui-g-12 ui-lg-4  align-self-center align-content-center">
+              No placeholder
+            </div>
+            <div class="ui-g-12 ui-lg-8  align-self-center align-content-center">
+              <nts-form-field type="phoneNumber" [placeholderFloat]="false"></nts-form-field>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="ui-g-12 ui-lg-6">
+        <p-card class="d-block mb-3">
+          <h3>Select</h3>
+          <p>
+            Object Array <br />
+            <nts-form-field placeholder="Fav Fruit" type="select" [options]="options" formControlName="select"></nts-form-field>
+          </p>
+          <p>
+            String Array <br />
+            <nts-form-field placeholder="Fav Fruit" type="select" [options]="optionsStr" formControlName="select2"></nts-form-field>
+          </p>
+        </p-card>
+        <p-card class="d-block mb-3">
+          <h3>Dropdown</h3>
+          <p>
+            <nts-form-field placeholder="Fav Fruit" type="dropdown" [options]="options" formControlName="dropdown"></nts-form-field>
+          </p>
+        </p-card>
+        <p-card class="d-block mb-3">
+          <h3>Checkboxes</h3>
+          <p>
+            Object Array <br />
+            <nts-form-field type="checkbox" [options]="options" formControlName="checkbox"></nts-form-field>
+          </p>
+          <p>
+            String Array <br />
+            <nts-form-field type="checkbox" [options]="optionsStr" formControlName="checkbox2"></nts-form-field>
+          </p>
+        </p-card>
+
+        <p-card class="d-block mb-3">
+          <h3>Radio</h3>
+          <p>
+            Object Array <br />
+            <nts-form-field type="radio" [options]="options" formControlName="radio"></nts-form-field>
+          </p>
+          <p>
+            String Array <br />
+            <nts-form-field type="radio" [options]="optionsStr" formControlName="radio2"></nts-form-field>
+          </p>
+        </p-card>
+        <p-card class="d-block mb-3">
+          <h3>Autocomplete</h3>
+          <p>
+            Object Array <br />
+            <nts-form-field type="autoComplete" formControlName="autoComplete" [options]="options"></nts-form-field>
+          </p>
+          <p>
+            String Array <br />
+            <nts-form-field type="autoComplete" formControlName="autoComplete2" [options]="optionsStr"></nts-form-field>
+          </p>
+        </p-card>
+        <p-card class="d-block mb-3">
+          <h3>Textarea</h3>
+          <p>
+            <nts-form-field type="textarea" [rows]="6" formControlName="textarea"></nts-form-field>
+          </p>
+          <p>
+            <nts-form-field placeholder="Do cool stuff" type="textarea" [rows]="6"></nts-form-field>
+          </p>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</form>

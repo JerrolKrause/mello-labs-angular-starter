@@ -1,0 +1,115 @@
+// Global branded styling. App specific styling should NOT go in this file
+label {
+  cursor: pointer;
+  display: block;
+  &.success {
+    &.icon:before {
+      content: '\f00c';
+      color: green;
+    }
+  }
+  &.warning {
+    &.icon:before {
+      content: '\f071';
+      color: orange;
+    }
+    .form-control {
+      border-color: orange;
+    }
+  }
+  &.danger {
+    &.icon:before {
+      content: '\f071';
+      color: red;
+    }
+  }
+
+  &.icon {
+    position: relative;
+    &:before {
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 8px;
+      cursor: default;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+    }
+    .form-control {
+      padding-left: 25px;
+    }
+    &.icon-right:before {
+      left: initial;
+      right: 8px;
+      .form-control {
+        padding-right: 25px;
+      }
+    }
+    &.icon-keyboard {
+      &:before {
+        content: '\f11c';
+      }
+      .form-control {
+        padding-left: 30px;
+      }
+    }
+    &.icon-filter:before {
+      content: '\f0b0';
+    }
+
+    f .clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+    }
+  }
+
+  &.search {
+    &:before {
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 8px;
+      content: '\f002';
+      cursor: default;
+    }
+    .form-control {
+      padding-left: 30px;
+    }
+  }
+  &.dragNDrop {
+    display: block;
+    height: 200px;
+    padding-top: 30px;
+    background-color: #e8e8e8;
+    outline: 5px dashed #595959;
+    outline-offset: -5px;
+    text-align: center;
+    position: relative;
+    &:hover,
+    &.hover {
+      outline-color: $interact-primary;
+      color: $interact-primary;
+    }
+    input {
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.ui-filter {
+  position: relative;
+  .filter-clear {
+    position: absolute;
+    right: 3px;
+    padding: 0.5rem;
+  }
+}

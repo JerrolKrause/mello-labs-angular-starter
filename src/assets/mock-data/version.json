@@ -1,0 +1,10 @@
+{
+  "assembly": "Ntersol.CRM",
+  "version": "1.0.0.5",
+  "release": "1.0.0.2-mvp3-20181218",
+  "runtime": ".NETCoreApp,Version=v2.2",
+  "machine": "WIN-HL3SERNCVDV",
+  "host": "ec2-18-144-48-188.us-west-1.compute.amazonaws.com",
+  "port": 8087,
+  "db": "dev"
+}

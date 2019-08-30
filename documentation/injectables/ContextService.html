@@ -1,0 +1,551 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ContextService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/libs/context-menu/context-menu.service.ts</code>
+        </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#menuRefs">menuRefs</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#open">open</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#register">register</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(contextMenuService: ContextMenuService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/libs/context-menu/context-menu.service.ts:7</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>contextMenuService</td>
+                                                  
+                                                        <td>
+                                                                    <code>ContextMenuService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="open"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            open
+                            </b>
+                            <a href="#open"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>open(name: <a href="../undefineds/ContextMenuList.html">ContextMenuList</a>, $event: MouseEvent, data?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/libs/context-menu/context-menu.service.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Open a specific context menu</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/enumerations.html#ContextMenuList" target="_self" >ContextMenuList</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>Name of register context menu</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>$event</td>
+                                                        <td>
+                                                                    <code>MouseEvent</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>Mouse event</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>Optional data</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="register"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            register
+                            </b>
+                            <a href="#register"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>register(name: <a href="../undefineds/ContextMenuList.html">ContextMenuList</a>, ref: ContextMenuComponent)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/libs/context-menu/context-menu.service.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Register a component based context menu with this service
+USAGE: </p>
+<ol>
+<li>Add reference in DOM: &lt;context-menu #contextMenu&gt;</li>
+<li>Register viewchild in component: @ViewChild(&#39;contextMenu&#39;) contextMenu: ContextMenuComponent;</li>
+<li>Add name of context menu to enumeration in context-menu-d-ts</li>
+<li>Register menu with service on init:
+ ngOnInit() {
+   this.menu.register(ContextMenuList.home, this.contextMenu);
+ }</li>
+</ol>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>name</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/enumerations.html#ContextMenuList" target="_self" >ContextMenuList</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>Name of menu to register with</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>ref</td>
+                                                        <td>
+                                                                    <code>ContextMenuComponent</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>Component reference</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="menuRefs"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            menuRefs
+                            </b>
+                            <a href="#menuRefs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>menuRefs:     <code>literal type</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/libs/context-menu/context-menu.service.ts:7</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { ContextMenuComponent, ContextMenuService } from &#x27;ngx-contextmenu&#x27;;
+import { ContextMenuList } from &#x27;./context-menu.list&#x27;;
+
+@Injectable()
+export class ContextService {
+  private menuRefs: { [key: string]: ContextMenuComponent } &#x3D; {};
+
+  constructor(private contextMenuService: ContextMenuService) {}
+
+  /**
+   * Register a component based context menu with this service
+   * USAGE: 
+   * 1. Add reference in DOM: &lt;context-menu #contextMenu&gt;
+   * 2. Register viewchild in component: @ViewChild(&#x27;contextMenu&#x27;) contextMenu: ContextMenuComponent;
+   * 4. Add name of context menu to enumeration in context-menu-d-ts
+   * 3. Register menu with service on init:
+        ngOnInit() {
+          this.menu.register(ContextMenuList.home, this.contextMenu);
+        }
+   * @param name - Name of menu to register with
+   * @param ref - Component reference
+   */
+  public register(name: ContextMenuList, ref: ContextMenuComponent) {
+    this.menuRefs[name] &#x3D; ref;
+  }
+
+  /**
+   * Open a specific context menu
+   * @param name - Name of register context menu
+   * @param $event - Mouse event
+   * @param data - Optional data
+   */
+  public open(name: ContextMenuList, $event: MouseEvent, data?: any) {
+    this.contextMenuService.show.next({
+      // Optional - if unspecified, all context menu components will open
+      contextMenu: this.menuRefs[name],
+      event: $event,
+      item: data,
+    });
+    $event.preventDefault();
+    $event.stopPropagation();
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ContextService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

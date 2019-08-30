@@ -1,0 +1,1394 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-starter documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-starter documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ApiHttpService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/stores/api/api.http.base.service.ts</code>
+        </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cache">cache</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cacheClear">cacheClear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#deleteStore">deleteStore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#endSession">endSession</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#get">get</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#getStore">getStore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#postStore">postStore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#putStore">putStore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#upsertStore">upsertStore</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpSvc: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, storeSvc: Store<AppStore.Root>, routerSvc: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, appProps: <a href="../injectables/AppSettings.html">AppSettings</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpSvc</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storeSvc</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;AppStore.Root&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>routerSvc</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>appProps</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/AppSettings.html" target="_self" >AppSettings</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cacheClear"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            cacheClear
+                            </b>
+                            <a href="#cacheClear"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>cacheClear()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:190</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Clear the cache</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deleteStore"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            deleteStore
+                            </b>
+                            <a href="#deleteStore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>deleteStore(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, apiMap: <a href="../AppStore.ApiMappings/ApiMap.html">AppStore.ApiMap</a>, element: T | T[])</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:165</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make a DELETE request</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the webapi</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>apiMap</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#ApiMap" target="_self" >AppStore.ApiMap</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The ApiMap object</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>element</td>
+                                                        <td>
+                                                                    <code>T | T[]</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The element or collection of elements being deleted</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="endSession"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            endSession
+                            </b>
+                            <a href="#endSession"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>endSession(error: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:198</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>When an authentication check fails</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>error</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            get
+                            </b>
+                            <a href="#get"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>get(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateCache: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make a GET request with simple caching</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the webapi</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>updateCache</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><ul>
+<li>Refresh the version in the cache</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getStore"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            getStore
+                            </b>
+                            <a href="#getStore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getStore(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, apiMap?: <a href="../AppStore.ApiMappings/ApiMap.html">AppStore.ApiMap</a>, updateCache: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make a GET request and load the results into the store</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the webapi</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>apiMap</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#ApiMap" target="_self" >AppStore.ApiMap</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>updateCache</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><ul>
+<li>Refresh the version in the cache</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postStore"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            postStore
+                            </b>
+                            <a href="#postStore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>postStore(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, apiMap: <a href="../AppStore.ApiMappings/ApiMap.html">AppStore.ApiMap</a>, data: T)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:80</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make a POST request and load the results into the store</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the endpoint</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>apiMap</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#ApiMap" target="_self" >AppStore.ApiMap</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The data to pass to the server</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="putStore"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            putStore
+                            </b>
+                            <a href="#putStore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>putStore(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, apiMap: <a href="../AppStore.ApiMappings/ApiMap.html">AppStore.ApiMap</a>, data: T | T[])</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:108</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make a PUT request</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the webapi</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>apiMap</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#ApiMap" target="_self" >AppStore.ApiMap</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                        <td>
+                                                                    <code>T | T[]</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The data to pass to the server</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="upsertStore"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            upsertStore
+                            </b>
+                            <a href="#upsertStore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>upsertStore(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, apiMap: <a href="../AppStore.ApiMappings/ApiMap.html">AppStore.ApiMap</a>, data: T | T[])</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:136</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Make an upsert via put. Upsert inserts if not found, updates if found</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The URL location of the webapi</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>apiMap</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#ApiMap" target="_self" >AppStore.ApiMap</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                        <td>
+                                                                    <code>T | T[]</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><ul>
+<li>The data to pass to the server</li>
+</ul>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cache"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            cache
+                            </b>
+                            <a href="#cache"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>cache:     <code>literal type</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/stores/api/api.http.base.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Hold GET requests from an API using the URL as a primary key </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+
+import { Observable, of } from &#x27;rxjs&#x27;;
+import { catchError, map, share } from &#x27;rxjs/operators&#x27;;
+
+import { ApiStoreActions } from &#x27;./api.actions&#x27;;
+import { AppSettings } from &#x27;../../app.settings&#x27;;
+import { AppStore } from &#x27;../store&#x27;;
+
+@Injectable()
+export class ApiHttpService {
+  /** Hold GET requests from an API using the URL as a primary key */
+  private cache: { [key: string]: any } &#x3D; {};
+
+  constructor(
+    private httpSvc: HttpClient,
+    private storeSvc: Store&lt;AppStore.Root&gt;,
+    private routerSvc: Router,
+    private appProps: AppSettings,
+  ) {}
+
+  /**
+   * Make a GET request with simple caching
+   * @param url - The URL location of the webapi
+   * @param updateCache - Refresh the version in the cache
+   */
+  public get&lt;T&gt;(url: string, updateCache &#x3D; false): Observable&lt;T&gt; {
+    // If this request is not in the cache or updateCache was requested (default behavior), load content into cache
+    if (!this.cache[url] || updateCache) {
+      this.cache[url] &#x3D; this.httpSvc.get(url).pipe(share());
+    }
+    return of(this.cache[url]); // Return observable of api response
+  } // end get
+
+  /**
+   * Make a GET request and load the results into the store
+   * @param url - The URL location of the webapi
+   * @param id - The location to put the results in the store
+   * @param updateCache - Refresh the version in the cache
+   */
+  protected getStore&lt;T&gt;(url: string, apiMap?: AppStore.ApiMap, updateCache &#x3D; false): Observable&lt;T&gt; {
+    // If this request is not in the cache or updateCache was requested (default behavior), load content into cache
+    if (this.cache[url] &#x3D;&#x3D; null || updateCache) {
+      // Set loading
+      this.storeSvc.dispatch(ApiStoreActions.STATE_LOADING({ apiMap: apiMap }));
+      // Load into cache, make get request
+      return this.httpSvc.get(url).pipe(
+        map(res &#x3D;&gt; {
+          this.storeSvc.dispatch(ApiStoreActions.GET_COMPLETE({ apiMap: apiMap, data: res }));
+          this.cache[url] &#x3D; res; // Cache api response
+          return res;
+        }),
+        catchError(error &#x3D;&gt; {
+          if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+            error.errorMsg &#x3D; &#x27;Please log in &#x27;;
+            return this.endSession(error);
+          } else {
+            this.storeSvc.dispatch(ApiStoreActions.STATE_ERROR({ apiMap: apiMap, data: error }));
+            return of(error);
+          }
+        }),
+        share(),
+      );
+    } else {
+      // Update store with cached data
+      this.storeSvc.dispatch(ApiStoreActions.GET_COMPLETE({ apiMap: apiMap, data: this.cache[url] }));
+      return of(this.cache[url]); // Return observable of api response
+    }
+  }
+
+  /**
+   * Make a POST request and load the results into the store
+   * @param url - The URL location of the endpoint
+   * @param id - The location to put the results in the store
+   * @param data - The data to pass to the server
+   */
+  protected postStore&lt;T&gt;(url: string, apiMap: AppStore.ApiMap, data: T): Observable&lt;T&gt; {
+    // Update store with new state
+    this.storeSvc.dispatch(ApiStoreActions.STATE_MODIFYING({ apiMap: apiMap }));
+
+    return this.httpSvc.post(url, data).pipe(
+      map((res: any) &#x3D;&gt; {
+        // Check if the response has a payload or not
+        const dataNew &#x3D; res ? res : data;
+        this.storeSvc.dispatch(ApiStoreActions.POST_COMPLETE({ apiMap: apiMap, data: dataNew }));
+        return dataNew;
+      }),
+      catchError(error &#x3D;&gt; {
+        if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+          error.errorMsg &#x3D; &#x27;Please log in &#x27;;
+          return this.endSession(error);
+        } else {
+          this.storeSvc.dispatch(ApiStoreActions.STATE_ERROR({ apiMap: apiMap, data: error }));
+          return of(error);
+        }
+      }),
+    );
+  } // end post
+
+  /**
+   * Make a PUT request
+   * @param url - The URL location of the webapi
+   * @param data - The data to pass to the server
+   */
+  protected putStore&lt;T&gt;(url: string, apiMap: AppStore.ApiMap, data: T | T[]): Observable&lt;T&gt; {
+    // Update store with new state
+    this.storeSvc.dispatch(ApiStoreActions.STATE_MODIFYING({ apiMap: apiMap }));
+
+    return this.httpSvc.put(url, data).pipe(
+      map(res &#x3D;&gt; {
+        // Check if the response has a payload or not,
+        const dataNew &#x3D; res ? res : data;
+        this.storeSvc.dispatch(ApiStoreActions.PUT_COMPLETE({ apiMap: apiMap, data: dataNew }));
+        return dataNew;
+      }),
+      catchError(error &#x3D;&gt; {
+        if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+          error.errorMsg &#x3D; &#x27;Please log in &#x27;;
+          return this.endSession(error);
+        } else {
+          this.storeSvc.dispatch(ApiStoreActions.STATE_ERROR({ apiMap: apiMap, data: error }));
+          return of(error);
+        }
+      }),
+    );
+  } // end put
+
+  /**
+   * Make an upsert via put. Upsert inserts if not found, updates if found
+   * @param url - The URL location of the webapi
+   * @param data - The data to pass to the server
+   */
+  protected upsertStore&lt;T&gt;(url: string, apiMap: AppStore.ApiMap, data: T | T[]): Observable&lt;T&gt; {
+    // Update store with new state
+    this.storeSvc.dispatch(ApiStoreActions.STATE_MODIFYING({ apiMap: apiMap }));
+    // Upsert is patch
+    return this.httpSvc.patch(url, data).pipe(
+      map(res &#x3D;&gt; {
+        // Check if the response has a payload or not, if not then this is an upSert
+        const dataNew &#x3D; res ? res : data;
+        this.storeSvc.dispatch(ApiStoreActions.UPSERT_COMPLETE({ apiMap: apiMap, data: dataNew }));
+        return dataNew;
+      }),
+      catchError(error &#x3D;&gt; {
+        if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+          error.errorMsg &#x3D; &#x27;Please log in &#x27;;
+          return this.endSession(error);
+        } else {
+          this.storeSvc.dispatch(ApiStoreActions.STATE_ERROR({ apiMap: apiMap, data: error }));
+          return of(error);
+        }
+      }),
+    );
+  } // end put
+
+  /**
+   * Make a DELETE request
+   * @param url - The URL location of the webapi
+   * @param apiMap - The ApiMap object
+   * @param element - The element or collection of elements being deleted
+   */
+  protected deleteStore&lt;T&gt;(url: string, apiMap: AppStore.ApiMap, element: T | T[]) {
+    // Update store with new state
+    this.storeSvc.dispatch(ApiStoreActions.STATE_MODIFYING({ apiMap: apiMap }));
+    // Delete doesn&#x27;t natively support a body so this adds it in for deleting collections or other uncommon operations
+    return this.httpSvc.request(&#x27;delete&#x27;, url, { body: element }).pipe(
+      // return this.httpSvc.delete(url, , { body: element }) // Does not work with body, add back in when it does
+      map(res &#x3D;&gt; {
+        this.storeSvc.dispatch(ApiStoreActions.DELETE_COMPLETE({ apiMap: apiMap, data: element }));
+        return res;
+      }),
+      catchError(error &#x3D;&gt; {
+        if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+          error.errorMsg &#x3D; &#x27;Please log in &#x27;;
+          return this.endSession(error);
+        } else {
+          this.storeSvc.dispatch(ApiStoreActions.STATE_ERROR({ apiMap: apiMap, data: error }));
+          return of(error);
+        }
+      }),
+    );
+  } // end post
+
+  /**
+   * Clear the cache
+   */
+  public cacheClear() {
+    this.cache &#x3D; {};
+  }
+
+  /**
+   * When an authentication check fails
+   * @param error
+   */
+  private endSession(error: any) {
+    this.cacheClear();
+    this.appProps.token &#x3D; null;
+    //if (this.settings.isBrowser) {
+    //  this.settings.sessionStorage.clear();
+    //}
+    this.storeSvc.dispatch(ApiStoreActions.RESET(null)); // Clear out store on errors for security
+    this.routerSvc.navigate([&#x27;/login&#x27;], { queryParams: { session: &#x27;expired&#x27; } });
+    return of(error);
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ApiHttpService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

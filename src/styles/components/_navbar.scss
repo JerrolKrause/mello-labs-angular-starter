@@ -1,0 +1,4 @@
+// Global branded styling. App specific styling should NOT go in this file
+// Cuz :host doesn't support media queries
+@media (min-width: 1024px) {
+}

@@ -1,0 +1,30 @@
+// Global branded styling. App specific styling should NOT go in this file
+
+/***** Brand Colors *****/
+$brand-primary: #5e9aca;
+$brand-primary-lt: #5e9aca;
+$brand-primary-dk: #2f6491;
+
+/***** Brand Colors *****/
+$interact-primary: #74c0fa;
+$interact-primary-lt: #41a2ec;
+$interact-primary-dk: #2b87cc;
+
+/***** Borders *****/
+$border: $brand-primary;
+
+/***** Backgrounds *****/
+$bg-primary: $brand-primary;
+$bg-primary-lt: $brand-primary-lt;
+$bg-primary-dk: $brand-primary-dk;
+
+$grey: #eff3f6;
+
+// Easing Animations
+// https://matthewlein.com/tools/ceaser
+// USAGE:  .anim{ transition: 0.7s $easeInOutBack; }
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);

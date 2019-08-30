@@ -1,0 +1,17 @@
+<!-- Display global/app errors
+<div class="container p-3" *ngIf="(error$ | async) as error">
+    <nts-error [error]="error" [canClose]="false">
+      <p class="d-inline-block">
+        This app has just died a horrible death. Please try reloading it by pressing <strong>Control + F5.</strong>
+      </p>
+      <p>
+        If that doesn't fix the issue then please copy+paste the contents of this page and email it to your supervisor or the code monkeys responsible for maintaining this app.
+      </p>
+    </nts-error>
+  </div>
+-->
+
+<!-- Main Router -->
+<router-outlet></router-outlet>
+
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>

@@ -1,0 +1,46 @@
+/***** Global Mixins *****/
+
+@mixin transition($time: 0.3s) {
+  transition: $time ease-out;
+}
+@mixin boxShadow($transparency: 0.1) {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, $transparency);
+}
+
+@mixin icon-size($size: 1rem, $height: 1rem, $width: 1rem) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+//Gradients
+@mixin gradient($startColor, $endColor, $direction: to bottom) {
+  background: $endColor;
+  background-image: linear-gradient($direction, $startColor 0%, $endColor 100%);
+}
+@mixin gradient-radial($startColor, $endColor) {
+  background: $endColor;
+  background-image: radial-gradient(ellipse at center, $startColor 0%, $endColor 100%);
+}
+
+//Use a gradient as a border
+//Vertical
+@mixin gradient-border-vert($mainColor) {
+  border-color: $mainColor;
+  border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), $mainColor, rgba(255, 255, 255, 0)) 1 100%;
+}
+//Horizontal
+@mixin gradient-border-horz($mainColor) {
+  &::after {
+    height: 1px;
+    width: 100%;
+    content: '';
+    display: block;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, $mainColor 50%, rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+//Generate sprite
+@mixin sprite($pos, $offset) {
+  background-position: 0px -#{$pos * $offset}px;
+}

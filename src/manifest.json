@@ -1,0 +1,27 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Angular Starter",
+  "author": "Jerrol Krause",
+  "scope": "/",
+  "display": "fullscreen",
+  "short_name": "Angular Starter",
+  "theme_color": "#5e9aca",
+  "description": "A rapid starter for angular projects",
+  "orientation": "any",
+  "background_color": "#5e9aca",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32 96x96 192x192"
+    },
+    {
+      "src": "assets/icons/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": "4.0"
+    }
+  ]
+}

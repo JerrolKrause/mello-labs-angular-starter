@@ -1,0 +1,3 @@
+interface RouteUIState {
+  someProp: any;
+}

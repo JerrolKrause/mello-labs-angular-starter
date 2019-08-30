@@ -1,0 +1,25 @@
+// @import '../../../../styles/globals/variables';
+
+.nav-component {
+  .ui-menubar {
+    border: 0;
+    border-radius: 0;
+  }
+  .ui-menubar-custom {
+    padding-top: 0.75em;
+    a {
+      padding: 0.714em 0.857em;
+    }
+  }
+  .ui-button.ui-button-text-icon-left .ui-button-text {
+    padding: 0.25em 1em 0.25em 2em;
+  }
+  // Mobile flyout menu
+  .ui-menu {
+    border: 0;
+    width: 100%;
+  }
+  .ui-state-active {
+    background-color: #eaeaea;
+  }
+}

@@ -1,0 +1,268 @@
+// Global branded styling. App specific styling should NOT go in this file
+
+// Buttons
+button {
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  @include transition(0.1s);
+
+  &:hover:not([disabled]) {
+    box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.16), 2px 4px 10px 0 rgba(0, 0, 0, 0.12);
+    @include transition(0.1s);
+  }
+  //transform: translate(-2px, -2px) scale(1.03);
+  &.btn-static {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  }
+  &.btn-xs {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  &.btn-primary {
+    color: #fff;
+    @include gradient($interact-primary-lt, $interact-primary);
+    border: 1px solid $interact-primary;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+    &:hover:not([disabled]) {
+      background: $interact-primary;
+      border: 1px solid $interact-primary;
+      box-shadow: initial;
+      text-shadow: none;
+    }
+  }
+
+  &.btn-outline-primary {
+    color: $interact-primary;
+    background: #fff;
+    border: 1px solid $interact-primary;
+    box-shadow: initial;
+    &:hover:not([disabled]) {
+      color: #fff;
+      @include gradient($interact-primary, $interact-primary);
+      border: 1px solid $interact-primary;
+    }
+  }
+
+  &.active,
+  &.enabled {
+    background-image: linear-gradient(to top, #ad0000 0%, #ff4343 100%);
+    color: #fff;
+    border: 1px solid red;
+  }
+
+  &.btn-waiting {
+    .fa {
+      display: none;
+    }
+    &:before {
+      font-family: FontAwesome;
+      content: '\f110';
+      animation: fa-spin 2s infinite linear;
+      display: inline-block;
+      position: relative;
+      left: -3px;
+    }
+  }
+  &.btn-waiting-after {
+    .fa {
+      display: none;
+    }
+    &:after {
+      font-family: FontAwesome;
+      content: '\f110';
+      animation: fa-spin 2s infinite linear;
+      display: inline-block;
+      position: relative;
+      left: -3px;
+    }
+  }
+
+  &[disabled] {
+    color: dimgray;
+    border-color: #a7a7a7;
+    background: #ededed;
+  }
+}
+
+// Button Groups
+.btn-group {
+  & > *:not(:last-child):not(.dropdown-toggle) > .btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+  & > *:not(:first-child) > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+.input-group .btn,
+.input-group .btn:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+// Material buttons
+body {
+  button.mat-menu-item:focus {
+    outline: initial;
+  }
+  .mat-menu-item {
+    line-height: 35px;
+    height: 35px;
+  }
+  .mat-button,
+  .mat-raised-button,
+  .mat-flat-button,
+  .mat-stroked-button,
+  .mat-icon-button {
+    transition: 0.3s ease-out;
+    font-weight: normal;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(to top, #fff 0%, #fff 100%);
+    color: $interact-primary;
+    min-width: initial;
+    line-height: 1.85rem;
+    padding: 0 0.55rem;
+    &:hover {
+      color: #fff;
+    }
+    //&.cdk-focused:hover{ color: $interact-primary!important; }
+    &:focus {
+      outline: initial;
+    }
+    &:after {
+      transition: 0.3s ease-out;
+      content: ' ';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0;
+      background: $interact-primary-lt;
+      background-image: linear-gradient(to bottom, $interact-primary-lt 0%, $interact-primary 100%);
+    }
+    &:hover:after {
+      opacity: 1;
+    }
+    &.sm {
+      line-height: 1.25rem;
+      font-size: 0.7rem;
+    }
+    //&.cdk-focused .mat-button-wrapper { color: #fff !important; }
+    &.cdk-focused:after {
+      display: none;
+    }
+    .mat-button-wrapper {
+      z-index: 2;
+      position: relative;
+    }
+    &.mat-reverse {
+      background: $interact-primary-lt;
+      background-image: linear-gradient(to bottom, $interact-primary-lt 0%, $interact-primary 100%);
+      .mat-button-wrapper {
+        color: #fff;
+      }
+      &:hover {
+        background-image: linear-gradient(to bottom, #fff 20%, #e9ecef 100%);
+        .mat-button-wrapper {
+          color: $interact-primary;
+        }
+      }
+      &:after {
+        transition: 0.3s ease-out;
+        content: ' ';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        background: #fff;
+      }
+      &.mat-stroked-button .mat-button-wrapper {
+        color: $interact-primary;
+      }
+    }
+    &.active,
+    &.enabled {
+      transition: 0.3s ease-out;
+      background-image: linear-gradient(to top, #ad0000 0%, #ff4343 100%) !important;
+      color: #fff;
+      border: 1px solid red;
+      opacity: 1;
+    }
+    &[disabled] {
+      border: 1px solid #a7a7a7 !important;
+      background: #ededed !important;
+      .mat-button-wrapper {
+        color: dimgray !important;
+      }
+      &:after {
+        display: none;
+      }
+    }
+    &.mat-waiting {
+      .fa {
+        display: none;
+      }
+      &:before {
+        font-family: FontAwesome;
+        content: '\f110';
+        animation: fa-spin 2s infinite linear;
+        display: inline-block;
+        position: relative;
+        left: -3px;
+      }
+    }
+    &.mat-waiting-after {
+      .fa {
+        display: none;
+      }
+      &:after {
+        font-family: FontAwesome;
+        content: '\f110';
+        animation: fa-spin 2s infinite linear;
+        display: inline-block;
+        position: relative;
+        left: -3px;
+      }
+    }
+    &.mat-stroked-button {
+      background-image: linear-gradient(to bottom, #fff 20%, #e9ecef 100%);
+    }
+  }
+
+  // Button toggle
+  .mat-button-toggle {
+    &.mat-button-toggle-checked {
+      background-image: linear-gradient(to bottom, $interact-primary-lt 0%, $interact-primary 100%);
+      color: #fff;
+    }
+    &.mat-button-toggle-disabled {
+      color: dimgray;
+      border-color: #a7a7a7;
+      background: #dcdcdc;
+    }
+  }
+
+  // Button toggle group
+  .mat-button-toggle-group {
+    &.sm .mat-button-toggle-label-content {
+      font-size: 70%;
+      line-height: 24px;
+      padding: 0 6px;
+    }
+  }
+}

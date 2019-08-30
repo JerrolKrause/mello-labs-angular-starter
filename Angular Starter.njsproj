@@ -1,0 +1,405 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>Angular Starter</Name>
+    <RootNamespace>Angular Starter</RootNamespace>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9e4a497c-d24f-4b1a-b34d-6558e0e43066</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>src\app\libs\grid\grid\grid.component.ts</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".editorconfig" />
+    <Content Include=".gitignore" />
+    <Content Include=".tfignore" />
+    <Content Include="angular.json" />
+    <Content Include="build-webapp-aot.bat" />
+    <Content Include="CHANGELOG.md" />
+    <Content Include="e2e\tsconfig.e2e.json" />
+    <Content Include="ngsw-config.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="src\apple-touch-icon.png" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\components\api-state\api-state.component.html" />
+    <Content Include="src\app\components\api-state\api-state.component.scss" />
+    <Content Include="src\app\components\counter\counter.component.html" />
+    <Content Include="src\app\components\counter\counter.component.scss" />
+    <Content Include="src\app\components\modals\confirmation\confirmation-modal.component.html" />
+    <Content Include="src\app\components\modals\logout\logout-modal.component.html" />
+    <Content Include="src\app\libs\chart\chart.component.html" />
+    <Content Include="src\app\libs\chart\chart.component.scss" />
+    <Content Include="src\app\components\masterpage\footer\footer.component.html" />
+    <Content Include="src\app\components\masterpage\header\header.component.html" />
+    <Content Include="src\app\components\masterpage\main\layout-main.component.html" />
+    <Content Include="src\app\components\masterpage\nav\nav.component.html" />
+    <Content Include="src\app\components\masterpage\nav\search\nav-search.component.html" />
+    <Content Include="src\app\components\masterpage\single\layout-single.component.html" />
+    <Content Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.html" />
+    <Content Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.scss" />
+    <Content Include="src\app\libs\grid\grid\grid.component.html" />
+    <Content Include="src\app\libs\grid\grid\grid.component.scss" />
+    <Content Include="src\app\routes\home\home.component.html" />
+    <Content Include="src\app\routes\home\home.component.scss" />
+    <Content Include="src\app\routes\login\login.component.html" />
+    <Content Include="src\app\routes\monolith\routes\home\context-menu\context-menu.component.html" />
+    <Content Include="src\app\routes\monolith\routes\home\context-menu\context-menu.component.scss" />
+    <Content Include="src\app\routes\monolith\routes\home\home.component.html" />
+    <Content Include="src\app\routes\monolith\routes\home\home.component.scss" />
+    <Content Include="src\app\routes\qa\qa.component.html" />
+    <Content Include="src\app\routes\qa\qa.component.scss" />
+    <Content Include="src\app\routes\qa\routes\charts\charts.component.html" />
+    <Content Include="src\app\routes\qa\routes\charts\charts.component.scss" />
+    <Content Include="src\assets\.gitkeep" />
+    <Content Include="src\assets\icons\apple-icon-180x180.png" />
+    <Content Include="src\assets\icons\favicon-16x16.png" />
+    <Content Include="src\assets\icons\favicon-192x192.png" />
+    <Content Include="src\assets\icons\favicon-32x32.png" />
+    <Content Include="src\assets\icons\favicon-96x96.png" />
+    <Content Include="src\assets\mock-data\env-settings.json" />
+    <Content Include="src\assets\mock-data\login.json" />
+    <Content Include="src\assets\mock-data\user.json" />
+    <Content Include="src\assets\mock-data\users.json" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\index.html" />
+    <Content Include="src\manifest.json" />
+    <Content Include="src\safari-pinned-tab.svg" />
+    <Content Include="src\styles.scss" />
+    <Content Include="src\styles\components\_accordions.scss" />
+    <Content Include="src\styles\components\_alerts.scss" />
+    <Content Include="src\styles\components\_buttons.scss" />
+    <Content Include="src\styles\components\_cards.scss" />
+    <Content Include="src\styles\components\_charts.scss">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\styles\components\_contextmenu.scss">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\styles\components\_dropdowns.scss" />
+    <Content Include="src\styles\components\_grid.scss">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\styles\components\_modals.scss" />
+    <Content Include="src\styles\components\_navbar.scss" />
+    <Content Include="src\styles\components\_poptooltips.scss" />
+    <Content Include="src\styles\components\_tabs.scss" />
+    <Content Include="src\styles\ui\_animations.scss" />
+    <Content Include="src\styles\ui\_forms.scss" />
+    <Content Include="src\styles\ui\_interactive.scss" />
+    <Content Include="src\styles\ui\_layout.scss" />
+    <Content Include="src\styles\ui\_mixins.scss" />
+    <Content Include="src\styles\ui\_tables.scss" />
+    <Content Include="src\styles\ui\_typography.scss" />
+    <Content Include="src\styles\ui\_variables.scss" />
+    <Content Include="src\styles\_app.scss" />
+    <Content Include="src\styles\_vendor.scss" />
+    <Content Include="src\tsconfig.app.json" />
+    <Content Include="src\tsconfig.spec.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="src\tsconfig.server.json">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="karma.conf.js" />
+    <Compile Include="protractor.conf.js" />
+    <Compile Include="src\assets\scripts\ie-polyfills.min.js" />
+    <Compile Include="webpack.server.config.js">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="e2e\" />
+    <Folder Include="e2e\components\" />
+    <Folder Include="e2e\components\modals\" />
+    <Folder Include="e2e\components\modals\confirmation\" />
+    <Folder Include="e2e\components\pipes\" />
+    <Folder Include="e2e\routes\" />
+    <Folder Include="e2e\routes\home\" />
+    <Folder Include="e2e\routes\login\" />
+    <Folder Include="src\" />
+    <Folder Include="src\app\" />
+    <Folder Include="src\app\components\" />
+    <Folder Include="src\app\components\api-state\" />
+    <Folder Include="src\app\components\counter\" />
+    <Folder Include="src\app\components\modals\confirmation\" />
+    <Folder Include="src\app\components\modals\logout\" />
+    <Folder Include="src\app\libs\chart\" />
+    <Folder Include="src\app\libs\context-menu\" />
+    <Folder Include="src\app\components\launch-modal\" />
+    <Folder Include="src\app\components\masterpage\" />
+    <Folder Include="src\app\components\masterpage\footer\" />
+    <Folder Include="src\app\components\masterpage\header\" />
+    <Folder Include="src\app\components\masterpage\main\" />
+    <Folder Include="src\app\components\masterpage\nav\" />
+    <Folder Include="src\app\components\masterpage\nav\search\" />
+    <Folder Include="src\app\components\masterpage\single\" />
+    <Folder Include="src\app\components\modals\" />
+    <Folder Include="src\app\libs\" />
+    <Folder Include="src\app\libs\grid\" />
+    <Folder Include="src\app\libs\grid\grid-status-bar\" />
+    <Folder Include="src\app\libs\grid\grid-template-renderer\" />
+    <Folder Include="src\app\libs\grid\grid\" />
+    <Folder Include="src\app\libs\grid\pipes\" />
+    <Folder Include="src\app\routes\" />
+    <Folder Include="src\app\routes\home\" />
+    <Folder Include="src\app\routes\login\" />
+    <Folder Include="src\app\routes\monolith\" />
+    <Folder Include="src\app\routes\monolith\components\" />
+    <Folder Include="src\app\routes\monolith\routes\" />
+    <Folder Include="src\app\routes\monolith\routes\home\" />
+    <Folder Include="src\app\routes\monolith\routes\home\context-menu\" />
+    <Folder Include="src\app\routes\monolith\servies\" />
+    <Folder Include="src\app\routes\monolith\shared\" />
+    <Folder Include="src\app\routes\monolith\shared\directives\" />
+    <Folder Include="src\app\routes\monolith\shared\models\" />
+    <Folder Include="src\app\routes\monolith\shared\services\" />
+    <Folder Include="src\app\routes\monolith\shared\stores\" />
+    <Folder Include="src\app\routes\monolith\shared\stores\api\" />
+    <Folder Include="src\app\routes\monolith\shared\stores\ui\" />
+    <Folder Include="src\app\routes\monolith\shared\utils\" />
+    <Folder Include="src\app\routes\no-content\" />
+    <Folder Include="src\app\routes\qa\" />
+    <Folder Include="src\app\routes\qa\routes\" />
+    <Folder Include="src\app\routes\qa\routes\charts\" />
+    <Folder Include="src\app\shared\" />
+    <Folder Include="src\app\shared\directives\" />
+    <Folder Include="src\app\shared\guards\" />
+    <Folder Include="src\app\shared\interceptors\" />
+    <Folder Include="src\app\shared\models\" />
+    <Folder Include="src\app\shared\pipes\" />
+    <Folder Include="src\app\shared\services\" />
+    <Folder Include="src\app\shared\stores\" />
+    <Folder Include="src\app\shared\stores\api\" />
+    <Folder Include="src\app\shared\stores\ui\" />
+    <Folder Include="src\app\shared\utils\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\assets\icons\" />
+    <Folder Include="src\assets\mock-data\" />
+    <Folder Include="src\assets\scripts\" />
+    <Folder Include="src\environments\" />
+    <Folder Include="src\styles\" />
+    <Folder Include="src\styles\components\" />
+    <Folder Include="src\styles\ui\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\app.po.ts" />
+    <TypeScriptCompile Include="e2e\components\modals\confirmation\confirmation.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\components\pipes\filter.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\components\qa.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\components\qa.po.ts" />
+    <TypeScriptCompile Include="e2e\routes\home\home.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\routes\home\home.po.ts" />
+    <TypeScriptCompile Include="e2e\routes\login\login.e2e-spec.ts" />
+    <TypeScriptCompile Include="e2e\routes\login\login.po.ts" />
+    <TypeScriptCompile Include="server.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\app.routes.ts" />
+    <TypeScriptCompile Include="src\app\app.server.module.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\components\api-state\api-state.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\api-state\api-state.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modals\confirmation\confirmation-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modals\logout\logout-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modals\modals.service.ts" />
+    <TypeScriptCompile Include="src\app\libs\chart\chart.component.ts" />
+    <TypeScriptCompile Include="src\app\libs\chart\chart.d.ts" />
+    <TypeScriptCompile Include="src\app\components\components.module.ts" />
+    <TypeScriptCompile Include="src\app\components\counter\counter.component.ts" />
+    <TypeScriptCompile Include="src\app\libs\chart\chart.module.spec.ts" />
+    <TypeScriptCompile Include="src\app\libs\chart\chart.module.ts" />
+    <TypeScriptCompile Include="src\app\libs\context-menu\context-menu.list.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\libs\context-menu\context-menu.module.ts" />
+    <TypeScriptCompile Include="src\app\libs\context-menu\context-menu.service.ts" />
+    <TypeScriptCompile Include="src\app\components\index.ts" />
+    <TypeScriptCompile Include="src\app\components\launch-modal\launch-modal.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\footer\footer.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\header\header.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\index.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\main\layout-main.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\nav\nav.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\nav\search\nav-search.component.ts" />
+    <TypeScriptCompile Include="src\app\components\masterpage\single\layout-single.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modals\index.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid-status-bar\grid-status-bar.component.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid-template-renderer\grid-template-renderer.component.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid.d.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\libs\grid\grid.module.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid.service.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid\grid.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\grid\grid.component.ts" />
+    <TypeScriptCompile Include="src\app\libs\grid\pipes\text-case.pipe.ts" />
+    <TypeScriptCompile Include="src\app\libs\index.ts" />
+    <TypeScriptCompile Include="src\app\routes\home\columns.ts" />
+    <TypeScriptCompile Include="src\app\routes\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\home\home.module.ts" />
+    <TypeScriptCompile Include="src\app\routes\home\home.routes.ts" />
+    <TypeScriptCompile Include="src\app\routes\index.ts" />
+    <TypeScriptCompile Include="src\app\routes\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\monolith.module.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\monolith.routes.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\routes\home\columns.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\routes\home\context-menu\context-menu.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\routes\home\home.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\routes\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\servies\monolith.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\servies\monolith.service.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\shared\stores\api\api.map.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\shared\stores\api\api.props.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\shared\stores\api\api.selectors.service.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\shared\stores\api\api.store.service.ts" />
+    <TypeScriptCompile Include="src\app\routes\monolith\shared\stores\monolith.store.d.ts" />
+    <TypeScriptCompile Include="src\app\routes\no-content\no-content.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\qa.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\qa.module.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\qa.module.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\qa.routes.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\routes\qa\routes\charts\charts.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\routes\charts\charts.component.ts" />
+    <TypeScriptCompile Include="src\app\routes\qa\routes\charts\summary.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\routes\qa\routes\charts\transfers.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\routes\qa\routes\charts\user.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\shared\app.settings.ts" />
+    <TypeScriptCompile Include="src\app\shared\directives\focus.directive.ts" />
+    <TypeScriptCompile Include="src\app\shared\directives\full-screen.directive.ts" />
+    <TypeScriptCompile Include="src\app\shared\guards\auth.guard.ts" />
+    <TypeScriptCompile Include="src\app\shared\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\interceptors\error.interceptor.ts" />
+    <TypeScriptCompile Include="src\app\shared\interceptors\http.interceptor.ts" />
+    <TypeScriptCompile Include="src\app\shared\models\index.d.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\count.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\debounce.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\duration.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\filter.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\phone-number.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\safe-html.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\sort.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\string.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\pipes\text-case.pipe.ts" />
+    <TypeScriptCompile Include="src\app\shared\services\app-comms.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\services\app-config.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\services\auth.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\services\post-message.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\services\service-worker.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\shared.module.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.actions.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.http.base.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.map.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.props.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.reducer.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.selectors.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\api.store.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\api\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\store.d.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\ui.actions.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\ui.modal.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\ui.reducer.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\ui.selectors.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\stores\ui\ui.store.service.ts" />
+    <TypeScriptCompile Include="src\app\shared\utils\api-utils.ts" />
+    <TypeScriptCompile Include="src\app\shared\utils\desktop-utils.ts" />
+    <TypeScriptCompile Include="src\app\shared\utils\index.ts" />
+    <TypeScriptCompile Include="src\app\shared\utils\object-utils.ts" />
+    <TypeScriptCompile Include="src\app\shared\utils\string-utils.ts" />
+    <TypeScriptCompile Include="src\app\site.module.ts" />
+    <TypeScriptCompile Include="src\app\vendor.module.ts" />
+    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="src\environments\environment.ts" />
+    <TypeScriptCompile Include="src\main.server.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\test.ts" />
+    <TypeScriptCompile Include="src\typings.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

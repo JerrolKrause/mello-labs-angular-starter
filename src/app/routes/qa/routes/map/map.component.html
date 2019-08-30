@@ -1,0 +1,17 @@
+<div style="height:100vh;">
+  <app-map
+    [locations]="locations"
+    [heatmap]="true"
+    [disablePanning]="false"
+    [disableZoom]="false"
+    [disableDashboard]="false"
+    [disableLocateMeButton]="true"
+    [disableMapTypeSelector]="true"
+    [pushPinsAddable]="'multiple'"
+    [pushPinIcon]="'https://www.bingmapsportal.com/Content/images/poi_custom.png'"
+    [pushPinRadius]="radius"
+    (addedPushPin)="addedPushPin($event)"
+    (viewChanged)="viewChanged($event)"
+  >
+  </app-map>
+</div>

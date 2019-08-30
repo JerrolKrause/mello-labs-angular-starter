@@ -1,0 +1,22 @@
+<!--
+  TODO:
+  Update for scenarios:
+  1. No data in store, waiting for data
+  2. Data in store, data refreshing
+  -- When to show loading logic as hover spinner
+-->
+
+<ng-container *ngIf="state">
+  <!-- Loading -->
+  <div *ngIf="(state.loading && !loaderDisabled && !state.error) || (loaderDisabled && !state?.ids?.length && !state.error)">
+    <i class="fa fa-spinner fa-spin"></i> Loading...
+  </div>
+
+  <!-- Error -->
+  <ng-container *ngIf="errorVisible && state.error"> <nts-error [error]="state.error" [canClose]="false"></nts-error> </ng-container>
+
+  <!-- Content -->
+  <ng-container *ngIf="(!state?.loading && !state?.error) || (loaderDisabled && state?.ids?.length)">
+    <ng-content></ng-content>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,10 @@
+<full-calendar
+  #fc
+  defaultView="dayGridMonth"
+  [events]="events"
+  [plugins]="calendarPlugins"
+  [selectable]="selectable"
+  (dateClick)="dateClick($event)"
+  (eventClick)="eventClick($event)"
+  (select)="select($event)"
+></full-calendar>

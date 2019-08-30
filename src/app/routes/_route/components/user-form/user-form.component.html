@@ -1,0 +1,25 @@
+<a class="float-right" (click)="userStopEdit()" *ngIf="isEditing"><i class="fa fa-user-plus" aria-hidden="true"></i> Add New User </a>
+<h2 *ngIf="!isEditing"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</h2>
+<h2 *ngIf="isEditing"><i class="fa fa-user" aria-hidden="true"></i> Updating User</h2>
+<hr />
+
+<form [formGroup]="formMain" novalidate (ngSubmit)="userSubmit()">
+  Fix form fields
+  <!--
+  <app-form-field formControlName="username" placeholder="Username"></app-form-field>
+  <app-form-field formControlName="name" placeholder="Name"></app-form-field>
+  <app-form-field formControlName="website" placeholder="Website"></app-form-field>
+  <app-form-field formControlName="email" placeholder="Email"></app-form-field>
+  <app-form-field formControlName="phone" placeholder="Phone"></app-form-field>
+    -->
+  <div class="text-right">
+    <!--
+      [disabled]="route?.users?.modifying || formMain.invalid"
+      [ngClass]="{ 'mat-waiting': route?.users?.modifying }"
+    -->
+    <button type="submit" mat-button class="mat-reverse">
+      <ng-container *ngIf="!isEditing"> <i class="fa fa-user-plus" aria-hidden="true"></i> Add User </ng-container>
+      <ng-container *ngIf="isEditing"> <i class="fa fa-user" aria-hidden="true"></i> Update User </ng-container>
+    </button>
+  </div>
+</form>

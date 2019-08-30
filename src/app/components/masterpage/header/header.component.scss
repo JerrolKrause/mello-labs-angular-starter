@@ -1,0 +1,19 @@
+@import '../../../../styles/globals/variables';
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #e2e5e8;
+  margin-bottom: 1rem;
+  .logo {
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+    color: $interact-primary;
+  }
+  .brand {
+    display: inline-block;
+    line-height: 43px;
+    font-size: 1.25rem;
+  }
+  .nav {
+    flex-grow: 1;
+  }
+}

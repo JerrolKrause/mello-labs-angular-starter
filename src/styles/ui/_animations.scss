@@ -1,0 +1,204 @@
+//Animations
+
+// Rotate scale and fade in
+.anim-rotate-in {
+  animation: rotateIn 0.3s $easeOutQuart;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.4) rotate(30deg);
+  position: relative;
+  left: 30px;
+  top: 30px;
+}
+@keyframes rotateIn {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    left: 0;
+    top: 0;
+  }
+}
+
+.anim-menu-bg {
+  transition: 0.3s ease;
+  position: relative;
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  &:not(.active):before {
+    background: $brand-primary-lt;
+    background-image: linear-gradient(to bottom, $brand-primary-lt 0%, $brand-primary 100%);
+    transition: 0.2s ease-out;
+    display: block;
+    content: ' ';
+    position: absolute;
+    clip-path: polygon(0 0, 100% 0%, 10% 100%, 0% 100%);
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+  }
+  &.active:hover {
+    color: #21d0ff;
+  }
+  &:not(.active):hover {
+    color: #fff;
+    transition: 0.3s ease;
+    &:before {
+      width: 100%;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+  }
+}
+
+//Hover zoom animation with drop shadow
+.anim-pop {
+  @include transition(0.2s);
+  &:hover {
+    @include transition(0.2s);
+    transform: translate(3px, 3px) scale(1.05);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+
+.anim-bounce-in {
+  animation: bounceIn 0.3s $easeInOutBack;
+  animation-fill-mode: both;
+}
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.4);
+  }
+  90% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.anim-fade {
+  @include transition(0.6s);
+  opacity: 0;
+  position: absolute;
+  &.in {
+    @include transition(0.6s);
+    opacity: 1;
+    position: static;
+  }
+  .in-out {
+    @include transition(0.6s);
+    opacity: 0;
+    animation: fade 2s linear;
+    position: static;
+    transition-delay: 2s;
+  }
+}
+
+.anim-fade-in {
+  opacity: 0;
+  animation: fade 0.3s ease-in;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-slide-in-from-right {
+  position: relative;
+  animation: slideInFromRight 0.6s ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes slideInFromRight {
+  from {
+    left: 20px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.anim-slide-in-from-left {
+  position: relative;
+  animation: slideInFromLeft 0.6s ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes slideInFromLeft {
+  from {
+    left: -20px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.anim-rotate-left-90 {
+  .fa {
+    @include transition(0.1s);
+  }
+  &:hover .fa {
+    transform: rotate(-90deg);
+    @include transition(0.1s);
+  }
+}
+
+.anim-rotate-right-90 {
+  .fa {
+    @include transition(0.1s);
+  }
+  &:hover .fa {
+    transform: rotate(90deg);
+    @include transition(0.1s);
+  }
+}
+
+.anim-go-back {
+  .fa {
+    @include transition(0.1s);
+    position: relative;
+    left: 0px;
+  }
+  &:hover .fa {
+    @include transition(0.1s);
+    left: -5px;
+  }
+}
+
+.fade-out-delay {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s linear, opacity 0.5s linear 1s;
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}

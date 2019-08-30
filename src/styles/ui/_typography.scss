@@ -1,0 +1,97 @@
+// Global branded styling. App specific styling should NOT go in this file
+
+html,
+body {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  small {
+    font-size: 70%;
+  }
+}
+h1,
+.h1 {
+  font-size: 1.4rem;
+}
+h2,
+.h2 {
+  font-size: 1.2rem;
+}
+h3,
+.h3 {
+  font-size: 1rem;
+}
+h4,
+.h4 {
+  font-size: 0.8rem;
+}
+h5,
+.h5 {
+  font-size: 0.6rem;
+}
+.title {
+  border-bottom: 3px solid #5e9aca;
+  margin-bottom: 0;
+  .fa {
+    background-color: #5e9aca;
+    color: #fff;
+    display: inline-block;
+    line-height: 2rem;
+    padding: 0px 0.5rem;
+  }
+}
+p,
+body .ui-widget-content p {
+  margin-bottom: 1rem;
+}
+.legal {
+  font-size: 0.75em;
+  color: #777;
+}
+.strong {
+  font-weight: bold;
+}
+small,
+.small {
+  font-size: 80%;
+  font-weight: 400;
+}
+.em {
+  font-style: italic;
+}
+.go-back {
+  line-height: 3rem;
+}
+
+// Colors
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.grey {
+  color: #ccc;
+}
+
+.mat-icon.material-icons {
+  &.mat-icon-inline {
+    position: relative;
+    top: 2px;
+  }
+  &:focus {
+    outline: none;
+  }
+}
