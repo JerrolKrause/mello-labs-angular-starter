@@ -7,7 +7,7 @@ export * from './map/map.module';
 // Generic components
 export * from './generic/generic.module';
 // App state components
-export * from './app-state/app-state.module';
+export * from './state-management/state-management.module';
 // Forms
 export * from './forms/forms.module';
 // Calendar

@@ -13,4 +13,4 @@ const Components = [NtsDomainStateComponent, NtsErrorComponent, EntityToArray];
   imports: [CommonModule, SharedModule, VendorModule],
   exports: [Components],
 })
-export class AppStateModule {}
+export class NtsStateManagementModule {}

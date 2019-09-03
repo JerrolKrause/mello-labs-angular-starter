@@ -5,7 +5,7 @@ import { VendorModule } from './vendor.module';
 
 import { SharedModule } from '$shared';
 import { ComponentsModule } from '$components';
-import { AppStateModule } from '$features';
+import { NtsStateManagementModule } from '$features';
 
 @NgModule({
   imports: [
@@ -17,10 +17,10 @@ import { AppStateModule } from '$features';
     ComponentsModule,
     // Global shared
     SharedModule,
-    AppStateModule,
+    NtsStateManagementModule,
   ],
   declarations: [],
-  exports: [VendorModule, SharedModule, ComponentsModule, AppStateModule],
+  exports: [VendorModule, SharedModule, ComponentsModule, NtsStateManagementModule],
 })
 export class SiteModule {
   static forRoot(): ModuleWithProviders {
