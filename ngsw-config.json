@@ -1,47 +1,30 @@
 {
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
-  "routing": {
-    "index": "/index.html",
-    "/": {
-      "match": "exact"
-    },
-    "/login": {
-      "prefix": false
-    }
-  },
-
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "resources": {
-        "files": ["/index.html", "/favicon.ico", "/apple-touch-icon.png", "/safari-pinned-tab.svg", "/*.css", "/*.js", "/*.js"]
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/apple-touch-icon.png", 
+          "/safari-pinned-tab.svg",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
       }
-    },
-    {
-      "name": "fonts",
-      "installMode": "lazy",
-      "resources": {
-        "files": ["/*.woff", "/*.woff2", "/*.ttf", "/*.svg", "/*.eot"]
-      }
-    },
-    {
+    }, {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/assets/**"]
-      }
-    }
-  ],
-  "dataGroups": [
-    {
-      "name": "api",
-      "urls": ["https://jsonplaceholder.typicode.com/**", "/users"],
-      "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 100000,
-        "maxAge": "3d"
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
       }
     }
   ]

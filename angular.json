@@ -26,7 +26,7 @@
             "preserveSymlinks": true,
             "showCircularDependencies": true,
             "polyfills": "src/polyfills.ts",
-            "assets": ["src/assets", "src/manifest.json", "src/favicon.ico", "src/apple-touch-icon.png", "src/safari-pinned-tab.svg"],
+            "assets": ["src/assets", "src/favicon.ico", "src/apple-touch-icon.png", "src/safari-pinned-tab.svg", "src/manifest.webmanifest"],
             "styles": ["src/styles.scss"],
             "scripts": [
               {
@@ -125,7 +125,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": ["node_modules/font-awesome/css/font-awesome.css", "src/styles.scss"],
-            "assets": ["src/assets", "src/manifest.json", "src/favicon.ico", "src/apple-touch-icon.png", "src/safari-pinned-tab.svg"]
+            "assets": ["src/assets", "src/favicon.ico", "src/apple-touch-icon.png", "src/safari-pinned-tab.svg", "src/manifest.webmanifest"]
           }
         },
         "lint": {

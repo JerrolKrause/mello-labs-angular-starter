@@ -15,8 +15,7 @@ export class ServiceWorkerService {
    * @param intervalTime Default 1 hour, 1 * 60 * 60 * 1000
    */
   @delay(100) // Ensures app is loaded
-  public pollforUpdates(intervalTime = 1000) {
-    console.log(1);
+  public pollforUpdates(intervalTime = 4 * 1000) {
     if (this.sw.isEnabled) {
       // If an update is available, notify the app
       this.sw.available.subscribe(() => this.ui.updateAvailable$.next(true));

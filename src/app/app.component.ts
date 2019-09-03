@@ -41,8 +41,6 @@ export class AppComponent implements OnInit {
       this.comms.commsEnable();
     }
     */
-
-    
   }
 
   /**
