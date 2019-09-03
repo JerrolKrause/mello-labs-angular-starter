@@ -74,7 +74,7 @@ export class NtsVersionManagementService {
         if (version !== this.versionCurrent) {
           this.versionCurrent = version;
           localStorage.setItem(this.versionProp, String(version));
-          this.ui.updateAvailable$.next(version);
+          this.ui.updateAvailable$.next(true);
         }
         if (this.canPoll) {
           setTimeout(() => this.pollVersionChanges(), this.pollInterval);

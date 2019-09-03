@@ -92,7 +92,7 @@ export const APP_COMPONENTS = [
     }),
 
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.settings.enableServiceWorker,
+      enabled: environment.production && environment.settings.enableServiceWorker,
       registrationStrategy: 'registerImmediately',
     }),
 

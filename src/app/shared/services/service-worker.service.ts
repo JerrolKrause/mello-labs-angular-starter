@@ -15,17 +15,17 @@ export class ServiceWorkerService {
    * @param intervalTime Default 1 hour, 1 * 60 * 60 * 1000
    */
   @delay(100) // Ensures app is loaded
-  public pollforUpdates(intervalTime = 4 * 1000) {
+  public pollforUpdates(intervalTime = 10 * 1000) {
     if (this.sw.isEnabled) {
       // If an update is available, notify the app
-      this.sw.available.subscribe(() => this.ui.updateAvailable$.next(true));
+      this.sw.available.subscribe(() => {
+        console.log(1);
+        this.ui.updateAvailable$.next(true);
+      });
       // Immediately check for an update on load
       this.sw.checkForUpdate();
       // Poll for updates once app is stable
-      interval(intervalTime).subscribe(() => {
-        console.log('Polling');
-        this.sw.checkForUpdate();
-      });
+      interval(intervalTime).subscribe(() => this.sw.checkForUpdate());
     }
   }
 }
