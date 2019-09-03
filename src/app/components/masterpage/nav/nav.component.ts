@@ -3,10 +3,11 @@ import { AuthService } from '$shared';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, debounceTime, map, startWith, distinctUntilChanged } from 'rxjs/operators';
 import { SettingsService } from '$settings';
-import { NtsVersionManagementService, AuthState } from 'src/app/shared/services';
+import { AuthState } from 'src/app/shared/services';
 
 import { MenuItem } from 'primeng/api';
 import { fromEvent } from 'rxjs';
+import { UiStateService } from '$ui';
 
 const startCase = require('lodash/startCase');
 const toLower = require('lodash/toLower');
@@ -24,7 +25,7 @@ export class NavComponent {
   /** Turn the username into title case */
   public userName = startCase(toLower(this.settings.userName));
   /**   Does the app have an update */
-  public hasUpdate$ = this.vm.versionUpdated$;
+  public hasUpdate$ = this.ui.updateAvailable$;
   /** App version */
   public version$ = this.settings.version$;
 
@@ -71,35 +72,13 @@ export class NavComponent {
     distinctUntilChanged(), // Only update on changes
   );
 
-  constructor(
-    private auth: AuthService,
-    private settings: SettingsService,
-    private vm: NtsVersionManagementService,
-    private router: Router,
-  ) {
+  constructor(private auth: AuthService, private settings: SettingsService, private ui: UiStateService, private router: Router) {
     // On route change, if mobile nav is open close it
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => (this.sidebarVisible = false));
   }
 
   public updateApp() {
-    /**
-         * this.modals
-      .open(
-        'ConfirmationModalComponent',
-        false,
-        'sm',
-        'A new version of this application has just been released, would you like to refresh?',
-      )
-      .afterClosed()
-      .subscribe(closed => {
-        if (closed) {
-          // Reset ui state to clear out any breaking changes
-          this.settings.ui = null;
-          // Reload page
-          location.reload();
-        }
-      });
-        */
+    this.ui.updateAvailable$.next(true);
   }
 
   public logOut() {

@@ -2,9 +2,14 @@ import { Injectable } from '@angular/core';
 import { UiStateStore } from './ui-state.store';
 import { UiStateQuery } from './ui-state.query';
 import { map, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { ConfirmationService } from 'primeng/api';
 
 @Injectable({ providedIn: 'root' })
 export class UiStateService {
+
+  public updateAvailable$ = new Subject();
+
   /** State of current UI store */
   public uiState$ = this.query.select();
   /** Return the active tab of the specified tab instance */
@@ -24,8 +29,16 @@ export class UiStateService {
         distinctUntilChanged(),
       );
 
-  constructor(private store: UiStateStore, private query: UiStateQuery) {
+  constructor(private store: UiStateStore, private query: UiStateQuery, private confirmationService: ConfirmationService) {
     // this.query.uiState$.subscribe(state => console.log('UI STATE', state));
+    this.updateAvailable$.subscribe(() => {
+      this.confirmationService.confirm({
+        message: 'An update for this application is available, would you like to update?',
+        header: 'Confirmation',
+        accept: () => document.location.reload(),
+        // reject: () => console.log('Nope!!!'),
+      });
+    });
   }
 
   /**

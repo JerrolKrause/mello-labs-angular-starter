@@ -12,7 +12,7 @@ export const defaults: EnvironmentConfig = {
   },
   settings: {
     /** Enable service worker functionality */
-    enableServiceWorker: false,
+    enableServiceWorker: true,
     /** Is this app going to communicate with other domains or instances of itself for multiscreen usage?
      * If so, whitelist domains in the domains.listenTo property */
     enableAppComms: true,

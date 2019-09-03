@@ -3,6 +3,7 @@
 // Services
 export * from './services/auth.service';
 export * from './services/app-config.service';
+export * from './services/service-worker.service';
 
 // Base services and interceptors
 export * from './interceptors/error.interceptor';

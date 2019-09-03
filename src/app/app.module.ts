@@ -91,7 +91,7 @@ export const APP_COMPONENTS = [
       scrollPositionRestoration: 'enabled',
     }),
 
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: false }), // environment.settings.enableServiceWorker
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.settings.enableServiceWorker }), 
 
     SiteModule.forRoot(),
   ],

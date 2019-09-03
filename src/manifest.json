@@ -3,6 +3,7 @@
   "lang": "en",
   "name": "Angular Starter",
   "author": "Jerrol Krause",
+  "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
   "short_name": "Angular Starter",
@@ -15,7 +16,7 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "16x16 32x32 96x96 192x192"
+      "sizes": "16x16"
     },
     {
       "src": "assets/icons/favicon-192x192.png",

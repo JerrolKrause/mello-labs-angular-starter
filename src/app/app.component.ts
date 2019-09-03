@@ -5,6 +5,7 @@ import { map, filter, mergeMap } from 'rxjs/operators';
 
 import { environment } from '$env';
 import { NtsVersionManagementService } from './shared/services';
+import { ServiceWorkerService } from '$shared';
 
 @Component({
   selector: 'app-root',
@@ -18,27 +19,30 @@ export class AppComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private title: Title,
     private version: NtsVersionManagementService,
+    private sw: ServiceWorkerService,
   ) {}
 
   ngOnInit() {
     this.routeChange();
 
-    /**
     // If service worker
     if (environment.settings.enableServiceWorker) {
-      this.sw.enable();
+      this.sw.pollforUpdates();
     }
-
-    // If app comms
-    if (environment.settings.enableAppComms) {
-      this.comms.commsEnable();
-    }
-     */
 
     // If version endpoint specified, poll for version changes
     if (environment.endpoints.versionPath) {
       this.version.start(environment.endpoints.versionPath);
     }
+
+    /**
+    // If app comms
+    if (environment.settings.enableAppComms) {
+      this.comms.commsEnable();
+    }
+    */
+
+    
   }
 
   /**
