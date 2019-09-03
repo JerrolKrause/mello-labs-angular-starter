@@ -12,9 +12,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmationService, DialogService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { CheckboxModule } from 'primeng/checkbox';
-import { RadioButtonModule } from 'primeng/radiobutton';
+
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { AccordionModule } from 'primeng/accordion';
@@ -22,14 +20,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { CalendarModule } from 'primeng/calendar';
-import { InputMaskModule } from 'primeng/inputmask';
-import { SpinnerModule } from 'primeng/spinner';
-import { ColorPickerModule } from 'primeng/colorpicker';
-import { InputSwitchModule } from 'primeng/inputswitch';
-import {SelectButtonModule} from 'primeng/selectbutton';
-import {AutoCompleteModule} from 'primeng/autocomplete';
+
+
 
 const modules = [
   // Prime NG UI Lib
@@ -41,9 +33,7 @@ const modules = [
   ConfirmDialogModule,
   DynamicDialogModule,
   CardModule,
-  InputTextModule,
-  CheckboxModule,
-  RadioButtonModule,
+ 
   MessagesModule,
   MessageModule,
   AccordionModule,
@@ -51,15 +41,7 @@ const modules = [
   TableModule,
   DropdownModule,
   TooltipModule,
-  InputTextareaModule,
-  CheckboxModule,
-  CalendarModule,
-  InputMaskModule,
-  SpinnerModule,
-  ColorPickerModule,
-  InputSwitchModule,
-  SelectButtonModule,
-  AutoCompleteModule
+  
 ];
 
 @NgModule({
