@@ -8,6 +8,9 @@ import { delay } from 'helpful-decorators';
   providedIn: 'root',
 })
 export class ServiceWorkerService {
+  /** Is the service worker enabled */
+  public isEnabled = this.sw.isEnabled;
+
   constructor(private sw: SwUpdate, private ui: UiStateService) {}
 
   /**
@@ -22,10 +25,27 @@ export class ServiceWorkerService {
         console.log(1);
         this.ui.updateAvailable$.next(true);
       });
-      // Immediately check for an update on load
+      // Immediately check for an update when service loads
+      // Otherwise SW will always serve old version of app
       this.sw.checkForUpdate();
-      // Poll for updates once app is stable
+      // Poll for updates
       interval(intervalTime).subscribe(() => this.sw.checkForUpdate());
+    }
+  }
+
+  /**
+   * Unregister and remove the service worker
+   * This works by loading the safety-worker.js file included in the dist folder
+   * @param callback Function to execute after sw has been unregistered
+   */
+  public remove(callback?: Function) {
+    if (this.sw.isEnabled) {
+      const s = document.createElement('script');
+      s.src = 'safety-worker.js';
+      if (callback) {
+        s.onload = callback();
+      }
+      document.head.appendChild(s);
     }
   }
 }
