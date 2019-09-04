@@ -2,7 +2,6 @@ import { ErrorHandler, Injectable } from '@angular/core';
 
 import { environment } from '$env';
 import { SettingsService } from '$settings';
-import { SwUpdate } from '@angular/service-worker';
 import { ServiceWorkerService } from '../services/service-worker.service';
 
 interface AngularError {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, DialogService } from 'primeng/api';
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { LogoutModalComponent, FeedbackModalComponent } from '$modals';
+import { ServiceWorkerService } from '$shared';
 
 @Component({
   selector: 'app-qa',
@@ -38,7 +39,7 @@ export class QaComponent implements OnInit {
     { name: 'Strawberries' },
   ];
 
-  constructor(private confirmationService: ConfirmationService, public dialogService: DialogService) {}
+  constructor(private confirmationService: ConfirmationService, public dialogService: DialogService, private sw: ServiceWorkerService) {}
 
   ngOnInit() {}
 
@@ -113,5 +114,14 @@ export class QaComponent implements OnInit {
         console.log('Log out');
       }
     });
+  }
+
+  public pushNotification() {
+    this.sw.requestPermission();
+    this.sw.sendPushNotification('Hello World').subscribe(res => console.log(res));
+  }
+
+  public removeSW() {
+    this.sw.remove();
   }
 }

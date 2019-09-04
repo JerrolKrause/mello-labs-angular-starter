@@ -42,6 +42,11 @@ export interface EnvironmentConfig {
     uiStoreBlacklist: string[];
   };
   licenses: {
+    /** VAPID key used for service worker registration */
+    vapid?: {
+      publicKey: string;
+      privateKey: string;
+    };
     agGrid: 'qwerty';
   };
 }

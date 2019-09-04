@@ -44,6 +44,11 @@ export const defaults: EnvironmentConfig = {
     uiStoreBlacklist: <string[]>[],
   },
   licenses: {
+    /** Generate new key with 'npm install web-push -g' then 'web-push generate-vapid-keys --json'  */
+    vapid: {
+      publicKey: 'BIZ-IPJrxKxtdL9O9CnK42-XWcepJDPMQDfj8pb_vCfQxa7j1LoC4exdzZ5MhPWaF_5eWPglkj3V32xRswQEm6Q',
+      privateKey: 'jUOTBXqGGwElft-fTVBYb1BeLWrRhn2HgyJpXZBhgLo',
+    },
     agGrid: 'qwerty',
   },
 };
