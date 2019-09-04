@@ -3,6 +3,7 @@ import { ConfirmationService, DialogService } from 'primeng/api';
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { LogoutModalComponent, FeedbackModalComponent } from '$modals';
 import { ServiceWorkerService } from '$shared';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-qa',
@@ -117,8 +118,12 @@ export class QaComponent implements OnInit {
   }
 
   public pushNotification() {
-    this.sw.requestPermission();
-    this.sw.sendPushNotification('Hello World').subscribe(res => console.log(res));
+    this.sw
+      .sendPushNotification('Hello World')
+      .pipe(filter(res => res.type === 'click')) // Only get click events
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   public removeSW() {

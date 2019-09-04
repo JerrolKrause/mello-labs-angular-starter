@@ -21,17 +21,22 @@ export interface PushNotification {
   vibrate?: number[];
 }
 
+export interface PushResponse {
+  notification: Notification;
+  event: Event;
+  type: 'show' | 'click';
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceWorkerService {
   /** Is the service worker enabled */
   public isEnabled = this.sw.isEnabled;
-
+  /** Does this app have permission to send push notifications */
   private permission = 'Notification' in window ? Notification.permission : 'denied';
 
-  constructor(private sw: SwUpdate, private ui: UiStateService) {
-  }
+  constructor(private sw: SwUpdate, private ui: UiStateService) {}
 
   /**
    * Ask the user for permission to send push notifications
@@ -42,26 +47,32 @@ export class ServiceWorkerService {
     }
   }
 
-
-  public sendPushNotification(title: string, options?: PushNotification) {
-
-    return new Observable((obs: any) => {
-
+  /**
+   * Send a push notification from the browser window
+   * @param title
+   * @param options
+   */
+  public sendPushNotification(title: string, options?: PushNotification): Observable<PushResponse> {
+    return new Observable<PushResponse>(obs => {
+      // Check if notification api is available
       if (!('Notification' in window)) {
         obs.error('Notifications are not available in this environment');
         obs.complete();
       }
 
+      // Check if permission was granted
       if (this.permission !== 'granted') {
+        this.requestPermission(); // Ask for permission
         obs.error(`The user hasn't granted you permission to send push notifications`);
         obs.complete();
       }
 
+      // Create new notification
       const n = new Notification(title, options);
-
-      n.onshow = (e: any) => obs.next({notification: n, event: e});
-      n.onclick = (e: any) => obs.next({notification: n, event: e});
-      n.onerror = (e: any) => obs.error({notification: n, event: e});
+      // Handle responses to notification popup
+      n.onshow = e => obs.next({ notification: n, event: e, type: <'show'>e.type });
+      n.onclick = e => obs.next({ notification: n, event: e, type: <'click'>e.type });
+      n.onerror = e => obs.error({ notification: n, event: e, type: e.type });
       n.onclose = () => obs.complete();
     });
   }
