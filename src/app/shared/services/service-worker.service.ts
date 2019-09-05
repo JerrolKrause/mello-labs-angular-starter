@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, SwPush } from '@angular/service-worker';
 import { interval, Observable } from 'rxjs';
 import { UiStateService } from '$ui';
 import { delay } from 'helpful-decorators';
+import { environment } from '$env';
+import { HttpClient } from '@angular/common/http';
 
 export type Permission = 'denied' | 'granted' | 'default';
 
@@ -36,7 +38,7 @@ export class ServiceWorkerService {
   /** Does this app have permission to send push notifications */
   private permission = 'Notification' in window ? Notification.permission : 'denied';
 
-  constructor(private sw: SwUpdate, private ui: UiStateService) {}
+  constructor(private sw: SwUpdate, private push: SwPush, private http: HttpClient, private ui: UiStateService) {}
 
   /**
    * Ask the user for permission to send push notifications
@@ -79,10 +81,10 @@ export class ServiceWorkerService {
 
   /**
    * Start polling for SW/app changes based on the supplied interval
-   * @param intervalTime Default 1 hour, 1 * 60 * 60 * 1000
+   * @param intervalTime Default 5 minutes, 5 * 60 * 1000
    */
   @delay(100) // Ensures app is loaded
-  public pollforUpdates(intervalTime = 10 * 1000) {
+  public pollforUpdates(intervalTime = 5 * 60 * 1000) {
     if (this.sw.isEnabled) {
       // If an update is available, notify the app. Called before checkForUpdate so it will fire if update available on load
       this.sw.available.subscribe(() => this.ui.updateAvailable$.next(true));
@@ -95,38 +97,39 @@ export class ServiceWorkerService {
   }
 
   /**
-   *
-  
-  public subscribeToNotifications() {
+   * Get a push subscription, pass to the backend for use with web push
+   * NOT TESTED
+   */
+  public getPushSubscription(pathToApi: string, callback?: Function) {
+    // Check that a VAPID licenses was found
     if (!environment.licenses.vapid) {
       console.error('No VAPID public key found in environment.licenses.vapid.publicKey');
       return;
     }
 
-    if (!this.pushNotifications$) {
-      this.push
-        .requestSubscription({ serverPublicKey: environment.licenses.vapid.publicKey })
-        .then(sub => {
-          console.log('then', sub);
-        })
-        .catch(err => console.error('Could not subscribe to notifications', err));
-      this.pushNotifications$ = this.push.subscription;
-      return this.pushNotifications$;
-    } else {
-      return this.pushNotifications$;
+    // Throw a warning if the dev vapid licenses was used
+    if (
+      environment.licenses.vapid.publicKey === 'BIZ-IPJrxKxtdL9O9CnK42-XWcepJDPMQDfj8pb_vCfQxa7j1LoC4exdzZ5MhPWaF_5eWPglkj3V32xRswQEm6Q'
+    ) {
+      console.warn('Please change your VAPID keys to one unique to this environment');
+      console.warn(`Generate new key with 'npm install web-push -g' then 'web-push generate-vapid-keys --json'`);
     }
+
+    this.push
+      .requestSubscription({ serverPublicKey: environment.licenses.vapid.publicKey })
+      .then(sub => {
+        // When subscription comes back from request, pass subscription to backend, execute callback
+        this.http.post(pathToApi, sub).subscribe(res => {
+          if (callback) {
+            callback(res);
+          }
+        });
+      })
+      .catch(err => console.error('Could not subscribe to notifications', err));
   }
 
-  public sendNotification() {
-    if (!environment.licenses.vapid) {
-      console.error('No VAPID public key found in environment.licenses.vapid.publicKey');
-      return;
-    }
-  }
- */
   /**
-   * Unregister and remove the service worker
-   * This works by loading the safety-worker.js file included in the dist folder
+   * Unregister and remove all service workers
    * @param callback Function to execute after sw has been unregistered
    */
   public remove(callback?: Function) {
