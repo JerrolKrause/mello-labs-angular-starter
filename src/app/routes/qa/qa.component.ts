@@ -117,9 +117,12 @@ export class QaComponent implements OnInit {
     });
   }
 
+  /**
+   * Send a browser notification
+   */
   public pushNotification() {
     this.sw
-      .sendPushNotification('Hello World')
+      .sendNotification('Hello World')
       .pipe(filter(res => res.type === 'click')) // Only get click events
       .subscribe(res => {
         console.log(res);

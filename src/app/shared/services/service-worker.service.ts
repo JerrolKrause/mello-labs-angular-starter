@@ -48,11 +48,11 @@ export class ServiceWorkerService {
   }
 
   /**
-   * Send a push notification from the browser window
+   * Send a notification from the browser window
    * @param title
    * @param options
    */
-  public sendPushNotification(title: string, options?: PushNotification): Observable<PushResponse> {
+  public sendNotification(title: string, options?: PushNotification): Observable<PushResponse> {
     return new Observable<PushResponse>(obs => {
       // Check if notification api is available
       if (!('Notification' in window)) {
