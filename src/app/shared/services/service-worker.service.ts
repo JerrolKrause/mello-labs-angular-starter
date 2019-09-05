@@ -130,13 +130,9 @@ export class ServiceWorkerService {
    * @param callback Function to execute after sw has been unregistered
    */
   public remove(callback?: Function) {
-    if (this.sw.isEnabled) {
-      const s = document.createElement('script');
-      s.src = 'safety-worker.js';
-      if (callback) {
-        s.onload = callback();
-      }
-      document.head.appendChild(s);
+    navigator.serviceWorker.getRegistrations().then(registrations => registrations.forEach(reg => reg.unregister()));
+    if (callback) {
+      callback();
     }
   }
 }
