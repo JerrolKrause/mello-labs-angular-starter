@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { ObjectUtils } from '$utils';
 
 interface Message {
   event?: string;
@@ -123,7 +122,7 @@ export class NtsPostMessageService {
       event.data.appId !== this.appId
     ) {
       // Sanitize incoming payload
-      const msg: MessageComplete = ObjectUtils.sanitize(event.data);
+      const msg: MessageComplete = event.data; // ObjectUtils.sanitize(event.data);
       // Check if allowable domains
       if (
         (this.allowedDomains &&
@@ -143,7 +142,7 @@ export class NtsPostMessageService {
    */
   private addMetadata(msg: Message): MessageComplete {
     return {
-      ...ObjectUtils.sanitize(msg),
+      ...msg,
       appId: this.appId,
       // token: this.settings.token,
     };

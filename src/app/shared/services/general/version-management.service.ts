@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
-import { UiStateService } from '$ui';
+import { BehaviorSubject } from 'rxjs';
 
 interface VersionApi {
   assembly: string;
@@ -21,6 +20,7 @@ interface VersionApi {
   providedIn: 'root',
 })
 export class NtsVersionManagementService {
+  public updateAvailable$ = new BehaviorSubject<boolean>(false);
   /** Update at this frequency */
   private pollInterval!: number;
   /** Current version, grabbed from localstorage */
@@ -32,7 +32,7 @@ export class NtsVersionManagementService {
   /** Property to extract version from localstorage */
   private versionProp!: string;
 
-  constructor(private http: HttpClient, private ui: UiStateService) {}
+  constructor(private http: HttpClient) {}
 
   /**
    * Poll for version changes
@@ -51,8 +51,8 @@ export class NtsVersionManagementService {
     this.versionApiUrl = versionApiUrl;
     this.versionProp = versionProp;
     this.pollVersionChanges();
-    this.ui.updateAvailable$.next(true);
-    return this.ui.updateAvailable$;
+    this.updateAvailable$.next(true);
+    return this.updateAvailable$;
   }
 
   /**
@@ -78,7 +78,7 @@ export class NtsVersionManagementService {
         if (version !== this.versionCurrent) {
           this.versionCurrent = version;
           localStorage.setItem(this.versionProp, String(version));
-          this.ui.updateAvailable$.next(true);
+          this.updateAvailable$.next(true);
         }
         if (this.canPoll) {
           setTimeout(() => this.pollVersionChanges(), this.pollInterval);

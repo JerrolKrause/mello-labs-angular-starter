@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { UiStateStore } from './ui-state.store';
 import { UiStateQuery } from './ui-state.query';
-import { map, distinctUntilChanged, filter } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { map, distinctUntilChanged, filter} from 'rxjs/operators';
+import { merge } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 import { SwUpdate } from '@angular/service-worker';
+import {
+  NtsServiceWorkerService,
+  NtsVersionManagementService,
+} from '$services';
 
 @Injectable({ providedIn: 'root' })
 export class UiStateService {
-  public updateAvailable$ = new BehaviorSubject(false);
+  /** Is an app update available, either from the service worker or the version checker */
+  public updateAvailable$ = merge(
+    this.ntsSw.updateAvailable$,
+    this.ntsVersion.updateAvailable$,
+  );
 
   /** State of current UI store */
   public uiState$ = this.query.select();
@@ -34,21 +42,11 @@ export class UiStateService {
     private query: UiStateQuery,
     private confirmationService: ConfirmationService,
     private sw: SwUpdate,
+    private ntsSw: NtsServiceWorkerService,
+    private ntsVersion: NtsVersionManagementService,
   ) {
     // this.query.uiState$.subscribe(state => console.log('UI STATE', state));
-    this.updateAvailable$.pipe(filter(val => val)).subscribe(() => {
-      console.log(2);
-      this.confirmationService.confirm({
-        message:
-          'An update for this application is available, would you like to update?',
-        header: 'Confirmation',
-        accept: () =>
-          this.sw.isEnabled
-            ? this.sw.activateUpdate().then(() => document.location.reload())
-            : document.location.reload(),
-        // reject: () => console.log('Nope!!!'),
-      });
-    });
+    this.updateAvailable$.pipe(filter(val => val)).subscribe(() => this.updateAppModal());
   }
 
   /**
@@ -86,6 +84,19 @@ export class UiStateService {
         ...store,
         toggles: toggles,
       };
+    });
+  }
+
+  public updateAppModal() {
+    this.confirmationService.confirm({
+      message:
+        'An update for this application is available, would you like to update?',
+      header: 'Confirmation',
+      accept: () =>
+        this.sw.isEnabled
+          ? this.sw.activateUpdate().then(() => document.location.reload())
+          : document.location.reload(),
+      // reject: () => console.log('Nope!!!'),
     });
   }
 

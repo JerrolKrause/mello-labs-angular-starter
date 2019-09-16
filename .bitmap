@@ -474,5 +474,77 @@
         "origin": "AUTHORED",
         "exported": true
     },
+    "services/general/dom-eventsservice": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/dom-events.service.ts",
+                "test": false,
+                "name": "dom-events.service.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/dom-events.service.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
+    "services/general/index": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/index.ts",
+                "test": false,
+                "name": "index.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/index.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
+    "services/general/post-messageservice": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/post-message.service.ts",
+                "test": false,
+                "name": "post-message.service.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/post-message.service.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
+    "services/general/service-workerservice": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/service-worker.service.ts",
+                "test": false,
+                "name": "service-worker.service.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/service-worker.service.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
+    "services/general/signal-rservice": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/signal-r.service.ts",
+                "test": false,
+                "name": "signal-r.service.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/signal-r.service.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
+    "services/general/version-managementservice": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/services/general/version-management.service.ts",
+                "test": false,
+                "name": "version-management.service.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/services/general/version-management.service.ts",
+        "origin": "AUTHORED",
+        "exported": false
+    },
     "version": "14.3.0"
 }

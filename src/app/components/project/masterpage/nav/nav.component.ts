@@ -90,10 +90,16 @@ export class NavComponent {
       .subscribe(() => (this.sidebarVisible = false));
   }
 
+  /**
+   * Update application
+   */
   public updateApp() {
-    this.ui.updateAvailable$.next(true);
+    this.ui.updateAppModal();
   }
 
+  /**
+   * Log out
+   */
   public logOut() {
     this.auth.logOut(AuthState.loggedOut);
   }

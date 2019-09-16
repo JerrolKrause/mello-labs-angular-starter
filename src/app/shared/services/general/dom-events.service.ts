@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
-// TODO: Remove event listener
-
 interface Keys {
   [key: string]: boolean;
 }
 
 /**
- * Manages DOM event handlers and makes available as an observable. Currently only supports keys pressed and keys down
+ * Manages keyboard event handlers and makes available as an observable. Currently only supports keys pressed and keys down
  * USAGE: keysPressed$.subscribe(keysPressed => console.log(keysPressed));
  */
 @Injectable({
   providedIn: 'root',
 })
-export class NtsDomEventsService {
+export class NtsKeyboardEventsService {
   private keysPressed = new Subject<Keys>();
   /** Keys that have just been pressed */
   public get keysPressed$() {
