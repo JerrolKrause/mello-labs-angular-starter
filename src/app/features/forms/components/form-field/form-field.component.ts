@@ -251,7 +251,6 @@ export class FormFieldComponent implements OnInit, OnDestroy {
 
   public autoCompleteSelection(term: SelectItem) {
     const val = (<any>term)[this.optionValue] || term;
-    console.log(val);
     if (val !== undefined) {
       this.formControl.patchValue(val);
     }

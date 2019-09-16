@@ -9,8 +9,8 @@ import { DialogService } from 'primeng/api';
 import { environment } from '$env';
 import { DomainService } from '$domain';
 import { SettingsService } from '$settings';
+import { LogoutModalComponent } from '$modals';
 
-import { LogoutModalComponent } from 'src/app/components/modals/logout/logout-modal.component';
 
 export enum AuthState {
   initial,
