@@ -31,13 +31,25 @@
     "build-ie-polyfills": "webpack-cli src/polyfills-ie.ts -o src/assets/scripts/polyfills-ie.min.js -c webpack-polyfill.config.js"
   },
   "prettier": {
-    "printWidth": 140,
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true,
     "trailingComma": "all",
     "bracketSpacing": true,
     "arrowParens": "avoid"
+  },
+  "bit": {
+    "env": {},
+    "componentsDefaultDirectory": "src/app/{name}",
+    "saveDependenciesAsComponents": true,
+    "packageManager": "npm",
+    "resolveModules": {
+      "modulesDirectories": ["./"]
+    },
+    "dist": {
+      "entry": "dist/bit/entry",
+      "target": "dist/bit/target"
+    }
   },
   "private": true,
   "dependencies": {
