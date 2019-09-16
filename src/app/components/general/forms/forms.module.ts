@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -12,13 +14,16 @@ import { SpinnerModule } from 'primeng/spinner';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormFieldComponent } from './components/form-field/form-field.component';
-import { SiteModule } from '$site';
+import { DropdownModule } from 'primeng/dropdown';
+import { TooltipModule } from 'primeng/tooltip';
 
 const components = [FormFieldComponent];
 
 @NgModule({
   declarations: [components],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     CalendarModule,
     InputTextModule,
@@ -32,7 +37,8 @@ const components = [FormFieldComponent];
     InputSwitchModule,
     SelectButtonModule,
     AutoCompleteModule,
-    SiteModule,
+    DropdownModule,
+    TooltipModule
   ],
   exports: [components],
 })
