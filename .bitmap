@@ -474,7 +474,7 @@
         "origin": "AUTHORED",
         "exported": true
     },
-    "services/general/dom-eventsservice": {
+    "nts.angular/services/general/dom-eventsservice@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/dom-events.service.ts",
@@ -484,9 +484,9 @@
         ],
         "mainFile": "src/app/shared/services/general/dom-events.service.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
-    "services/general/index": {
+    "nts.angular/services/general/index@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/index.ts",
@@ -496,9 +496,9 @@
         ],
         "mainFile": "src/app/shared/services/general/index.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
-    "services/general/post-messageservice": {
+    "nts.angular/services/general/post-messageservice@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/post-message.service.ts",
@@ -508,9 +508,9 @@
         ],
         "mainFile": "src/app/shared/services/general/post-message.service.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
-    "services/general/service-workerservice": {
+    "nts.angular/services/general/service-workerservice@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/service-worker.service.ts",
@@ -520,9 +520,9 @@
         ],
         "mainFile": "src/app/shared/services/general/service-worker.service.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
-    "services/general/signal-rservice": {
+    "nts.angular/services/general/signal-rservice@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/signal-r.service.ts",
@@ -532,9 +532,9 @@
         ],
         "mainFile": "src/app/shared/services/general/signal-r.service.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
-    "services/general/version-managementservice": {
+    "nts.angular/services/general/version-managementservice@1.0.0": {
         "files": [
             {
                 "relativePath": "src/app/shared/services/general/version-management.service.ts",
@@ -544,7 +544,7 @@
         ],
         "mainFile": "src/app/shared/services/general/version-management.service.ts",
         "origin": "AUTHORED",
-        "exported": false
+        "exported": true
     },
     "version": "14.3.0"
 }
