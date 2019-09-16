@@ -4,7 +4,7 @@ import { SiteModule } from '$site'; // Site modules
 import { QaComponent } from './qa.component';
 import { routing } from './qa.routes';
 import { ChartsComponent } from './routes/charts/charts.component';
-import { ChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule } from '$features';
+import { ChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule } from '$general';
 import { MapComponent } from './routes/map/map.component';
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { TablesComponent } from './routes/tables/tables.component';

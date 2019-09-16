@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { map, filter, mergeMap } from 'rxjs/operators';
 
 import { environment } from '$env';
-import { NtsVersionManagementService, NtsServiceWorkerService } from '$features';
+import { NtsVersionManagementService, NtsServiceWorkerService } from '$services';
 
 @Component({
   selector: 'app-root',

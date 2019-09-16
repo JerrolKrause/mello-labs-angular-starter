@@ -15,7 +15,7 @@
     "prod": "http-server ./dist/browser -o -g",
     "build:qa": "ng build --prod --configuration=qa",
     "build:uat": "ng build --prod --configuration=uat",
-    "build:prod": "ng build --prod --configuration=production && ",
+    "build:prod": "ng build --prod --configuration=production",
     "deploy": "ng build --prod --base-href /angular-starter/ && angular-cli-ghpages --no-silent --dir=dist/browser",
     "gzip": "gzipper --verbose ./dist/browser",
     "docs": "compodoc -p tsconfig.json",

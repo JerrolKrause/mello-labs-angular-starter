@@ -12,12 +12,12 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "lazyModules": [
-              "src/app/features/calendar/calendar.module",
-              "src/app/features/chart/chart.module",
-              "src/app/features/forms/forms.module",
-              "src/app/features/generic/generic.module",
-              "src/app/features/grid/grid.module",
-              "src/app/features/map/map.module"
+              "src/app/components/general/calendar/calendar.module",
+              "src/app/components/general/chart/chart.module",
+              "src/app/components/general/forms/forms.module",
+              "src/app/components/general/generic/generic.module",
+              "src/app/components/general/grid/grid.module",
+              "src/app/components/general/map/map.module"
             ],
             "outputPath": "dist/browser",
             "index": "src/index.html",

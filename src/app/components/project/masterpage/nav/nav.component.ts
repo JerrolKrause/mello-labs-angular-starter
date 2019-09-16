@@ -3,7 +3,7 @@ import { AuthService } from '$shared';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, debounceTime, map, startWith, distinctUntilChanged } from 'rxjs/operators';
 import { SettingsService } from '$settings';
-import { AuthState } from 'src/app/shared/services';
+import { AuthState } from 'src/app/shared/services/project';
 
 import { MenuItem } from 'primeng/api';
 import { fromEvent } from 'rxjs';

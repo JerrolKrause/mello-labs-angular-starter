@@ -3,7 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders } fro
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SettingsService } from '$settings';
-import { AuthService, AuthState } from '../services';
+import { AuthService, AuthState } from '../services/project';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {

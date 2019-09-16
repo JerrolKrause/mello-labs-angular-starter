@@ -38,8 +38,8 @@ const defaultsDeep = require('lodash/defaultsDeep');
   templateUrl: './grid.component.html',
   styleUrls: [
     // After moving starter OUT of monorepo, update path to node_modules
-    '../../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css', // ../../../../../../node_modules
-    '../../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css', // ../../../../../../node_modules
+    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css', 
+    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css', 
     './grid.component.scss',
   ],
   // tslint:disable-next-line:use-component-view-encapsulation

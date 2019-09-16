@@ -9,8 +9,8 @@ import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
   selector: 'nts-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: [
-    '../../../../../../node_modules/@fullcalendar/core/main.css',
-    '../../../../../../node_modules/@fullcalendar/daygrid/main.css',
+    '../../../../../../../node_modules/@fullcalendar/core/main.css',
+    '../../../../../../../node_modules/@fullcalendar/daygrid/main.css',
     './calendar.component.scss',
   ],
   // tslint:disable-next-line:use-component-view-encapsulation

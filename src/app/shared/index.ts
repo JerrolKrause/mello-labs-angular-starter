@@ -1,8 +1,8 @@
 // The order in this file matters to prevent dependency injection errors
 
 // Services
-export * from './services/auth.service';
-export * from './services/app-config.service';
+export * from './services/project/auth.service';
+export * from './services/project/app-config.service';
 
 // Base services and interceptors
 export * from './interceptors/error.interceptor';

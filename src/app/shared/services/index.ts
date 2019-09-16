@@ -1,2 +1,2 @@
-export * from './app-config.service';
-export * from './auth.service';
+export * from './general';
+export * from './project';

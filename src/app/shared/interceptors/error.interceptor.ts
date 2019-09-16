@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 
 import { environment } from '$env';
 import { SettingsService } from '$settings';
-import { NtsServiceWorkerService } from '$features';
+import { NtsServiceWorkerService } from '$services';
 
 interface AngularError {
   promise: any;

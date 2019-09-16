@@ -5,7 +5,7 @@ import { VendorModule } from './vendor.module';
 
 import { SharedModule } from '$shared';
 import { ComponentsModule } from '$components';
-import { NtsStateManagementModule } from '$features';
+import { NtsStateManagementModule } from '$general';
 
 @NgModule({
   imports: [

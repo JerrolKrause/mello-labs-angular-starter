@@ -3,7 +3,7 @@ import { ConfirmationService, DialogService, MessageService } from 'primeng/api'
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { LogoutModalComponent, FeedbackModalComponent } from '$modals';
 import { filter } from 'rxjs/operators';
-import { NtsServiceWorkerService } from '$features';
+import { NtsServiceWorkerService } from '$services';
 
 @Component({
   selector: 'app-qa',
