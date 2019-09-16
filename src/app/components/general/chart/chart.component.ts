@@ -21,6 +21,9 @@ declare global {
 // JS file source
 const chartSrc = 'assets/scripts/canvasjs.min.js';
 
+/**
+ * A charting and data visualization library based on CanvasJS
+ */
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',

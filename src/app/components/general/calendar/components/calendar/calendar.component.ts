@@ -11,6 +11,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 
+/**
+ * An Outlook style calendar based on @fullCalendar
+ */
 @Component({
   selector: 'nts-calendar',
   templateUrl: './calendar.component.html',

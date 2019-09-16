@@ -36,6 +36,9 @@ export type FormFieldType =
   | 'autoComplete'
   | 'date';
 
+/**
+ * Tools for rapidly creating and managing forms
+ */
 @Component({
   selector: 'nts-form-field',
   templateUrl: './form-field.component.html',

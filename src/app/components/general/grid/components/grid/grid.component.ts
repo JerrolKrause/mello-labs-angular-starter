@@ -41,6 +41,9 @@ import { rowsReselect } from '../../utils/reselectRows.util';
 const defaultsDeep = require('lodash/defaultsDeep');
 // const cloneDeep = require('lodash/cloneDeep');
 
+/**
+ * A powerful data grid for visualizing and managing complex information
+ */
 @Component({
   selector: 'nts-grid',
   templateUrl: './grid.component.html',

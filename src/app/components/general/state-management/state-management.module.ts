@@ -7,6 +7,9 @@ import { AccordionModule } from 'primeng/accordion';
 
 const Components = [NtsDomainStateComponent, NtsErrorComponent, EntityToArray];
 
+/**
+ * State management tools intended to work with Akita
+ */
 @NgModule({
   declarations: [Components],
   imports: [CommonModule, AccordionModule],

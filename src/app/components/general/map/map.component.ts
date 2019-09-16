@@ -18,21 +18,8 @@ const scriptSrc = 'https://www.bing.com/api/maps/mapcontrol?key=';
 const apiKey =
   'AnTlR8QC4A9PDl4d0sLe5pfonbXmuPneJDVGS4jMi_CVxFcz4Q8RbxYJ25qlnY_p';
 
-/** USAGE: 
-   <app-map 
-    [locations]="locations" 
-    [heatmap]="false"
-    [disablePanning]="false"
-    [disableZoom]="false"
-    [disableDashboard]="false"
-    [disableLocateMeButton]="true"
-    [disableMapTypeSelector]="true"
-    [pushPinsAddable]="'multiple'"
-    [pushPinIcon]="'https://www.bingmapsportal.com/Content/images/poi_custom.png'"
-    [pushPinRadius]="radius"
-    (addedPushPin)="addedPushPin($event)"
-    (viewChanged)="viewChanged($event)">
-  </app-map>
+/**
+ * Bing maps implementation
  */
 @Component({
   selector: 'app-map',
