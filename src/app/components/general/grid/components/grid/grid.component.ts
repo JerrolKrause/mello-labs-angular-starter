@@ -23,6 +23,8 @@ import {
   GridApi,
   RowNode,
 } from 'ag-grid-community';
+import { LicenseManager } from 'ag-grid-enterprise';
+
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -57,6 +59,7 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild('gridContainer', { static: false }) gridContainer!: ElementRef;
 
   @Input() parentRef: any;
+  @Input() license: string | undefined;
   @Input() enableSorting = true;
   @Input() enableFilter = true;
   @Input() enableColResize = true;
@@ -188,6 +191,10 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
   constructor() {}
 
   ngOnInit() {
+    // Set license
+    if (this.license) {
+      LicenseManager.setLicenseKey(this.license);
+    }
     // Load column definitions from gridState first if present, if not fall back to columnDefs
     if (this.gridState.columnDefs.length) {
       const cols = columnsTemplateAttach(

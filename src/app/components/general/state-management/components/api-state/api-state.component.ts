@@ -1,5 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Domain } from '$domain';
+import { EntityState } from '@datorama/akita';
+
+declare namespace Domain {
+  export interface State extends EntityState<any> {
+    modifying: boolean;
+  }
+}
 
 @Component({
   selector: 'nts-api-state',

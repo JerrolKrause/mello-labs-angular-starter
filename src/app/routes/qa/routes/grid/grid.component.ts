@@ -3,6 +3,7 @@ import { cars } from '../tables/cars';
 import { ColDef, GridOptions } from 'ag-grid-community';
 import { DomainService } from '$domain';
 import { gridState1, gridState2, gridState3 } from './gridStates';
+import { environment } from '$env';
 
 @Component({
   selector: 'app-grid',
@@ -10,6 +11,7 @@ import { gridState1, gridState2, gridState3 } from './gridStates';
   styleUrls: ['./grid.component.css'],
 })
 export class GridComponent implements OnInit {
+  public license = environment.licenses.agGrid;
   public users$ = this.domain.users.users$;
   public rows: any[] = cars;
   public columns: ColDef[] = [

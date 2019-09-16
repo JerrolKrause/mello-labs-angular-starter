@@ -1,4 +1,3 @@
-@import '../../../../../../styles/globals';
 /* Grid Container  */
 nts-grid {
   display: flex;
@@ -34,7 +33,6 @@ ag-grid-angular .ag-root-wrapper {
   }
   .ag-header-icon {
     opacity: 1 !important;
-    color: $interact-primary;
   }
   .ag-column-hover .ag-header-icon {
     opacity: 1 !important;
@@ -46,7 +44,6 @@ ag-grid-angular .ag-root-wrapper {
     min-width: 16px;
     font-family: 'FontAwesome';
     text-align: center;
-    color: $interact-primary;
     &.ag-icon-expanded {
       background-image: none !important;
       padding-left: 7px;
@@ -152,7 +149,6 @@ ag-grid-angular .ag-root-wrapper {
     background-image: none !important;
     line-height: initial;
     font-family: 'FontAwesome';
-    color: $interact-primary;
     &:before {
       content: '\f054';
     }

@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NgControl, FormControl } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { isRequired } from 'src/app/shared/utils/forms/isRequired.util';
+import { isRequired } from '../../utils/isRequired.util';
 import { Spinner } from 'primeng/spinner';
 import { SelectItem } from 'primeng/api';
 import { slugCreateUniqueId } from '../../utils/slug.util';
