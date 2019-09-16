@@ -271,7 +271,11 @@ declare namespace Microsoft.Maps.SpatialDataService {
      * @param operator The operator to use when comparing the specified property to value to the provided value.
      * @param value A value to compare against.
      */
-    constructor(propertyName: string, operator: string | FilterCompareOperator, value: any);
+    constructor(
+      propertyName: string,
+      operator: string | FilterCompareOperator,
+      value: any,
+    );
 
     /**
      * Executes the filter logic against a JSON object and returns a boolean indicating if the object meets the requirements of the Filter.
@@ -299,7 +303,11 @@ declare namespace Microsoft.Maps.SpatialDataService {
      * @param operator The logical operator for combining the filters together.
      * @param not A boolean is the logical inverse should of the filter should be used.
      */
-    constructor(filters: IFilter[], operator: FilterLogicalOperator, not?: boolean);
+    constructor(
+      filters: IFilter[],
+      operator: FilterLogicalOperator,
+      not?: boolean,
+    );
 
     /**
      * Executes the filter logic against a JSON object and returns a boolean indicating if the object meets the requirements of the Filter.

@@ -95,7 +95,10 @@ declare namespace Microsoft.Maps {
      * @param shapeType The type of new shape to create.
      * @param created A callback function that is fired after the initial shape is created.
      */
-    public create(shapeType: DrawingTools.ShapeType, created?: (shape: IPrimitive) => void): void;
+    public create(
+      shapeType: DrawingTools.ShapeType,
+      created?: (shape: IPrimitive) => void,
+    ): void;
 
     /** Disposes the instance of the DrawingTools class. */
     public dispose(): void;
@@ -116,7 +119,9 @@ declare namespace Microsoft.Maps {
      * Creates a drawing manager which allows multi-shape editing and displays the toolbar.
      * @param callback A callback function that is triggered after the DrawingTools have loaded.
      */
-    public showDrawingManager(callback?: (manager: DrawingManager) => void): void;
+    public showDrawingManager(
+      callback?: (manager: DrawingManager) => void,
+    ): void;
   }
 
   export namespace Events {

@@ -1,6 +1,20 @@
-import { Directive, ElementRef, AfterViewInit, OnChanges, Input, HostListener } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  AfterViewInit,
+  OnChanges,
+  Input,
+  HostListener,
+} from '@angular/core';
 
-type overflow = 'auto' | 'hidden' | 'inherit' | 'initial' | 'overlay' | 'scroll' | 'visible';
+type overflow =
+  | 'auto'
+  | 'hidden'
+  | 'inherit'
+  | 'initial'
+  | 'overlay'
+  | 'scroll'
+  | 'visible';
 
 /**
  * Resizes the attached DOM element to full all vertical space below it's current position
@@ -61,16 +75,21 @@ export class FullScreenDirective implements AfterViewInit, OnChanges {
     // Make sure DOM is ready
     if (this.elem && this.elem.nativeElement) {
       // Get offset top automatically
-      let offsetTop = Math.round(this.elem.nativeElement.getBoundingClientRect().top + this.offsetBottom);
+      let offsetTop = Math.round(
+        this.elem.nativeElement.getBoundingClientRect().top + this.offsetBottom,
+      );
       // If offset top override is set, use that
       if (this.offsetTop != null) {
         offsetTop = this.offsetTop + this.offsetBottom;
       }
 
-      this.elem.nativeElement.style['height'] = 'calc(' + this.percent + 'vh - ' + offsetTop + 'px)';
+      this.elem.nativeElement.style['height'] =
+        'calc(' + this.percent + 'vh - ' + offsetTop + 'px)';
       this.elem.nativeElement.style['overflow-y'] = this.overflowY;
       this.elem.nativeElement.style['overflow-x'] = this.overflowX;
-      this.height = Math.floor(this.elem.nativeElement.getBoundingClientRect().height);
+      this.height = Math.floor(
+        this.elem.nativeElement.getBoundingClientRect().height,
+      );
     }
   }
 }

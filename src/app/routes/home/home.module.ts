@@ -9,7 +9,11 @@ import { routing } from './routes';
 import { RootComponent } from './routes/root/root.component';
 
 // Route State Management
-import { RouteUiStateQuery, RouteUiStateService, RouteUiStateStore } from './shared/state/ui';
+import {
+  RouteUiStateQuery,
+  RouteUiStateService,
+  RouteUiStateStore,
+} from './shared/state/ui';
 import { RouteDomainStateService } from './shared/state/domain';
 
 export const storeName = 'home-UIState'; // Change this property to be unique & route specific, IE 'route-UIState' => 'dashboard-UIState'
@@ -17,7 +21,12 @@ export const storeName = 'home-UIState'; // Change this property to be unique & 
 @NgModule({
   imports: [CommonModule, SiteModule, routing],
   declarations: [RootComponent],
-  providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
+  providers: [
+    RouteUiStateService,
+    RouteUiStateStore,
+    RouteUiStateQuery,
+    RouteDomainStateService,
+  ],
   exports: [],
   entryComponents: [],
 })

@@ -11,7 +11,10 @@ export class LogoutModalComponent implements OnInit, OnDestroy {
   public logoutTimer$: Subscription | undefined; // Holds the countdown obserable
   public counter: number | undefined; // Log out after this many seconds
 
-  constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig) {}
+  constructor(
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig,
+  ) {}
 
   ngOnInit() {
     this.counter = this.config.data; // How long to display the modal window

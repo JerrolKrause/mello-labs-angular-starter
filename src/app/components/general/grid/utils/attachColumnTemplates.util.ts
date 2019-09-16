@@ -8,14 +8,19 @@ import { GridTemplateRendererComponent } from '../components/grid-template-rende
  * @param columns
  * @param templates
  */
-export const columnsTemplateAttach = (columns: ColDef[], templates?: QueryList<GridColumnDirective>): ColDef[] => {
+export const columnsTemplateAttach = (
+  columns: ColDef[],
+  templates?: QueryList<GridColumnDirective>,
+): ColDef[] => {
   if (!templates || !templates.length) {
     return [...columns];
   }
 
   // Create a dictionary of the templates by field ID
   const templatesDictionary: { [key: string]: GridColumnDirective } = {};
-  templates.forEach(template => (templatesDictionary[template.field] = template));
+  templates.forEach(
+    template => (templatesDictionary[template.field] = template),
+  );
   // Loop through the columns, if a template match is found add it to the column
   return columns.map(column => {
     const col = { ...column };

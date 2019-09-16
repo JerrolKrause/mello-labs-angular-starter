@@ -8,11 +8,16 @@ import { TempStore, uniqueId } from './temp.store';
 import { TempQuery } from './temp.query';
 import { environment } from '$env';
 
-const url = environment.endpoints.apiUrl + '//jsonplaceholder.typicode.com/users';
+const url =
+  environment.endpoints.apiUrl + '//jsonplaceholder.typicode.com/users';
 
 @Injectable({ providedIn: 'root' })
 export class TempService {
-  constructor(public store: TempStore, public query: TempQuery, private http: HttpClient) {}
+  constructor(
+    public store: TempStore,
+    public query: TempQuery,
+    private http: HttpClient,
+  ) {}
 
   /**
    * Get entities and load into store
@@ -73,21 +78,23 @@ export class TempService {
       this.store.update({ modifying: true });
       this.store.setError(null);
     });
-    return this.http.put<Models.User>(url + '/' + entity[uniqueId], entity).pipe(
-      tap(res => {
-        applyTransaction(() => {
-          this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
-          this.store.update({ modifying: false });
-        });
-      }),
-      catchError(err => {
-        applyTransaction(() => {
-          this.store.setError(err);
-          this.store.update({ modifying: false });
-        });
-        return throwError(err);
-      }),
-    );
+    return this.http
+      .put<Models.User>(url + '/' + entity[uniqueId], entity)
+      .pipe(
+        tap(res => {
+          applyTransaction(() => {
+            this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
+            this.store.update({ modifying: false });
+          });
+        }),
+        catchError(err => {
+          applyTransaction(() => {
+            this.store.setError(err);
+            this.store.update({ modifying: false });
+          });
+          return throwError(err);
+        }),
+      );
   }
 
   /**

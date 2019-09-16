@@ -42,7 +42,8 @@ export const ROUTES: Routes = [
       {
         path: 'route',
         pathMatch: 'full',
-        loadChildren: () => import('./routes/_route/route.module').then(m => m.RouteModule),
+        loadChildren: () =>
+          import('./routes/_route/route.module').then(m => m.RouteModule),
         canActivate: [AuthGuard],
       },
 
@@ -50,13 +51,15 @@ export const ROUTES: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./routes/home/home.module').then(m => m.HomeModule),
+        loadChildren: () =>
+          import('./routes/home/home.module').then(m => m.HomeModule),
         canActivate: [AuthGuard],
       },
 
       {
         path: 'qa',
-        loadChildren: () => import('./routes/qa/qa.module').then(m => m.QaModule),
+        loadChildren: () =>
+          import('./routes/qa/qa.module').then(m => m.QaModule),
         data: { title: 'E2E Testing' },
         canActivate: [AuthGuard],
       },

@@ -16,7 +16,8 @@ export class SortPipe implements PipeTransform {
       const sortDesc = (a: any, b: any) => b[objProp] - a[objProp];
 
       if (objProp) {
-        arrayNew = sortDir === 'asc' ? arrayNew.sort(sortAsc) : arrayNew.sort(sortDesc);
+        arrayNew =
+          sortDir === 'asc' ? arrayNew.sort(sortAsc) : arrayNew.sort(sortDesc);
       } else {
         arrayNew = sortDir === 'asc' ? arrayNew.sort() : arrayNew.reverse();
       }

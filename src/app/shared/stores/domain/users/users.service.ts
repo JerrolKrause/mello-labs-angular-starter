@@ -12,7 +12,11 @@ const url = '//jsonplaceholder.typicode.com/users'; // environment.endpoints.api
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  constructor(public store: UsersStore, private query: UsersQuery, private http: HttpClient) {}
+  constructor(
+    public store: UsersStore,
+    private query: UsersQuery,
+    private http: HttpClient,
+  ) {}
 
   public users$ = this.query.select();
 
@@ -26,7 +30,9 @@ export class UsersService {
     if (refreshCache || !this.query.getHasCache()) {
       this.store.setLoading(true);
       return this.http.get<Models.User[]>(url).pipe(
-        tap(entities => this.store.set([...entities, ...entities, ...entities])), // On success, add response to store
+        tap(entities =>
+          this.store.set([...entities, ...entities, ...entities]),
+        ), // On success, add response to store
         catchError(err => {
           applyTransaction(() => {
             this.store.setError(err);
@@ -75,21 +81,23 @@ export class UsersService {
       this.store.update({ modifying: true });
       this.store.setError(null);
     });
-    return this.http.put<Models.User>(url + '/' + entity[uniqueId], entity).pipe(
-      tap(res => {
-        applyTransaction(() => {
-          this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
-          this.store.update({ modifying: false });
-        });
-      }),
-      catchError(err => {
-        applyTransaction(() => {
-          this.store.setError(err);
-          this.store.update({ modifying: false });
-        });
-        return throwError(err);
-      }),
-    );
+    return this.http
+      .put<Models.User>(url + '/' + entity[uniqueId], entity)
+      .pipe(
+        tap(res => {
+          applyTransaction(() => {
+            this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
+            this.store.update({ modifying: false });
+          });
+        }),
+        catchError(err => {
+          applyTransaction(() => {
+            this.store.setError(err);
+            this.store.update({ modifying: false });
+          });
+          return throwError(err);
+        }),
+      );
   }
 
   /**

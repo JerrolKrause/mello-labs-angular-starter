@@ -10,7 +10,11 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
-import { ConfirmationService, DialogService, MessageService } from 'primeng/api';
+import {
+  ConfirmationService,
+  DialogService,
+  MessageService,
+} from 'primeng/api';
 import { CardModule } from 'primeng/card';
 
 import { MessagesModule } from 'primeng/messages';

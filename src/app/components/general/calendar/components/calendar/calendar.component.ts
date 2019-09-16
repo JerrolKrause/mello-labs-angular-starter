@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FullCalendar } from 'primeng/fullcalendar';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -24,7 +30,12 @@ export class CalendarComponent implements OnInit {
   ];
   @Input() selectable = false;
 
-  public calendarPlugins = [dayGridPlugin, timeGridPlugin, interactionPlugin, resourceTimelinePlugin];
+  public calendarPlugins = [
+    dayGridPlugin,
+    timeGridPlugin,
+    interactionPlugin,
+    resourceTimelinePlugin,
+  ];
 
   @ViewChild('fc', { static: true }) fc!: FullCalendar;
 

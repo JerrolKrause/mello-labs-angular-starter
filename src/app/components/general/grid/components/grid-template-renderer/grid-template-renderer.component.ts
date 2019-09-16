@@ -6,12 +6,20 @@ import { ICellRendererParams } from 'ag-grid-community';
 @Component({
   selector: 'app-template-renderer',
   template: `
-    <ng-container *ngTemplateOutlet="template; context: templateContext"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="template; context: templateContext"
+    ></ng-container>
   `,
 })
 export class GridTemplateRendererComponent implements ICellRendererAngularComp {
   template!: TemplateRef<any>;
-  templateContext!: { $implicit: any; params: any; column: any; row: any; value: any };
+  templateContext!: {
+    $implicit: any;
+    params: any;
+    column: any;
+    row: any;
+    value: any;
+  };
 
   refresh(params: any): boolean {
     if (params.data) {

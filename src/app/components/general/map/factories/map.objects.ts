@@ -1,14 +1,27 @@
 // Create factories for bing map entities to remove tight coupling to 'new' keyword
 export const MapObjectTypes = {
-  map: (divId: string, options?: Map.Options) => new Microsoft.Maps.Map(<any>document.getElementById(divId), <any>options),
-  infoBox: (location: Microsoft.Maps.Location, options?: Microsoft.Maps.IInfoboxOptions) => new Microsoft.Maps.Infobox(location, options),
-  pushpin: (location: Microsoft.Maps.Location, options?: Microsoft.Maps.IPushpinOptions) => new Microsoft.Maps.Pushpin(location, options),
-  location: (latitude: number, longitude: number) => new Microsoft.Maps.Location(latitude, longitude),
-  heatMapLayer: (locations: (Microsoft.Maps.Location | Microsoft.Maps.Pushpin)[], options: Microsoft.Maps.IHeatMapLayerOptions) =>
-    new Microsoft.Maps.HeatMapLayer(locations, options),
-  polygon: (rings: Microsoft.Maps.Location[] | Microsoft.Maps.Location[][], options: Microsoft.Maps.IPolygonOptions) =>
-    new Microsoft.Maps.Polygon(rings, options),
-  color: (a: number, b: number, c: number, d: number) => new Microsoft.Maps.Color(a, b, c, d),
+  map: (divId: string, options?: Map.Options) =>
+    new Microsoft.Maps.Map(<any>document.getElementById(divId), <any>options),
+  infoBox: (
+    location: Microsoft.Maps.Location,
+    options?: Microsoft.Maps.IInfoboxOptions,
+  ) => new Microsoft.Maps.Infobox(location, options),
+  pushpin: (
+    location: Microsoft.Maps.Location,
+    options?: Microsoft.Maps.IPushpinOptions,
+  ) => new Microsoft.Maps.Pushpin(location, options),
+  location: (latitude: number, longitude: number) =>
+    new Microsoft.Maps.Location(latitude, longitude),
+  heatMapLayer: (
+    locations: (Microsoft.Maps.Location | Microsoft.Maps.Pushpin)[],
+    options: Microsoft.Maps.IHeatMapLayerOptions,
+  ) => new Microsoft.Maps.HeatMapLayer(locations, options),
+  polygon: (
+    rings: Microsoft.Maps.Location[] | Microsoft.Maps.Location[][],
+    options: Microsoft.Maps.IPolygonOptions,
+  ) => new Microsoft.Maps.Polygon(rings, options),
+  color: (a: number, b: number, c: number, d: number) =>
+    new Microsoft.Maps.Color(a, b, c, d),
 };
 
 export const MapObjects = {
@@ -18,7 +31,11 @@ export const MapObjects = {
    * @param locations
    * @param options
    */
-  pushPinAdd: (map: Microsoft.Maps.Map, locations: Map.Location[], options: Map.Options) => {
+  pushPinAdd: (
+    map: Microsoft.Maps.Map,
+    locations: Map.Location[],
+    options: Map.Options,
+  ) => {
     if (locations && locations.length) {
       // Create new pushpin instances and add to map
       const pins = locations.map(loc => {
@@ -28,7 +45,10 @@ export const MapObjects = {
         if (loc.icon || options.pushPinIcon) {
           pinOptions.icon = loc.icon || options.pushPinIcon;
         }
-        const pin: Microsoft.Maps.Pushpin = MapObjectTypes.pushpin(<any>loc, pinOptions);
+        const pin: Microsoft.Maps.Pushpin = MapObjectTypes.pushpin(
+          <any>loc,
+          pinOptions,
+        );
 
         if (loc.metadata) {
           pin.metadata = { ...loc.metadata };
@@ -52,14 +72,21 @@ export const MapObjects = {
    * @param radius
    * @param disUnit
    */
-  circleDraw: (map: Microsoft.Maps.Map, origin: any, radius: string, disUnit: string = 'mile') => {
+  circleDraw: (
+    map: Microsoft.Maps.Map,
+    origin: any,
+    radius: string,
+    disUnit: string = 'mile',
+  ) => {
     let RadPerDeg = 0;
     let earthRadius = 0;
 
     RadPerDeg = Math.PI / 180;
 
     // get the earth radius based on unit
-    disUnit.toLowerCase() === 'mile' ? (earthRadius = 3959) : (earthRadius = 6371);
+    disUnit.toLowerCase() === 'mile'
+      ? (earthRadius = 3959)
+      : (earthRadius = 6371);
 
     const lat = origin.latitude * RadPerDeg;
     const lon = origin.longitude * RadPerDeg;
@@ -69,9 +96,16 @@ export const MapObjects = {
       // making a 360-sided polygon
       let pLatitude, pLongitude;
       const brng = x * RadPerDeg;
-      pLatitude = Math.asin(Math.sin(lat) * Math.cos(AngDist) + Math.cos(lat) * Math.sin(AngDist) * Math.cos(brng)); // still in radians
+      pLatitude = Math.asin(
+        Math.sin(lat) * Math.cos(AngDist) +
+          Math.cos(lat) * Math.sin(AngDist) * Math.cos(brng),
+      ); // still in radians
       pLongitude =
-        lon + Math.atan2(Math.sin(brng) * Math.sin(AngDist) * Math.cos(lat), Math.cos(AngDist) - Math.sin(lat) * Math.sin(pLatitude));
+        lon +
+        Math.atan2(
+          Math.sin(brng) * Math.sin(AngDist) * Math.cos(lat),
+          Math.cos(AngDist) - Math.sin(lat) * Math.sin(pLatitude),
+        );
       pLatitude = pLatitude / RadPerDeg;
       pLongitude = pLongitude / RadPerDeg;
       locs.push(MapObjectTypes.location(pLatitude, pLongitude));
@@ -99,15 +133,19 @@ export const MapObjects = {
    */
   circlesRefresh: (map: Microsoft.Maps.Map, options: Map.Options) => {
     // Remove all circles from map
-    MapObjects.entitiesGet<Microsoft.Maps.Polygon>(map, 'Polygon').forEach(entry => map.entities.remove(entry));
+    MapObjects.entitiesGet<Microsoft.Maps.Polygon>(map, 'Polygon').forEach(
+      entry => map.entities.remove(entry),
+    );
 
     // Get location of pushpin and add circle to map
-    MapObjects.entitiesGet<Microsoft.Maps.Pushpin>(map, 'Pushpin').forEach(entity => {
-      const location = entity.getLocation();
-      if (options) {
-        MapObjects.circleDraw(map, location, <any>options.pushPinRadius);
-      }
-    });
+    MapObjects.entitiesGet<Microsoft.Maps.Pushpin>(map, 'Pushpin').forEach(
+      entity => {
+        const location = entity.getLocation();
+        if (options) {
+          MapObjects.circleDraw(map, location, <any>options.pushPinRadius);
+        }
+      },
+    );
   },
 
   /**
@@ -117,12 +155,36 @@ export const MapObjects = {
    */
   heatMapCreate: (map: Microsoft.Maps.Map, locations: Map.Location[]) => {
     // Turn lat/long into location entities
-    const locationsPoints = locations.map(loc => MapObjectTypes.location(loc.latitude, loc.longitude));
+    const locationsPoints = locations.map(loc =>
+      MapObjectTypes.location(loc.latitude, loc.longitude),
+    );
     const zoom = map.getZoom();
 
     // Get a radius based on zoom level
     // TODO: Generate this programatically
-    const radiuses = [0, 0, 0, 0, 0, 0, 0, 0, 300, 900, 2000, 3500, 7000, 10500, 15500, 30500, 60000, 90000, 120000, 120000, 120000];
+    const radiuses = [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      300,
+      900,
+      2000,
+      3500,
+      7000,
+      10500,
+      15500,
+      30500,
+      60000,
+      90000,
+      120000,
+      120000,
+      120000,
+    ];
     const radius = radiuses[21 - zoom];
 
     // Get intensity based on zoom level
@@ -162,7 +224,14 @@ export const MapObjects = {
    * @param map
    * @param type
    */
-  entitiesGet: <t>(map: Microsoft.Maps.Map, type: 'Polygon' | 'Pushpin'): t[] => {
-    return <any>map.entities.getPrimitives().filter(entry => entry.entity.id.split('_')[0] === type);
+  entitiesGet: <t>(
+    map: Microsoft.Maps.Map,
+    type: 'Polygon' | 'Pushpin',
+  ): t[] => {
+    return <any>(
+      map.entities
+        .getPrimitives()
+        .filter(entry => entry.entity.id.split('_')[0] === type)
+    );
   },
 };

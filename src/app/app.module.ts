@@ -87,12 +87,15 @@ export const APP_COMPONENTS = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true,
-      preloadingStrategy: environment.settings.preloadRoutes ? PreloadAllModules : NoPreloading,
+      preloadingStrategy: environment.settings.preloadRoutes
+        ? PreloadAllModules
+        : NoPreloading,
       scrollPositionRestoration: 'enabled',
     }),
 
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production && environment.settings.enableServiceWorker,
+      enabled:
+        environment.production && environment.settings.enableServiceWorker,
       registrationStrategy: 'registerImmediately',
     }),
 

@@ -20,7 +20,11 @@ import { GridComponent } from './components/grid/grid.component';
 LicenseManager.setLicenseKey(environment.licenses.agGrid);
 
 @NgModule({
-  imports: [CommonModule, SiteModule, AgGridModule.withComponents([GridTemplateRendererComponent])],
+  imports: [
+    CommonModule,
+    SiteModule,
+    AgGridModule.withComponents([GridTemplateRendererComponent]),
+  ],
   providers: [],
   declarations: [
     GridTemplateRendererComponent,

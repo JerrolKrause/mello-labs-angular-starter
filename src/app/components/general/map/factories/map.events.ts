@@ -19,16 +19,23 @@ export const MapEvents = {
     }
   },
 
-  infoBoxEvent: (pins: Microsoft.Maps.Pushpin[], infoBox: Microsoft.Maps.Infobox) => {
+  infoBoxEvent: (
+    pins: Microsoft.Maps.Pushpin[],
+    infoBox: Microsoft.Maps.Infobox,
+  ) => {
     if (pins && pins.length) {
       // If metadata available, add to pin and add infobox click event
       pins.forEach(pin => {
         if (pin.metadata) {
-          Microsoft.Maps.Events.addHandler(pin, 'click', (e: Microsoft.Maps.IMouseEventArgs) => {
-            if (MapEvents && e) {
-              infoBox.setOptions(<any>MapEvents.pushpinClicked(e));
-            }
-          });
+          Microsoft.Maps.Events.addHandler(
+            pin,
+            'click',
+            (e: Microsoft.Maps.IMouseEventArgs) => {
+              if (MapEvents && e) {
+                infoBox.setOptions(<any>MapEvents.pushpinClicked(e));
+              }
+            },
+          );
         }
       });
     }
@@ -40,7 +47,11 @@ export const MapEvents = {
    * @param map
    * @param type
    */
-  mapClickEvent: (e: Microsoft.Maps.IMouseEventArgs, map: Microsoft.Maps.Map, options: Map.Options) => {
+  mapClickEvent: (
+    e: Microsoft.Maps.IMouseEventArgs,
+    map: Microsoft.Maps.Map,
+    options: Map.Options,
+  ) => {
     // If pushpin type is set to single, clear out all other pins
     if (options.pushPinsAddable === 'single') {
       MapObjects.removeAll(map);

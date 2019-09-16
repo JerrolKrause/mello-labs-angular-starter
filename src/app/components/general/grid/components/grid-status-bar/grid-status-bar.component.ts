@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ColumnApi } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 const cloneDeep = require('lodash/cloneDeep');
@@ -43,7 +48,7 @@ export class GridStatusBarComponent implements OnInit {
     if (!this.resetting) {
       // Local reference to grid state
       this.gridState = cloneDeep(gridState);
-     
+
       // Get grid filters
       if (this.gridState && this.gridState.filters) {
         const filterTermsMax = 3;
@@ -64,7 +69,9 @@ export class GridStatusBarComponent implements OnInit {
 
       // Get the active groups
       if (this.gridState && this.gridState.columnsState) {
-        this.gridGroups = this.gridState.columnsState.filter((column: any) => column.rowGroupIndex !== null);
+        this.gridGroups = this.gridState.columnsState.filter(
+          (column: any) => column.rowGroupIndex !== null,
+        );
       }
 
       this.ref.detectChanges();

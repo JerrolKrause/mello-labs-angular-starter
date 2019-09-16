@@ -25,7 +25,10 @@ interface LogError {
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  constructor(private settings: SettingsService, private sw: NtsServiceWorkerService) {}
+  constructor(
+    private settings: SettingsService,
+    private sw: NtsServiceWorkerService,
+  ) {}
 
   // Custom error handler for application/angular errors
   // Uses plain JS to eliminate any dependencies that may not be available due to the error
@@ -33,7 +36,12 @@ export class GlobalErrorHandler implements ErrorHandler {
     // If is browser
     // Does not have custom error message
     // Does not have http status field (to ignore http errors)
-    if (this.settings.isBrowser && !error.errorMsg && !error.hasOwnProperty('status') && environment.production) {
+    if (
+      this.settings.isBrowser &&
+      !error.errorMsg &&
+      !error.hasOwnProperty('status') &&
+      environment.production
+    ) {
       // If error endpoint specified, log errors
       if (environment.endpoints.errorPath) {
         this.logError(error);

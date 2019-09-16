@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { DomainService } from '$domain';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -46,7 +52,9 @@ export class UserFormComponent implements OnInit, OnChanges {
       });
     } else {
       // If creating, use post
-      this.domain.users.post(this.formMain.value).subscribe(() => this.formMain.reset());
+      this.domain.users
+        .post(this.formMain.value)
+        .subscribe(() => this.formMain.reset());
     }
   }
 

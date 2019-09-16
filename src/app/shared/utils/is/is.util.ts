@@ -33,7 +33,9 @@ export const isBrowserIE = () => {
  */
 export const isBrowserMobile = () => {
   const ua = window.navigator.userAgent;
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua);
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(
+    ua,
+  );
 
   return isMobile;
 };

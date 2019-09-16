@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService, DialogService, MessageService } from 'primeng/api';
+import {
+  ConfirmationService,
+  DialogService,
+  MessageService,
+} from 'primeng/api';
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { LogoutModalComponent, FeedbackModalComponent } from '$modals';
 import { filter } from 'rxjs/operators';
@@ -124,7 +128,11 @@ export class QaComponent implements OnInit {
 
   public toasterPop() {
     console.log(1, this.message);
-    this.message.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
+    this.message.add({
+      severity: 'success',
+      summary: 'Service Message',
+      detail: 'Via MessageService',
+    });
   }
 
   /**

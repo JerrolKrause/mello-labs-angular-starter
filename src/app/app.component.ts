@@ -4,7 +4,10 @@ import { Title } from '@angular/platform-browser';
 import { map, filter, mergeMap } from 'rxjs/operators';
 
 import { environment } from '$env';
-import { NtsVersionManagementService, NtsServiceWorkerService } from '$services';
+import {
+  NtsVersionManagementService,
+  NtsServiceWorkerService,
+} from '$services';
 
 @Component({
   selector: 'app-root',
@@ -62,7 +65,9 @@ export class AppComponent implements OnInit {
       )
       .subscribe(event => {
         // Change document title
-        this.title.setTitle(event['title'] + ' | ' + environment.properties.appName);
+        this.title.setTitle(
+          event['title'] + ' | ' + environment.properties.appName,
+        );
       });
   }
 }

@@ -27,7 +27,7 @@ export class GridComponent implements OnInit {
   public stateToggle = {
     gridState1: gridState1,
     gridState2: gridState2,
-    gridState3: gridState3
+    gridState3: gridState3,
   };
 
   constructor(private domain: DomainService) {}

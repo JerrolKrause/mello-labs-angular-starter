@@ -27,9 +27,15 @@ export class FormsComponent implements OnInit {
   public optionsStr = ['Orange', 'Apple', 'Strawberry'];
 
   public form = this.fb.group({
-    text: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+    text: [
+      null,
+      [Validators.required, Validators.minLength(5), Validators.maxLength(10)],
+    ],
     email: [null, [Validators.required, Validators.email]],
-    number: [null, [Validators.required, Validators.min(10), Validators.max(30)]],
+    number: [
+      null,
+      [Validators.required, Validators.min(10), Validators.max(30)],
+    ],
     password: [null, [Validators.required]],
     select: [null, [Validators.required]],
     select2: [null, [Validators.required]],

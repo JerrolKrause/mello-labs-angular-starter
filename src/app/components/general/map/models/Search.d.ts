@@ -161,7 +161,9 @@ declare namespace Microsoft.Maps.Search {
      * A reference to a function to call when the request is returned with an error. The error callback function will receive
      * an object containing the geocode request options used in the request.
      */
-    errorCallback?: (reverseGeocodeRequestOptions: ReverseGeocodeRequestOptions) => void;
+    errorCallback?: (
+      reverseGeocodeRequestOptions: ReverseGeocodeRequestOptions,
+    ) => void;
 
     /** Specifies to include the two-letter ISO country code. Default: false */
     includeCountryIso2?: boolean;

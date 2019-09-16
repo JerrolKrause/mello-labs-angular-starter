@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+} from '@angular/core';
 import { timer, Observable } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { untilDestroyed } from 'ngx-take-until-destroy';

@@ -8,7 +8,10 @@ export class DebouncePipe implements PipeTransform {
   private transformValue: any = null;
   private timeoutHandle: any = -1;
 
-  constructor(private changeDetector: ChangeDetectorRef, private zone: NgZone) {}
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private zone: NgZone,
+  ) {}
 
   transform(value: any, debounceTime?: number): any {
     if (this.currentValue === null) {

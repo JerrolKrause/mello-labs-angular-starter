@@ -60,7 +60,10 @@ declare namespace Microsoft.Maps {
      * @param styles Styles that needs to be applied.
      * @returns An array of shapes.
      */
-    export function read(geoJson: IGeoJsonObject | string, styles?: IStylesOptions): IPrimitive | IPrimitive[];
+    export function read(
+      geoJson: IGeoJsonObject | string,
+      styles?: IStylesOptions,
+    ): IPrimitive | IPrimitive[];
 
     /**
      * Writes the data into geoJson format.

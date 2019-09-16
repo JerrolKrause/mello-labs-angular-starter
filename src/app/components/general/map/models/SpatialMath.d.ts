@@ -69,7 +69,11 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param toUnits The area units to convert to.
    * @returns An area in the new units.
    **/
-  export function convertArea(area: number, fromUnits: AreaUnits, toUnits: AreaUnits): number;
+  export function convertArea(
+    area: number,
+    fromUnits: AreaUnits,
+    toUnits: AreaUnits,
+  ): number;
 
   /**
    * Converts a distance from one distance units to another.
@@ -78,7 +82,11 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param toUnits The disired distance units to convert to.
    * @returns A distance in the new units.
    **/
-  export function convertDistance(distance: number, fromUnits: DistanceUnits, toUnits: DistanceUnits): number;
+  export function convertDistance(
+    distance: number,
+    fromUnits: DistanceUnits,
+    toUnits: DistanceUnits,
+  ): number;
 
   /**
    * Calculates an array of locations that form a cardinal spline between the specified array of locations.
@@ -88,7 +96,12 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param close A boolean indicating if the spline should be a closed ring or not. Default: false
    * @returns An array of locations that form a cardinal spline between the specified array of locations.
    */
-  export function getCardinalSpline(locations: Location[], tension?: number, nodeSize?: number, close?: boolean): Location[];
+  export function getCardinalSpline(
+    locations: Location[],
+    tension?: number,
+    nodeSize?: number,
+    close?: boolean,
+  ): Location[];
 
   /**
    * Calculates a destination Location based on a starting Location, a heading, a distance, and a distance unit type.
@@ -98,7 +111,12 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param units Unit of distance measurement. Default is Meters.
    * @returns A Location that is the specified distance away from the origin.
    **/
-  export function getDestination(origin: Location, bearing: number, distance: number, units?: DistanceUnits): Location;
+  export function getDestination(
+    origin: Location,
+    bearing: number,
+    distance: number,
+    units?: DistanceUnits,
+  ): Location;
 
   /**
    * Calculate the distance between two Location objects on the surface of the earth using the Haversine formula.
@@ -108,7 +126,12 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param highAccuracy When set enabled, will use the slower but more accurate Vincenty formula for calculating distances, rather than the Haversine formula.
    * @returns The shortest distance between two Locations in the specifed units.
    **/
-  export function getDistanceTo(origin: Location, destination: Location, units?: DistanceUnits, highAccuracy?: boolean): number;
+  export function getDistanceTo(
+    origin: Location,
+    destination: Location,
+    units?: DistanceUnits,
+    highAccuracy?: boolean,
+  ): number;
 
   /**
    * Retrieves the radius of the earth in a specific distance unit for WGS84.
@@ -123,7 +146,10 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param nodeSize Number of nodes to insert between each Location. Default: 15
    * @returns An array of Location objects that form a geodesic paths.
    **/
-  export function getGeodesicPath(path: Location[], nodeSize?: number): Location[];
+  export function getGeodesicPath(
+    path: Location[],
+    nodeSize?: number,
+  ): Location[];
 
   /**
    * Calculates the heading from one Location object to another.
@@ -140,7 +166,11 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param highAccuracy If set to true, uses the more accurate Vincenty algorithm for calcuating distances. Otherwise the faster Haversine formula is used.
    * @returns The distance between all Locations in between all Location objects in an array on the surface of a earth in the specifed units.
    **/
-  export function getLengthOfPath(path: Location[], units?: DistanceUnits, highAccuracy?: boolean): number;
+  export function getLengthOfPath(
+    path: Location[],
+    units?: DistanceUnits,
+    highAccuracy?: boolean,
+  ): number;
 
   /**
    * Calculates the Location object on a path that is a specified distance away from the start of the path. If the specified distance is longer
@@ -150,7 +180,11 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param units Unit of distance measurement. Default is Meters.
    * @returns A Location object that is the specified distance away from the start of the path when following the path.
    **/
-  export function getLocationAlongPath(path: Polyline | Location[], distance: number, units?: DistanceUnits): Location;
+  export function getLocationAlongPath(
+    path: Polyline | Location[],
+    distance: number,
+    units?: DistanceUnits,
+  ): Location;
 
   /**
    * Calculates an array of Location objects that are an equal distance away from a central point to create a regular polygon.
@@ -176,7 +210,11 @@ declare namespace Microsoft.Maps.SpatialMath {
    * @param fraction The fractional parameter to calculate a mid-point for. Default 0.5.
    * @returns A Location that lies a fraction of the distance between two Location objects, relative to the first Location object.
    **/
-  export function interpolate(origin: Location, destination: Location, fraction?: number): Location;
+  export function interpolate(
+    origin: Location,
+    destination: Location,
+    fraction?: number,
+  ): Location;
 
   /**
    * Takes a LocationRect and converts it to a polygon.
@@ -227,7 +265,11 @@ declare namespace Microsoft.Maps.SpatialMath.Tiles {
    * @param units Distance unit type to calculate resolution in.
    * @returns Ground resolution in distance unit per pixels.
    **/
-  export function groundResolution(latitude: number, zoom: number, units?: SpatialMath.DistanceUnits): number;
+  export function groundResolution(
+    latitude: number,
+    zoom: number,
+    units?: SpatialMath.DistanceUnits,
+  ): number;
 
   /**
    * Converts a Pixel coordinate into a Geospatial Location at a specified zoom level.
@@ -276,7 +318,10 @@ declare namespace Microsoft.Maps.SpatialMath.Tiles {
    * @param zoom The zoom level to calculate tiles for.
    * @returns A list of PyramidTileId's that are within the specified LocationRect and zoom level.
    **/
-  export function getTilesInBounds(bounds: LocationRect, zoom: number): PyramidTileId[];
+  export function getTilesInBounds(
+    bounds: LocationRect,
+    zoom: number,
+  ): PyramidTileId[];
 
   /**
    * Calculates the LocationRect (bounding box) of a PyramidTileId.
@@ -313,14 +358,19 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param areaUnits The unit of measurement to calculate the area in.
    * @returns The area of a shape in the specified unit of measurement.
    */
-  export function area(shape: IPrimitive | IPrimitive[], areaUnits?: AreaUnits): number;
+  export function area(
+    shape: IPrimitive | IPrimitive[],
+    areaUnits?: AreaUnits,
+  ): number;
 
   /**
    * Calculates a bounding box that encloses a set of shapes and/or locations.
    * @param shapes The shape(s) to calculate the bounding box for.
    * @returns A location rect that encloses the shapes and/or locations.
    */
-  export function bounds(shapes: Location | IPrimitive | (Location | IPrimitive)[]): LocationRect;
+  export function bounds(
+    shapes: Location | IPrimitive | (Location | IPrimitive)[],
+  ): LocationRect;
 
   /**
    * Calcuates a shape with an updated boundary that has been inflated/deflated by a speicifed distance.
@@ -395,7 +445,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param options A set of polyline or polygon options to apply to the generated shape.
    * @returns An array of shapes that form the polygon triangles of the delaunay triangles.
    */
-  export function delaunayTriangles(shapes: Location | IPrimitive | (Location | IPrimitive)[], options?: IPolygonOptions): Polygon[];
+  export function delaunayTriangles(
+    shapes: Location | IPrimitive | (Location | IPrimitive)[],
+    options?: IPolygonOptions,
+  ): Polygon[];
 
   /**
    * Returns an object that represents area of an initial shape subtracted by the overlapping area of a second shape.
@@ -403,7 +456,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shapeB The second shape to subtract from the first.
    * @returns A set of shapes that represent the area of the first shape that is not overlapped by the second shape.
    */
-  export function difference(shapeA: IPrimitive | IPrimitive[], shapeB: IPrimitive | IPrimitive[]): IPrimitive | IPrimitive[];
+  export function difference(
+    shapeA: IPrimitive | IPrimitive[],
+    shapeB: IPrimitive | IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Calculates the approximate shortest distance between any two shapes.
@@ -426,7 +482,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shapeB The second shape.
    * @returns A set of shapes that represents the area where two shapes intersect.
    */
-  export function intersection(shapeA: IPrimitive | IPrimitive[], shapeB: IPrimitive | IPrimitive[]): IPrimitive | IPrimitive[];
+  export function intersection(
+    shapeA: IPrimitive | IPrimitive[],
+    shapeB: IPrimitive | IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Determines if two shapes intersect or not.
@@ -454,7 +513,11 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param highAccuracy If set to true, uses the more accurate Vincenty algorithm for calcuating distances. Otherwise the faster Haversine formula is used.
    * @returns The distance between all Locations in a polyline or the perimeter of a ploygon on the surface of a earth in the specifed units.
    */
-  export function calculateLength(shape: IPrimitive | IPrimitive[], units?: DistanceUnits, highAccuracy?: boolean): number;
+  export function calculateLength(
+    shape: IPrimitive | IPrimitive[],
+    units?: DistanceUnits,
+    highAccuracy?: boolean,
+  ): number;
 
   /**
    * Takes a shape and returns a copy of it that meets the requirements of an SQL Geography type and other OGC compliant systems. Polylines & Polygons can't be self intersecting. For Polygons,
@@ -462,7 +525,9 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shape The shape to make valid.
    * @returns Valiated version of the provided shape. May be a different shape type than what was provided. i.e. A polygon may be broken up into an array of polygons (MultiPolygon).
    */
-  export function makeValid(shape: IPrimitive | IPrimitive[]): IPrimitive | IPrimitive[];
+  export function makeValid(
+    shape: IPrimitive | IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Calculates the nearest Location objects between to shapes that lie on the shapes.
@@ -485,7 +550,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param tolerance A tolerance distance in meters used by the reduction algorithms.
    * @returns A version of the specified shape that has been reduced.
    */
-  export function reduce(shape: IPrimitive | IPrimitive[], tolerance: number): IPrimitive | IPrimitive[];
+  export function reduce(
+    shape: IPrimitive | IPrimitive[],
+    tolerance: number,
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Rotates a shape around a given Location for the specified angle of rotation. If an origin is not provided, the centroid of the shape is used.
@@ -493,7 +561,11 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param angle The amount to rotate the shape in degrees.
    * @param origin The location to rotate the shape around. Defaults to the centroid of the shape.
    */
-  export function rotate(shape: IPrimitive | IPrimitive[], angle: number, origin?: Location): void;
+  export function rotate(
+    shape: IPrimitive | IPrimitive[],
+    angle: number,
+    origin?: Location,
+  ): void;
 
   /**
    * Calculates the shortest path that between two shapes and returns a Polyline.
@@ -544,7 +616,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shapeB The second shape.
    * @returns A shape that represents the symetric difference between two shapes.
    */
-  export function symDifference(shapeA: IPrimitive | IPrimitive[], shapeB: IPrimitive | IPrimitive[]): IPrimitive | IPrimitive[];
+  export function symDifference(
+    shapeA: IPrimitive | IPrimitive[],
+    shapeB: IPrimitive | IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Returns an object that represents the union of two shapes. If shapes don't overlap, an array of each individual shapes will be returned.
@@ -552,7 +627,10 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shapeB The second shape.
    * @returns A shape that represents the union of two shapes.
    */
-  export function union(shapeA: IPrimitive | IPrimitive[], shapeB: IPrimitive | IPrimitive[]): IPrimitive | IPrimitive[];
+  export function union(
+    shapeA: IPrimitive | IPrimitive[],
+    shapeB: IPrimitive | IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Performs a union operation on a set of shapes.
@@ -560,7 +638,9 @@ declare namespace Microsoft.Maps.SpatialMath.Geometry {
    * @param shapes An array of shapes to union together.
    * @returns A shape that represents the union of all specified shapes.
    */
-  export function unionAggregate(shapes: IPrimitive[]): IPrimitive | IPrimitive[];
+  export function unionAggregate(
+    shapes: IPrimitive[],
+  ): IPrimitive | IPrimitive[];
 
   /**
    * Creates a Voronoi diagram from the Location objects of the provided shapes. The diagram is returned as an array of Polygons.

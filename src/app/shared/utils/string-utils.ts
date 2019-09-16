@@ -110,7 +110,8 @@ export class StringUtils {
    * @param offsetAmount
    */
   static charShift(str: string, offsetAmount: number = 1) {
-    const charsList = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-=[{]}|;:",<.>/?';
+    const charsList =
+      ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-=[{]}|;:",<.>/?';
     let strNew = '';
 
     // Loop through all the chars in the string

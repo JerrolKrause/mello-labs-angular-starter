@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+} from '@angular/core';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -33,7 +38,9 @@ export class RootComponent implements OnInit, OnDestroy {
     // Load users
     this.domainState.users.get().subscribe();
     // Get set prop from ROUTE UI store
-    this.routeUIState.someProp$.subscribe(val => console.log('Someprop Val', val));
+    this.routeUIState.someProp$.subscribe(val =>
+      console.log('Someprop Val', val),
+    );
     this.routeUIState.updateRouteUIState('Test');
 
     // Get/set settings both sync and async
@@ -43,7 +50,9 @@ export class RootComponent implements OnInit, OnDestroy {
     this.settings.userName = 'John';
 
     // Domain state from simple store
-    this.domainState.staticData.todos$.subscribe(val => console.log('Todos', val));
+    this.domainState.staticData.todos$.subscribe(val =>
+      console.log('Todos', val),
+    );
     this.domainState.staticData.todos();
   }
 

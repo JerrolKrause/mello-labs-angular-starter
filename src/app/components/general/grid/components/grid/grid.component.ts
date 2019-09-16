@@ -16,7 +16,13 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import { GridOptions, ColumnApi, ColDef, GridApi, RowNode } from 'ag-grid-community';
+import {
+  GridOptions,
+  ColumnApi,
+  ColDef,
+  GridApi,
+  RowNode,
+} from 'ag-grid-community';
 import { fromEvent } from 'rxjs/internal/observable/fromEvent';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -38,8 +44,8 @@ const defaultsDeep = require('lodash/defaultsDeep');
   templateUrl: './grid.component.html',
   styleUrls: [
     // After moving starter OUT of monorepo, update path to node_modules
-    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css', 
-    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css', 
+    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-grid.css',
+    '../../../../../../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css',
     './grid.component.scss',
   ],
   // tslint:disable-next-line:use-component-view-encapsulation
@@ -75,7 +81,13 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
       // cellRenderer: 'agGroupCellRenderer',
     },
     statusBar: {
-      statusPanels: [{ statusPanel: 'statusBarComponent', align: 'left', key: 'statusBarComponent' }],
+      statusPanels: [
+        {
+          statusPanel: 'statusBarComponent',
+          align: 'left',
+          key: 'statusBarComponent',
+        },
+      ],
     },
   };
   @Input()
@@ -89,7 +101,9 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   // Global filter term
   @Input() gridFilterTerm: string | null = null;
-  public gridFilterTerm$ = new BehaviorSubject<string | null>(this.gridFilterTerm);
+  public gridFilterTerm$ = new BehaviorSubject<string | null>(
+    this.gridFilterTerm,
+  );
 
   @Input() gridState: GridState = {
     groupsColumns: [],
@@ -134,7 +148,12 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   /** Watch all grid state changes */
   public gridEvent$ = new Subject<
-    'sortChanged' | 'filterChanged' | 'columnRowGroupChanged' | 'columnPinned' | 'columnMoved' | 'columnResized'
+    | 'sortChanged'
+    | 'filterChanged'
+    | 'columnRowGroupChanged'
+    | 'columnPinned'
+    | 'columnMoved'
+    | 'columnResized'
   >();
   /** Hold latest gridstate */
   public gridState$ = new BehaviorSubject<any>(this.gridState);
@@ -171,12 +190,17 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     // Load column definitions from gridState first if present, if not fall back to columnDefs
     if (this.gridState.columnDefs.length) {
-      const cols = columnsTemplateAttach(this.gridState.columnDefs, this.columnTemplates);
+      const cols = columnsTemplateAttach(
+        this.gridState.columnDefs,
+        this.columnTemplates,
+      );
       cols.forEach(col => (col.colId = col.field)); // AG-grid needs the colID to match when doing a setColumnDefs call
       this.columns$.next(cols);
     } else if (this.columnDefs) {
       this.columnDefs.forEach(col => (col.colId = col.field)); // AG-grid needs the colID to match when doing a setColumnDefs call
-      this.columns$.next(columnsTemplateAttach(this.columnDefs, this.columnTemplates));
+      this.columns$.next(
+        columnsTemplateAttach(this.columnDefs, this.columnTemplates),
+      );
     }
 
     // When state changes
@@ -229,7 +253,13 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(model: SimpleChanges) {
     // If rowdata changes, reselect rows
-    if (model.rowData && this.rowsStaySelected && this.rowUniqueId && this.rowsSelectedList && this.gridApi) {
+    if (
+      model.rowData &&
+      this.rowsStaySelected &&
+      this.rowUniqueId &&
+      this.rowsSelectedList &&
+      this.gridApi
+    ) {
       rowsReselect(this.rowUniqueId, this.rowsSelectedList, this.gridApi);
     }
 
@@ -244,8 +274,14 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     // Make sure primary key is present in row data
-    if (this.rowData && this.rowData.length && !this.rowData[0][this.rowUniqueId]) {
-      console.error('rowUniqueId not found in row model, please update the unique ID');
+    if (
+      this.rowData &&
+      this.rowData.length &&
+      !this.rowData[0][this.rowUniqueId]
+    ) {
+      console.error(
+        'rowUniqueId not found in row model, please update the unique ID',
+      );
     }
   }
 
@@ -258,7 +294,9 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
     this.gridColumnApi = params.columnApi;
     this.gridApi = this.grid.api;
     // Set reference to status component so state can be pushed
-    this.gridStatusComponent = (<any>this).gridOptions.api.getStatusPanel('statusBarComponent').getFrameworkComponentInstance();
+    this.gridStatusComponent = (<any>this).gridOptions.api
+      .getStatusPanel('statusBarComponent')
+      .getFrameworkComponentInstance();
     if (this.gridStatusComponent) {
       // Attach reset method to status component so the status method
       this.gridStatusComponent.reset = this.gridReset.bind(this);
@@ -284,8 +322,14 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
   /** Have the columns fill the available space if less than grid width */
   public gridFit() {
-    if (this.gridColumnApi && this.gridContainer && this.gridContainer.nativeElement) {
-      const widthCurrent = this.gridColumnApi.getColumnState().reduce((a, b) => a + <any>b.width, 0);
+    if (
+      this.gridColumnApi &&
+      this.gridContainer &&
+      this.gridContainer.nativeElement
+    ) {
+      const widthCurrent = this.gridColumnApi
+        .getColumnState()
+        .reduce((a, b) => a + <any>b.width, 0);
       const widthGrid = this.gridContainer.nativeElement.offsetWidth;
       if (widthCurrent < widthGrid && this.gridAllowUpdate && this.gridLoaded) {
         // Disable allow update to prevent loop
@@ -356,8 +400,14 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
         selections.forEach(selection => {
           if (selection.startRow && selection.endRow) {
             // Determine if this is a top to bottom or bottom to top drag, set appropriate index for FOR loop below
-            const start = selection.startRow.rowIndex < selection.endRow.rowIndex ? selection.startRow.rowIndex : selection.endRow.rowIndex;
-            const end = selection.startRow.rowIndex > selection.endRow.rowIndex ? selection.startRow.rowIndex : selection.endRow.rowIndex;
+            const start =
+              selection.startRow.rowIndex < selection.endRow.rowIndex
+                ? selection.startRow.rowIndex
+                : selection.endRow.rowIndex;
+            const end =
+              selection.startRow.rowIndex > selection.endRow.rowIndex
+                ? selection.startRow.rowIndex
+                : selection.endRow.rowIndex;
             // Loop through all nodes, if it's index falls between start and end, add it to nodes list
             this.grid.api.forEachNode((node: any) => {
               if (node.rowIndex >= start && node.rowIndex <= end) {
@@ -453,7 +503,10 @@ export class GridComponent implements OnInit, OnChanges, OnDestroy {
 
       // Reload columns
       if (gridState.columnDefs && gridState.columnDefs.length) {
-        const columns = columnsTemplateAttach(gridState.columnDefs, this.columnTemplates);
+        const columns = columnsTemplateAttach(
+          gridState.columnDefs,
+          this.columnTemplates,
+        );
         columns.forEach(col => (col.colId = col.field)); // AG-grid needs the colID to match when doing a setColumnDefs call
         this.grid.api.setColumnDefs(columns);
       }

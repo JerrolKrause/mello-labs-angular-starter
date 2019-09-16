@@ -7,7 +7,10 @@ import { RouteUiStateQuery } from './route-ui-state.query';
 export class RouteUiStateService {
   public someProp$ = this.query.select(state => state.someProp);
 
-  constructor(private store: RouteUiStateStore, private query: RouteUiStateQuery) {}
+  constructor(
+    private store: RouteUiStateStore,
+    private query: RouteUiStateQuery,
+  ) {}
 
   /**
    * Example of how to update route UI state

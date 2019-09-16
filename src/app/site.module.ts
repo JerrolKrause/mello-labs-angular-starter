@@ -20,7 +20,12 @@ import { NtsStateManagementModule } from '$general';
     NtsStateManagementModule,
   ],
   declarations: [],
-  exports: [VendorModule, SharedModule, ComponentsModule, NtsStateManagementModule],
+  exports: [
+    VendorModule,
+    SharedModule,
+    ComponentsModule,
+    NtsStateManagementModule,
+  ],
 })
 export class SiteModule {
   static forRoot(): ModuleWithProviders {

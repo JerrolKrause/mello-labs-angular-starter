@@ -59,7 +59,10 @@ declare namespace Microsoft.Maps {
      * @param locations Set of locations to visualize as a heat map.
      * @param options Options for customizing how the heat map is rendered.
      */
-    constructor(locations: (Location | Pushpin)[], options?: IHeatMapLayerOptions);
+    constructor(
+      locations: (Location | Pushpin)[],
+      options?: IHeatMapLayerOptions,
+    );
 
     /** Clears all data in the heat map layer. */
     public clear(): void;

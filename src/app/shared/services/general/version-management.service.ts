@@ -40,7 +40,11 @@ export class NtsVersionManagementService {
    * @param pollInterval How often to check for version changes in milliseconds. Default is 1 hour
    * @param versionProp Which property to get/set the version in localstorage. Default is 'version'
    */
-  public start(versionApiUrl: string, pollInterval = 1 * 60 * 60 * 1000, versionProp = 'version') {
+  public start(
+    versionApiUrl: string,
+    pollInterval = 1 * 60 * 60 * 1000,
+    versionProp = 'version',
+  ) {
     // Get current version from local storage
     this.versionCurrent = localStorage.getItem(versionProp);
     this.pollInterval = pollInterval;

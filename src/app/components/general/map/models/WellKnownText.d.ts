@@ -10,7 +10,10 @@ declare namespace Microsoft.Maps {
      * @param styles Styles to apply to the shapes.
      * @returns One of more shapes.
      */
-    export function read(wkt: string, styles?: IStylesOptions): IPrimitive | IPrimitive[];
+    export function read(
+      wkt: string,
+      styles?: IStylesOptions,
+    ): IPrimitive | IPrimitive[];
 
     /**
      * Writes the data into wellknowntext format.

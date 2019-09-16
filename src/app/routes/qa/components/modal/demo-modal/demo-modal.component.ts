@@ -7,7 +7,10 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/api';
   styleUrls: ['./demo-modal.component.css'],
 })
 export class DemoModalComponent implements OnInit {
-  constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig) {}
+  constructor(
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig,
+  ) {}
 
   ngOnInit() {
     console.log(this.ref); // Modal controls

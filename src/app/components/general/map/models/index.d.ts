@@ -1095,7 +1095,10 @@ declare namespace Microsoft.Maps {
    * Microsoft.Maps.WellKnownText
    * @param options A callback function or options containing additional information and a callback to call once a module is loaded
    */
-  export function loadModule(moduleName: string | string[], options?: (() => void) | IModuleOptions): void;
+  export function loadModule(
+    moduleName: string | string[],
+    options?: (() => void) | IModuleOptions,
+  ): void;
 
   /**
    * Registers a module with the map control. The name of the module is specified in moduleKey, the module script is defined in scriptURL, and the
@@ -1104,7 +1107,11 @@ declare namespace Microsoft.Maps {
    * @param url Url to where the module code is located.
    * @param styles List of css files to download.
    */
-  export function registerModule(moduleName: string, url: string, styles?: IStyleUrl): void;
+  export function registerModule(
+    moduleName: string,
+    url: string,
+    styles?: IStyleUrl,
+  ): void;
 
   /**
    * Signals that the specified module has been loaded and if specified, calls the callback function in loadModule. Call this method at the end of your custom module script.
@@ -1384,7 +1391,9 @@ declare namespace Microsoft.Maps {
     export function addHandler(
       target: Pushpin,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
     ): IHandlerId;
 
     /**
@@ -1398,7 +1407,9 @@ declare namespace Microsoft.Maps {
     export function addHandler(
       target: Polyline | Polygon,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
     ): IHandlerId;
 
     /**
@@ -1409,7 +1420,11 @@ declare namespace Microsoft.Maps {
      * @param handler The callback function to handle the event when triggered.
      * @returns The handler id.
      */
-    export function addHandler(target: Infobox, eventName: string, handler: (eventArg?: IInfoboxEventArgs) => void): IHandlerId;
+    export function addHandler(
+      target: Infobox,
+      eventName: string,
+      handler: (eventArg?: IInfoboxEventArgs) => void,
+    ): IHandlerId;
 
     /**
      * Attaches the handler for the event that is thrown by the target. Use the return object to remove the handler using the removeHandler method.
@@ -1419,7 +1434,11 @@ declare namespace Microsoft.Maps {
      * @param handler The callback function to handle the event when triggered.
      * @returns The handler id.
      */
-    export function addHandler(target: Layer, eventName: string, handler: (eventArg?: IMouseEventArgs) => void): IHandlerId;
+    export function addHandler(
+      target: Layer,
+      eventName: string,
+      handler: (eventArg?: IMouseEventArgs) => void,
+    ): IHandlerId;
 
     /**
      * Attaches the handler for the event that is thrown by the target. Use the return object to remove the handler using the removeHandler method.
@@ -1443,7 +1462,11 @@ declare namespace Microsoft.Maps {
      * @param handler The callback function to handle the event when triggered.
      * @returns The handler id.
      */
-    export function addHandler(target: any, eventName: string, handler: (eventArg?: any) => void): IHandlerId;
+    export function addHandler(
+      target: any,
+      eventName: string,
+      handler: (eventArg?: any) => void,
+    ): IHandlerId;
 
     /////////////////////////////////////
     /// addOne Definitions
@@ -1456,7 +1479,11 @@ declare namespace Microsoft.Maps {
      * click, dblclick, maptypechanged, mousedown, mousemove, mouseout, mouseover, mouseup, mousewheel, rightclick, viewchange, viewchangeend, viewchangestart
      * @param handler The callback function to handle the event when triggered.
      */
-    export function addOne(target: Map, eventName: string, handler: (eventArg?: IMouseEventArgs | IMapTypeChangeEventArgs) => void): void;
+    export function addOne(
+      target: Map,
+      eventName: string,
+      handler: (eventArg?: IMouseEventArgs | IMapTypeChangeEventArgs) => void,
+    ): void;
 
     /**
      * Attaches the handler for the event that is thrown by the target, but only triggers the handler the first once after being attached.
@@ -1468,7 +1495,9 @@ declare namespace Microsoft.Maps {
     export function addOne(
       target: Pushpin,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
     ): void;
 
     /**
@@ -1481,7 +1510,9 @@ declare namespace Microsoft.Maps {
     export function addOne(
       target: Polyline | Polygon,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
     ): void;
 
     /**
@@ -1491,7 +1522,11 @@ declare namespace Microsoft.Maps {
      * click, infoboxChanged, mouseenter, mouseleave
      * @param handler The callback function to handle the event when triggered.
      */
-    export function addOne(target: Infobox, eventName: string, handler: (eventArg?: IInfoboxEventArgs) => void): void;
+    export function addOne(
+      target: Infobox,
+      eventName: string,
+      handler: (eventArg?: IInfoboxEventArgs) => void,
+    ): void;
 
     /**
      * Attaches the handler for the event that is thrown by the target, but only triggers the handler the first once after being attached.
@@ -1500,7 +1535,11 @@ declare namespace Microsoft.Maps {
      * click, dblclick, mousedown, mouseout, mouseover, mouseup, rightclick
      * @param handler The callback function to handle the event when triggered.
      */
-    export function addOne(target: Layer, eventName: string, handler: (eventArg?: IMouseEventArgs) => void): void;
+    export function addOne(
+      target: Layer,
+      eventName: string,
+      handler: (eventArg?: IMouseEventArgs) => void,
+    ): void;
 
     /**
      * Attaches the handler for the event that is thrown by the target, but only triggers the handler the first once after being attached.
@@ -1522,7 +1561,11 @@ declare namespace Microsoft.Maps {
      * @param eventName The type of event to attach.
      * @param handler The callback function to handle the event when triggered.
      */
-    export function addOne(target: any, eventName: string, handler: (eventArg?: any) => void): void;
+    export function addOne(
+      target: any,
+      eventName: string,
+      handler: (eventArg?: any) => void,
+    ): void;
 
     /////////////////////////////////////
     /// addThrottledHandler Definitions
@@ -1556,7 +1599,9 @@ declare namespace Microsoft.Maps {
     export function addThrottledHandler(
       target: Pushpin,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
       throttleInterval: number,
     ): IHandlerId;
 
@@ -1572,7 +1617,9 @@ declare namespace Microsoft.Maps {
     export function addThrottledHandler(
       target: Polyline | Polygon,
       eventName: string,
-      handler: (eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs) => void,
+      handler: (
+        eventArg?: IMouseEventArgs | IPrimitiveChangedEventArgs,
+      ) => void,
       throttleInterval: number,
     ): IHandlerId;
 
@@ -1584,7 +1631,11 @@ declare namespace Microsoft.Maps {
      * @param handler The callback function to handle the event when triggered.
      * @returns The handler id.
      */
-    export function addThrottledHandler(target: Infobox, eventName: string, handler: (eventArg?: IInfoboxEventArgs) => void): IHandlerId;
+    export function addThrottledHandler(
+      target: Infobox,
+      eventName: string,
+      handler: (eventArg?: IInfoboxEventArgs) => void,
+    ): IHandlerId;
 
     /**
      * Attaches the handler for the event that is thrown by the target, where the minimum interval between events (in milliseconds) is specified as a parameter.
@@ -2043,7 +2094,12 @@ declare namespace Microsoft.Maps {
      * @param east The eastern longitude of the LocationRect.
      * @returns A LocationRect defined by the specified northern and southern latitudes and western and eastern longitudes for the rectangle boundaries.
      */
-    static fromEdges(north: number, west: number, south: number, east: number): LocationRect;
+    static fromEdges(
+      north: number,
+      west: number,
+      south: number,
+      east: number,
+    ): LocationRect;
 
     /**
      * Gets a LocationRect using a list of locations.
@@ -2329,7 +2385,10 @@ declare namespace Microsoft.Maps {
      * @param reference The PixelReference to specify the reference point.
      * @returns The converted Point or Point[], or null if the conversion fails.
      */
-    public tryLocationToPixel(location: Location | Location[], reference?: any): Point | Point[];
+    public tryLocationToPixel(
+      location: Location | Location[],
+      reference?: any,
+    ): Point | Point[];
 
     /**
      * Converts a specified Point or a Point array to a Location or Location array on the map
@@ -2339,7 +2398,10 @@ declare namespace Microsoft.Maps {
      * @param reference The PixelReference to specify the reference point.
      * @returns The converted Location or Location[], or null if the conversion fails.
      */
-    public tryPixelToLocation(point: Point | Point[], reference?: any): Location | Location[];
+    public tryPixelToLocation(
+      point: Point | Point[],
+      reference?: any,
+    ): Location | Location[];
   }
 
   /**
@@ -2743,7 +2805,13 @@ declare namespace Microsoft.Maps {
      * @param width The tile's width in pixels. Default value: 256
      * @param height The tile's height in pixels. Default value: 256
      */
-    constructor(x: number, y: number, zoom: number, width?: number, height?: number);
+    constructor(
+      x: number,
+      y: number,
+      zoom: number,
+      width?: number,
+      height?: number,
+    );
 
     /**
      * Compares two PyramidTileId objects and returns a boolean indicating if the two PyramidTileId are equal.
@@ -2751,7 +2819,10 @@ declare namespace Microsoft.Maps {
      * @param tileId2 The second PyramidTileId to compare to the first.
      * @returns A boolean indicating if the two PyramidTileId are equal.
      */
-    public static areEqual(tileId1: PyramidTileId, tileId2: PyramidTileId): boolean;
+    public static areEqual(
+      tileId1: PyramidTileId,
+      tileId2: PyramidTileId,
+    ): boolean;
 
     /**
      * Generates a PyramidTileId from a quadkey tile id string.
@@ -2759,7 +2830,11 @@ declare namespace Microsoft.Maps {
      * @param width The tile's width in pixels. Default value: 256
      * @param height The tile's height in pixels. Default value: 256
      */
-    public static fromQuadKey(quadkey: string, width?: number, height?: number): PyramidTileId;
+    public static fromQuadKey(
+      quadkey: string,
+      width?: number,
+      height?: number,
+    ): PyramidTileId;
   }
 
   /** Provides static functions for generating random test data. */
@@ -2777,7 +2852,10 @@ declare namespace Microsoft.Maps {
      * @param bounds The bounding box in which all the locations should fall within.
      * @returns One or more random Locations.
      */
-    public static getLocations(num?: number, bounds?: LocationRect): Location | Location[];
+    public static getLocations(
+      num?: number,
+      bounds?: LocationRect,
+    ): Location | Location[];
 
     /**
      * Generates random pushpins.
@@ -2786,7 +2864,11 @@ declare namespace Microsoft.Maps {
      * @param options The options to use for rendering the pushpins. Default is random.
      * @returns One or more random Pushpins.
      */
-    public static getPushpins(num?: number, bounds?: LocationRect, options?: IPushpinOptions): Pushpin | Pushpin[];
+    public static getPushpins(
+      num?: number,
+      bounds?: LocationRect,
+      options?: IPushpinOptions,
+    ): Pushpin | Pushpin[];
 
     /**
      * Generates random polylines.

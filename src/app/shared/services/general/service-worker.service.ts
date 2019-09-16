@@ -36,9 +36,15 @@ export class NtsServiceWorkerService {
   /** Is the service worker enabled */
   public isEnabled = this.sw.isEnabled;
   /** Does this app have permission to send push notifications */
-  private permission = 'Notification' in window ? Notification.permission : 'denied';
+  private permission =
+    'Notification' in window ? Notification.permission : 'denied';
 
-  constructor(private sw: SwUpdate, private push: SwPush, private http: HttpClient, private ui: UiStateService) {}
+  constructor(
+    private sw: SwUpdate,
+    private push: SwPush,
+    private http: HttpClient,
+    private ui: UiStateService,
+  ) {}
 
   /**
    * Ask the user for permission to send push notifications
@@ -54,7 +60,10 @@ export class NtsServiceWorkerService {
    * @param title
    * @param options
    */
-  public sendNotification(title: string, options?: PushNotification): Observable<PushResponse> {
+  public sendNotification(
+    title: string,
+    options?: PushNotification,
+  ): Observable<PushResponse> {
     return new Observable<PushResponse>(obs => {
       // Check if notification api is available
       if (!('Notification' in window)) {
@@ -65,15 +74,19 @@ export class NtsServiceWorkerService {
       // Check if permission was granted
       if (this.permission !== 'granted') {
         this.requestPermission(); // Ask for permission
-        obs.error(`The user hasn't granted you permission to send push notifications`);
+        obs.error(
+          `The user hasn't granted you permission to send push notifications`,
+        );
         obs.complete();
       }
 
       // Create new notification
       const n = new Notification(title, options);
       // Handle responses to notification popup
-      n.onshow = e => obs.next({ notification: n, event: e, type: <'show'>e.type });
-      n.onclick = e => obs.next({ notification: n, event: e, type: <'click'>e.type });
+      n.onshow = e =>
+        obs.next({ notification: n, event: e, type: <'show'>e.type });
+      n.onclick = e =>
+        obs.next({ notification: n, event: e, type: <'click'>e.type });
       n.onerror = e => obs.error({ notification: n, event: e, type: e.type });
       n.onclose = () => obs.complete();
     });
@@ -103,20 +116,29 @@ export class NtsServiceWorkerService {
   public getPushSubscription(pathToApi: string, callback?: Function) {
     // Check that a VAPID licenses was found
     if (!environment.licenses.vapid) {
-      console.error('No VAPID public key found in environment.licenses.vapid.publicKey');
+      console.error(
+        'No VAPID public key found in environment.licenses.vapid.publicKey',
+      );
       return;
     }
 
     // Throw a warning if the dev vapid licenses was used
     if (
-      environment.licenses.vapid.publicKey === 'BIZ-IPJrxKxtdL9O9CnK42-XWcepJDPMQDfj8pb_vCfQxa7j1LoC4exdzZ5MhPWaF_5eWPglkj3V32xRswQEm6Q'
+      environment.licenses.vapid.publicKey ===
+      'BIZ-IPJrxKxtdL9O9CnK42-XWcepJDPMQDfj8pb_vCfQxa7j1LoC4exdzZ5MhPWaF_5eWPglkj3V32xRswQEm6Q'
     ) {
-      console.warn('Please change your VAPID keys to one unique to this environment');
-      console.warn(`Generate new key with 'npm install web-push -g' then 'web-push generate-vapid-keys --json'`);
+      console.warn(
+        'Please change your VAPID keys to one unique to this environment',
+      );
+      console.warn(
+        `Generate new key with 'npm install web-push -g' then 'web-push generate-vapid-keys --json'`,
+      );
     }
 
     this.push
-      .requestSubscription({ serverPublicKey: environment.licenses.vapid.publicKey })
+      .requestSubscription({
+        serverPublicKey: environment.licenses.vapid.publicKey,
+      })
       .then(sub => {
         // When subscription comes back from request, pass subscription to backend, execute callback
         this.http.post(pathToApi, sub).subscribe(res => {
@@ -133,7 +155,9 @@ export class NtsServiceWorkerService {
    * @param callback Function to execute after sw has been unregistered
    */
   public remove(callback?: Function) {
-    navigator.serviceWorker.getRegistrations().then(registrations => registrations.forEach(reg => reg.unregister()));
+    navigator.serviceWorker
+      .getRegistrations()
+      .then(registrations => registrations.forEach(reg => reg.unregister()));
     if (callback) {
       callback();
     }

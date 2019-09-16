@@ -27,7 +27,8 @@ const chartSrc = 'assets/scripts/canvasjs.min.js';
   styleUrls: ['./chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class ChartComponent
+  implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   /** TEMP */
   @ViewChild('element', { static: false }) element!: ElementRef;
   @ViewChild('tooltipCustom', { static: false }) tooltipCustom!: ElementRef;
@@ -151,7 +152,12 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
    */
   private chartInit() {
     // Make sure DOM element exists
-    if (this.element && this.element.nativeElement && window.CanvasJS && document.getElementById(this.uniqueId)) {
+    if (
+      this.element &&
+      this.element.nativeElement &&
+      window.CanvasJS &&
+      document.getElementById(this.uniqueId)
+    ) {
       //  && this.dataSets
       // Clean up any previous references before reinitializing the chart
       this.ngOnDestroy();
@@ -163,7 +169,10 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
 
       // Create chart from WINDOW reference not import
       // Due to bug with plugins registered with global instance and not being available via imports
-      this.chart = new window.CanvasJS.Chart(this.uniqueId, this.chartOptionsCreate());
+      this.chart = new window.CanvasJS.Chart(
+        this.uniqueId,
+        this.chartOptionsCreate(),
+      );
       if (this.chart) {
         this.chart.render();
       }
@@ -177,8 +186,17 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
    */
   public chartOptionsCreate() {
     // If color gradient is specified, create it to match datapoint range
-    if (this.colorGradient && this.data && this.data[0] && this.data[0].dataPoints.length) {
-      this.colorsCustom = this.getColorScheme(this.colorGradient[0], this.colorGradient[1], this.data[0].dataPoints.length);
+    if (
+      this.colorGradient &&
+      this.data &&
+      this.data[0] &&
+      this.data[0].dataPoints.length
+    ) {
+      this.colorsCustom = this.getColorScheme(
+        this.colorGradient[0],
+        this.colorGradient[1],
+        this.data[0].dataPoints.length,
+      );
     }
 
     // If custom colors supplied, register with chart plugin
@@ -209,14 +227,21 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
         cursor: 'pointer',
         // Enable the legend to toggle dataseries on or off
         itemclick: e => {
-          e.dataSeries.visible = typeof e.dataSeries.visible === 'undefined' || e.dataSeries.visible ? false : true;
+          e.dataSeries.visible =
+            typeof e.dataSeries.visible === 'undefined' || e.dataSeries.visible
+              ? false
+              : true;
           if (this.chart) {
             this.chart.render();
           }
         },
       },
       // Use built in color set if supplied, use custom colors if not
-      colorSet: this.colorSet ? this.colorSet : this.colorScheme ? this.colorScheme : null,
+      colorSet: this.colorSet
+        ? this.colorSet
+        : this.colorScheme
+        ? this.colorScheme
+        : null,
       data: this.mapChartData(),
       axisX: {
         title: this.titleXAxis,
@@ -290,7 +315,11 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
    * @param endColor - Hex end color
    * @param percent
    */
-  private getGradientStep(startColor: string, endColor: string, percent: number) {
+  private getGradientStep(
+    startColor: string,
+    endColor: string,
+    percent: number,
+  ) {
     // Strip the leading # if it's there
     startColor = startColor.replace(/^\s*#|\s*$/g, '');
     endColor = endColor.replace(/^\s*#|\s*$/g, '');
@@ -319,8 +348,12 @@ export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestr
     const diffBlue = endBlue - startBlue;
 
     let diffRedStr = (diffRed * percent + startRed).toString(16).split('.')[0];
-    let diffGreenStr = (diffGreen * percent + startGreen).toString(16).split('.')[0];
-    let diffBlueStr = (diffBlue * percent + startBlue).toString(16).split('.')[0];
+    let diffGreenStr = (diffGreen * percent + startGreen)
+      .toString(16)
+      .split('.')[0];
+    let diffBlueStr = (diffBlue * percent + startBlue)
+      .toString(16)
+      .split('.')[0];
 
     // ensure 2 digits by color
     if (diffRedStr.length === 1) {

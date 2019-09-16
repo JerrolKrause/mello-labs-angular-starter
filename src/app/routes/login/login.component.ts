@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     let isLogin, hasLogin;
-    if (isPlatformBrowser && window.localStorage.rememberLogin && this.settings.userName) {
+    if (
+      isPlatformBrowser &&
+      window.localStorage.rememberLogin &&
+      this.settings.userName
+    ) {
       isLogin = this.settings.userName;
     }
 

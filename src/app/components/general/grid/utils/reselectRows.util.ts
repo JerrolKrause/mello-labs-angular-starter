@@ -5,14 +5,20 @@ import { GridApi } from 'ag-grid-community';
  * @param rowsToSelect
  * @param gridApi
  */
-export const rowsReselect = (rowUniqueId: string, rowsToSelect: any[], gridApi: GridApi) => {
+export const rowsReselect = (
+  rowUniqueId: string,
+  rowsToSelect: any[],
+  gridApi: GridApi,
+) => {
   if (!rowUniqueId) {
     console.error('rowUniqueId prop is required to use row reselecting');
   }
   if (rowsToSelect && rowsToSelect.length) {
     setTimeout(() => {
       const rowSelectedDictionary: Record<string, boolean> = {};
-      rowsToSelect.forEach(row => (rowSelectedDictionary[row[rowUniqueId]] = true));
+      rowsToSelect.forEach(
+        row => (rowSelectedDictionary[row[rowUniqueId]] = true),
+      );
       gridApi.forEachNode(node => {
         const key = node.data[rowUniqueId];
         // Model.entry prop is KEY

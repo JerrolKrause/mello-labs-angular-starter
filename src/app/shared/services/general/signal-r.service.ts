@@ -38,7 +38,9 @@ export class NtsSignalRService {
 
   constructor() {
     if (!signalR) {
-      console.error('SignalR not installed. Install with: npm install @aspnet/signalr –-save');
+      console.error(
+        'SignalR not installed. Install with: npm install @aspnet/signalr –-save',
+      );
     }
   }
 
@@ -48,7 +50,11 @@ export class NtsSignalRService {
    * @param token - The bearer token to pass for requests. This argument accepts either a string or a closure that returns a string. If using a string, be sure to use the tokenUpdate method in this file when the token changes. The closure should return the token, IE () => this.settings.token
    * @param retryTime - If signalR is unavailable, retry in this many milliseconds
    */
-  public connectionStart(signalRUrl: string, token?: string | tokenFn, retryTime = 10000) {
+  public connectionStart(
+    signalRUrl: string,
+    token?: string | tokenFn,
+    retryTime = 10000,
+  ) {
     // Make sure user is logged in and signalR endpoint specified
     if (!signalRUrl) {
       return;
@@ -58,7 +64,9 @@ export class NtsSignalRService {
 
     // If hubConnection not available yet, create it only on first instance
     if (!this.hubConnection) {
-      this.hubConnection = new signalR.HubConnectionBuilder().withUrl(signalRUrl, { accessTokenFactory: () => this.token }).build();
+      this.hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl(signalRUrl, { accessTokenFactory: () => this.token })
+        .build();
     }
     // Start signalR
     const hubConnection = (<any>this.hubConnection).start();
@@ -76,7 +84,10 @@ export class NtsSignalRService {
       .catch(() => {
         // If retry specified
         if (retryTime) {
-          setTimeout(() => this.connectionStart(signalRUrl, this.token, retryTime), retryTime);
+          setTimeout(
+            () => this.connectionStart(signalRUrl, this.token, retryTime),
+            retryTime,
+          );
         }
       });
     // Return promise of signalR startup status

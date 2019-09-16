@@ -577,7 +577,11 @@ declare namespace Microsoft.Maps {
     export function addHandler(
       target: Directions.DirectionsManager,
       eventName: string,
-      handler: (eventArg?: Directions.IDirectionsEventArgs | Directions.IDirectionsErrorEventArgs) => void,
+      handler: (
+        eventArg?:
+          | Directions.IDirectionsEventArgs
+          | Directions.IDirectionsErrorEventArgs,
+      ) => void,
     ): IHandlerId;
 
     /////////////////////////////////////
@@ -595,7 +599,11 @@ declare namespace Microsoft.Maps {
     export function addOne(
       target: Directions.DirectionsManager,
       eventName: string,
-      handler: (eventArg?: Directions.IDirectionsEventArgs | Directions.IDirectionsErrorEventArgs) => void,
+      handler: (
+        eventArg?:
+          | Directions.IDirectionsEventArgs
+          | Directions.IDirectionsErrorEventArgs,
+      ) => void,
     ): void;
 
     /////////////////////////////////////
@@ -615,7 +623,11 @@ declare namespace Microsoft.Maps {
     export function addThrottledHandler(
       target: Directions.DirectionsManager,
       eventName: string,
-      handler: (eventArg?: Directions.IDirectionsEventArgs | Directions.IDirectionsErrorEventArgs) => void,
+      handler: (
+        eventArg?:
+          | Directions.IDirectionsEventArgs
+          | Directions.IDirectionsErrorEventArgs,
+      ) => void,
       throttleInterval: number,
     ): IHandlerId;
   }

@@ -15,7 +15,8 @@ import { MapView } from './factories/map.view';
 import { MapEvents } from './factories/map.events';
 
 const scriptSrc = 'https://www.bing.com/api/maps/mapcontrol?key=';
-const apiKey = 'AnTlR8QC4A9PDl4d0sLe5pfonbXmuPneJDVGS4jMi_CVxFcz4Q8RbxYJ25qlnY_p';
+const apiKey =
+  'AnTlR8QC4A9PDl4d0sLe5pfonbXmuPneJDVGS4jMi_CVxFcz4Q8RbxYJ25qlnY_p';
 
 /** USAGE: 
    <app-map 
@@ -39,7 +40,8 @@ const apiKey = 'AnTlR8QC4A9PDl4d0sLe5pfonbXmuPneJDVGS4jMi_CVxFcz4Q8RbxYJ25qlnY_p
   styleUrls: ['./map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class MapComponent
+  implements OnInit, AfterViewInit, OnChanges, OnDestroy {
   /** Any locations such as pushpins or circles */
   @Input() locations: Map.Location[] | undefined;
 
@@ -137,7 +139,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
       // If an empty locations array or null locations is passed, clear out any preexisting entities
       // Or if new locations are passed down
       // !model.locations || model.locations.length === 0 ||
-      if ((this.locations && this.locations.length) || (Array.isArray(this.locations) && this.locations.length === 0)) {
+      if (
+        (this.locations && this.locations.length) ||
+        (Array.isArray(this.locations) && this.locations.length === 0)
+      ) {
         MapObjects.removeAll(this.map);
       }
 
@@ -164,7 +169,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
       const script = document.createElement('script');
       script.type = 'text/javascript';
       // Callback query param will fire after bing maps successfully loads
-      script.src = scriptSrc + this.apiKey + '&callback=mapInitialize' + this.uniqueId;
+      script.src =
+        scriptSrc + this.apiKey + '&callback=mapInitialize' + this.uniqueId;
       script.onload = () => {
         // this.mapInit();
         this.isLoaded = true;
@@ -193,7 +199,10 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
             this.viewProps = MapView.viewChange(this.map, this.viewProps);
             if (this.viewProps.didZoom && this.heatMapLayer && this.heatmap) {
               this.heatMapLayer.dispose();
-              this.heatMapLayer = MapObjects.heatMapCreate(this.map, this.locations);
+              this.heatMapLayer = MapObjects.heatMapCreate(
+                this.map,
+                this.locations,
+              );
             }
             this.viewChanged.emit(this.viewProps);
           }
@@ -212,16 +221,20 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
           Microsoft.Maps.Events.removeHandler(this.eventHandlers.mapClicks);
         }
         // Add event handler to create pushpins
-        this.eventHandlers.mapClicks = Microsoft.Maps.Events.addHandler(this.map, 'click', (e: Microsoft.Maps.IMouseEventArgs) => {
-          if (this.map) {
-            // Emit newly added location
-            const pins = MapEvents.mapClickEvent(e, this.map, this.options);
-            if (pins && pins.length) {
-              // Emit the locations of the newly created pins
-              this.addedPushPin.emit(pins.map(pin => pin.getLocation()));
+        this.eventHandlers.mapClicks = Microsoft.Maps.Events.addHandler(
+          this.map,
+          'click',
+          (e: Microsoft.Maps.IMouseEventArgs) => {
+            if (this.map) {
+              // Emit newly added location
+              const pins = MapEvents.mapClickEvent(e, this.map, this.options);
+              if (pins && pins.length) {
+                // Emit the locations of the newly created pins
+                this.addedPushPin.emit(pins.map(pin => pin.getLocation()));
+              }
             }
-          }
-        });
+          },
+        );
       }
 
       // Clean up any previous instance of heatmap layer
@@ -234,13 +247,20 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy
         // Load heatmap module
         Microsoft.Maps.loadModule('Microsoft.Maps.HeatMap', () => {
           if (this.map && this.locations) {
-            this.heatMapLayer = MapObjects.heatMapCreate(this.map, this.locations);
+            this.heatMapLayer = MapObjects.heatMapCreate(
+              this.map,
+              this.locations,
+            );
           }
         });
       } else {
         // If locations were passed down, add them after map creation
         if (this.map && this.locations) {
-          const pins = MapObjects.pushPinAdd(this.map, this.locations, this.options);
+          const pins = MapObjects.pushPinAdd(
+            this.map,
+            this.locations,
+            this.options,
+          );
           if (pins && this.infoBox) {
             MapEvents.infoBoxEvent(pins, this.infoBox);
           }

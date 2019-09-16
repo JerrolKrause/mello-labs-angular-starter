@@ -39,9 +39,13 @@ export class UiStateService {
     this.updateAvailable$.pipe(filter(val => val)).subscribe(() => {
       console.log(2);
       this.confirmationService.confirm({
-        message: 'An update for this application is available, would you like to update?',
+        message:
+          'An update for this application is available, would you like to update?',
         header: 'Confirmation',
-        accept: () => (this.sw.isEnabled ? this.sw.activateUpdate().then(() => document.location.reload()) : document.location.reload()),
+        accept: () =>
+          this.sw.isEnabled
+            ? this.sw.activateUpdate().then(() => document.location.reload())
+            : document.location.reload(),
         // reject: () => console.log('Nope!!!'),
       });
     });

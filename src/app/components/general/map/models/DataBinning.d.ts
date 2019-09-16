@@ -32,7 +32,11 @@ declare namespace Microsoft.Maps {
      * A callback function which defines the color a data bin polygon should be. This callback recieves data bin information
      * along with the min and max calculated metrics for the data set. If set, this callback function must return a color value.
      */
-    colorCallback?: (binInfo: IDataBinInfo, min: IDataBinMetrics, max: IDataBinMetrics) => string | Color;
+    colorCallback?: (
+      binInfo: IDataBinInfo,
+      min: IDataBinMetrics,
+      max: IDataBinMetrics,
+    ) => string | Color;
 
     /* The shape of the data bin to generate. Default: hexagon */
     dataBinType?: DataBinType;
@@ -53,7 +57,11 @@ declare namespace Microsoft.Maps {
      * A callback function which defines how much to scale a data bins size. This callback recieves data bin information
      * along with the min and max calculated metrics for the data set. If set, this callback function must return a number between 0 and 1.
      */
-    scaleCallback?: (binInfo: IDataBinInfo, min: IDataBinMetrics, max: IDataBinMetrics) => number;
+    scaleCallback?: (
+      binInfo: IDataBinInfo,
+      min: IDataBinMetrics,
+      max: IDataBinMetrics,
+    ) => number;
   }
 
   /**

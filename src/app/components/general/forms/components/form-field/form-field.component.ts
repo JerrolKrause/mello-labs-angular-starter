@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, ViewEncapsulation, Self, Optional, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewEncapsulation,
+  Self,
+  Optional,
+  OnDestroy,
+} from '@angular/core';
 import { NgControl, FormControl } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { isRequired } from 'src/app/shared/utils/forms/isRequired.util';
@@ -124,7 +132,6 @@ export class FormFieldComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    
     // Check if required, set required flag
     if (this.ngControl && this.ngControl.control) {
       this.required = isRequired(this.ngControl);
@@ -140,14 +147,18 @@ export class FormFieldComponent implements OnInit, OnDestroy {
 
     // If field type is a dropdown, add a null option
     if (this.type === 'dropdown' && this.options && this.optionIsObjectsArray) {
-      this.optionsOutput = this.dropdownAddNullOption(<SelectItem[]>this.options);
+      this.optionsOutput = this.dropdownAddNullOption(<SelectItem[]>(
+        this.options
+      ));
     }
 
     // Set model for default
     this.model = this.formControl.value;
     // Update model if form control changes
-    this.formControl.valueChanges.pipe(untilDestroyed(this)).subscribe(val => (this.model = val));
-    
+    this.formControl.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe(val => (this.model = val));
+
     // Determine if this is a generic field type
     this.fieldType = [
       'text',
@@ -166,7 +177,9 @@ export class FormFieldComponent implements OnInit, OnDestroy {
 
     // Determine if the control needs to generate a unique id and or name property from the placeholder or the field name
     if ((this.placeholder && (!this.name || !this.id)) || !this.placeholder) {
-      const name = this.placeholder ? this.placeholder : formControlGetFieldName(this.formControl);
+      const name = this.placeholder
+        ? this.placeholder
+        : formControlGetFieldName(this.formControl);
       // Create slug, ensure slug is unique
       const slug = slugCreateUniqueId(name, FormFieldComponent);
       // If name not supplied, autogenerate one from the placeholder
@@ -198,7 +211,11 @@ export class FormFieldComponent implements OnInit, OnDestroy {
     // Get unmasked value, manage all currency change logic
     const val = currencyChange(currency);
     // Update source control and remove any formatted
-    this.formControl.setValue(val.replace(/[^\d.]/, ''), { emitEvent: false, emitModelToViewChange: false, emitViewToModelChange: false });
+    this.formControl.setValue(val.replace(/[^\d.]/, ''), {
+      emitEvent: false,
+      emitModelToViewChange: false,
+      emitViewToModelChange: false,
+    });
   }
 
   /**
@@ -224,28 +241,33 @@ export class FormFieldComponent implements OnInit, OnDestroy {
    * Filter the available autocomplete terms based on the query typed by the user
    * @param result
    */
-  public autoCompleteFilterTerms(result: { originalEvent: Event; query: string }) {
+  public autoCompleteFilterTerms(result: {
+    originalEvent: Event;
+    query: string;
+  }) {
     const term = result.query.toLowerCase().trim();
     if (this.options && this.options.length) {
-      
       if (typeof this.options[0] === 'object') {
-        this.autoCompleteSuggestions = (<SelectItem[]>this.options).filter(option => {
-          const optionTerm = String((<any>option)[this.optionLabel])
-            .toLowerCase()
-            .trim();
-          return optionTerm.indexOf(term) !== -1 ? true : false;
-        });
+        this.autoCompleteSuggestions = (<SelectItem[]>this.options).filter(
+          option => {
+            const optionTerm = String((<any>option)[this.optionLabel])
+              .toLowerCase()
+              .trim();
+            return optionTerm.indexOf(term) !== -1 ? true : false;
+          },
+        );
       } else if (typeof this.options[0] === 'string') {
-        this.autoCompleteSuggestions = (<string[]>this.options).filter(option => {
-          const optionTerm = String((option))
-            .toLowerCase()
-            .trim();
-          return optionTerm.indexOf(term) !== -1 ? true : false;
-        });
+        this.autoCompleteSuggestions = (<string[]>this.options).filter(
+          option => {
+            const optionTerm = String(option)
+              .toLowerCase()
+              .trim();
+            return optionTerm.indexOf(term) !== -1 ? true : false;
+          },
+        );
       } else {
         console.error('Unknown types in options array');
       }
-     
     }
   }
 
@@ -263,7 +285,10 @@ export class FormFieldComponent implements OnInit, OnDestroy {
    */
   private dropdownAddNullOption(options: SelectItem[]): SelectItem[] {
     // Make sure a default null value was not passed
-    const hasNull = options.reduce((a, b) => (a || b.value === null ? true : false), false);
+    const hasNull = options.reduce(
+      (a, b) => (a || b.value === null ? true : false),
+      false,
+    );
     if (!hasNull) {
       const option: any = { disabled: true, styleClass: 'disabled' }; // SelectItem
       option[this.optionLabel] = '-- Please Select --';

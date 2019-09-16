@@ -125,7 +125,9 @@ declare namespace Microsoft.Maps {
      * @param The gridKey index to retrieve the pushpins for.
      * @returns The pushpin in the specified cluster grid cell which can be either a ClusterPushpin if there are multiple pushpins in a cell or a single Pushpin.
      */
-    public getClusterPushpinByGridKey(gridKey: number): ClusterPushpin | Pushpin;
+    public getClusterPushpinByGridKey(
+      gridKey: number,
+    ): ClusterPushpin | Pushpin;
 
     /**
      * Sets the clustering options to use in the layer.
