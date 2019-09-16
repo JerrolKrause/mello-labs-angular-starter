@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '$env';
-import { SiteModule } from '$site';
 import { AgGridModule } from 'ag-grid-angular';
 import { LicenseManager } from 'ag-grid-enterprise';
 import 'ag-grid-enterprise';
@@ -22,7 +21,6 @@ LicenseManager.setLicenseKey(environment.licenses.agGrid);
 @NgModule({
   imports: [
     CommonModule,
-    SiteModule,
     AgGridModule.withComponents([GridTemplateRendererComponent]),
   ],
   providers: [],

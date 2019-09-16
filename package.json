@@ -43,7 +43,9 @@
     "saveDependenciesAsComponents": true,
     "packageManager": "npm",
     "resolveModules": {
-      "modulesDirectories": ["./"]
+      "modulesDirectories": [
+        "./"
+      ]
     },
     "dist": {
       "entry": "dist/bit/entry",
