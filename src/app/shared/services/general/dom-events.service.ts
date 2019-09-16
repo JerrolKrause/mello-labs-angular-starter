@@ -8,6 +8,7 @@ interface Keys {
 /**
  * Manages keyboard event handlers and makes available as an observable. Currently only supports keys pressed and keys down
  * USAGE: keysPressed$.subscribe(keysPressed => console.log(keysPressed));
+ * TODO: Convert to fromEvent()
  */
 @Injectable({
   providedIn: 'root',
