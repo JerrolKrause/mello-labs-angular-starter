@@ -38,7 +38,7 @@ const components = [FormFieldComponent];
     SelectButtonModule,
     AutoCompleteModule,
     DropdownModule,
-    TooltipModule
+    TooltipModule,
   ],
   exports: [components],
 })

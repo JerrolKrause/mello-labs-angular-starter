@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { ObjectUtils } from '$utils';
-import { AppSettings } from '../app.settings';
 
 interface Message {
   event?: string;
@@ -23,11 +22,11 @@ export class NtsPostMessageService {
   /** Holds postmessage event listener */
   private postMessageListener: any;
   /** An array of domains to accept postmessage responses from, based on window.location.origin */
-  private allowedDomains: string[];
+  private allowedDomains!: string[];
   /** Generate a random number to identify this app. Used to drop same domain postmessages */
   private appId = Math.floor(Math.random() * 10000000);
 
-  constructor(private settings: AppSettings) {}
+  constructor() {}
 
   /**
    * Activates the post message listener
@@ -39,14 +38,20 @@ export class NtsPostMessageService {
       this.allowedDomains = allowedDomains;
     }
 
-    if (this.settings.isBrowser) {
-      // If not IE
-      if (window.addEventListener) {
-        this.postMessageListener = window.addEventListener('message', this.messageReceived.bind(this), false);
-      } else {
-        // If IE
-        this.postMessageListener = (<any>window).attachEvent('onmessage', this.messageReceived.bind(this), false);
-      }
+    // If not IE
+    if (window.addEventListener) {
+      this.postMessageListener = window.addEventListener(
+        'message',
+        this.messageReceived.bind(this),
+        false,
+      );
+    } else {
+      // If IE
+      this.postMessageListener = (<any>window).attachEvent(
+        'onmessage',
+        this.messageReceived.bind(this),
+        false,
+      );
     }
 
     return this.postMessage$;
@@ -56,9 +61,7 @@ export class NtsPostMessageService {
    * Stop listening for postmessage events
    */
   public stopListening() {
-    if (this.settings.isBrowser) {
-      window.removeEventListener('message', this.postMessageListener);
-    }
+    window.removeEventListener('message', this.postMessageListener);
   }
 
   /**
@@ -67,10 +70,8 @@ export class NtsPostMessageService {
    * @param urlTarget - If the target url is known, only post to that domain. Otherwise its *
    */
   public postMessageToParent(message: Message, urlTarget: string = '*') {
-    if (this.settings.isBrowser) {
-      if (window.parent) {
-        window.parent.postMessage(this.addMetadata(message), urlTarget);
-      }
+    if (window.parent) {
+      window.parent.postMessage(this.addMetadata(message), urlTarget);
     }
   }
 
@@ -80,12 +81,19 @@ export class NtsPostMessageService {
    * @param message - The message payload
    * @param urlTarget  - If the target url is known, only post to that domain. Otherwise its *
    */
-  public postMessageToIframe(id: string, message: Message, urlTarget: string = '*') {
-    if (this.settings.isBrowser) {
-      // Make sure the element is on the DOM
-      if ((<any>document).getElementById(id) && (<any>document).getElementById(id).contentWindow) {
-        (<any>document).getElementById(id).contentWindow.postMessage(this.addMetadata(message), urlTarget);
-      }
+  public postMessageToIframe(
+    id: string,
+    message: Message,
+    urlTarget: string = '*',
+  ) {
+    // Make sure the element is on the DOM
+    if (
+      (<any>document).getElementById(id) &&
+      (<any>document).getElementById(id).contentWindow
+    ) {
+      (<any>document)
+        .getElementById(id)
+        .contentWindow.postMessage(this.addMetadata(message), urlTarget);
     }
   }
 
@@ -95,7 +103,11 @@ export class NtsPostMessageService {
    * @param message - The message payload
    * @param urlTarget  - If the target url is known, only post to that domain. Otherwise its *
    */
-  public postMessageToWindow(reference: Window, message: Message, urlTarget: string = '*') {
+  public postMessageToWindow(
+    reference: Window,
+    message: Message,
+    urlTarget: string = '*',
+  ) {
     reference.postMessage(this.addMetadata(message), urlTarget);
   }
 
@@ -105,11 +117,19 @@ export class NtsPostMessageService {
    */
   private messageReceived(event: MessageEvent) {
     // Scrub webpackOk events and same appId origination
-    if (event.data && event.data.type !== 'webpackOk' && event.data.appId !== this.appId) {
+    if (
+      event.data &&
+      event.data.type !== 'webpackOk' &&
+      event.data.appId !== this.appId
+    ) {
       // Sanitize incoming payload
       const msg: MessageComplete = ObjectUtils.sanitize(event.data);
       // Check if allowable domains
-      if ((this.allowedDomains && this.allowedDomains.indexOf(event.origin) !== -1) || !this.allowedDomains) {
+      if (
+        (this.allowedDomains &&
+          this.allowedDomains.indexOf(event.origin) !== -1) ||
+        !this.allowedDomains
+      ) {
         this.postMessage$.next(msg);
       } else {
         console.error('Message from unauthorized source');
@@ -125,7 +145,7 @@ export class NtsPostMessageService {
     return {
       ...ObjectUtils.sanitize(msg),
       appId: this.appId,
-      token: this.settings.token,
+      // token: this.settings.token,
     };
   }
 }
