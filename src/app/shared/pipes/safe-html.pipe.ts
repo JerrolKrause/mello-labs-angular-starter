@@ -8,7 +8,11 @@ import {
   SafeResourceUrl,
 } from '@angular/platform-browser';
 
-// Usage: {{ value | safe: 'html' }}
+/**
+ * Notifies Angular that the supplied input is safe for bypassing the DOM sanitizer
+ * ONLY USE THIS WITH TRUSTWORTHY SOURCES
+ * Usage: {{ value | safe: 'html' }}
+ */
 @Pipe({
   name: 'safeHtml',
 })

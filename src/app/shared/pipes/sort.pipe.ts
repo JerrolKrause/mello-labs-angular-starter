@@ -1,9 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 /**
- * USAGE: {{ val | sort: 'asc' : 'name' }}
+ * Sorts an array input
+ * First param is direction, second param is optional object property to sort against
+ *  USAGE: {{ val | sort: 'asc' : 'name' }}
  */
-
 @Pipe({
   name: 'sort',
 })

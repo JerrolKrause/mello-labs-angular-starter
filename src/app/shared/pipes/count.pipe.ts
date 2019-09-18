@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-// Usage: {{ value | count }}
+/**
+ * Returns the count of the input type, supports object, arrays and strings
+ * Usage: {{ value | count }}
+ */
 @Pipe({
   name: 'count',
 })

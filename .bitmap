@@ -474,6 +474,74 @@
         "origin": "AUTHORED",
         "exported": true
     },
+    "nts.angular/pipes/pipes@1.0.0": {
+        "files": [
+            {
+                "relativePath": "src/app/shared/pipes/count.pipe.ts",
+                "test": false,
+                "name": "count.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/debounce.pipe.ts",
+                "test": false,
+                "name": "debounce.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/duration.pipe.ts",
+                "test": false,
+                "name": "duration.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/filter.pipe.ts",
+                "test": false,
+                "name": "filter.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/html-remove.pipe.ts",
+                "test": false,
+                "name": "html-remove.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/index.ts",
+                "test": false,
+                "name": "index.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/phone-number.pipe.ts",
+                "test": false,
+                "name": "phone-number.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/safe-html.pipe.ts",
+                "test": false,
+                "name": "safe-html.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/slug.pipe.ts",
+                "test": false,
+                "name": "slug.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/sort.pipe.ts",
+                "test": false,
+                "name": "sort.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/string.pipe.ts",
+                "test": false,
+                "name": "string.pipe.ts"
+            },
+            {
+                "relativePath": "src/app/shared/pipes/text-case.pipe.ts",
+                "test": false,
+                "name": "text-case.pipe.ts"
+            }
+        ],
+        "mainFile": "src/app/shared/pipes/index.ts",
+        "trackDir": "src/app/shared/pipes",
+        "origin": "AUTHORED",
+        "exported": true
+    },
     "nts.angular/services/general/dom-eventsservice@1.0.0": {
         "files": [
             {

@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-// Usage: {{ value | phoneNumber: true }}
+/**
+ * Formats a number to the phone number format: (555) 555-5555
+ * The second argument is to determine whether or not this is a clickable link
+ * Usage: {{ value | phoneNumber: true }}
+ */
 @Pipe({
   name: 'phoneNumber',
 })

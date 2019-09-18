@@ -3,6 +3,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 const capitalize = require('lodash/capitalize');
 const kebabCase = require('lodash/kebabCase');
 
+/**
+ * Change the casing of a text input
+ * Types available: Pascal, upper, lower, kebab
+ */
 @Pipe({
   name: 'textCase',
 })
@@ -23,6 +27,6 @@ export class TextCasePipe implements PipeTransform {
       }
     }
 
-    return null;
+    return value;
   }
 }
