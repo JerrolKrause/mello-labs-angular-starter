@@ -24,7 +24,7 @@ export class GridComponent implements OnInit {
 
   public gridFilterTerm: string | null = null;
   public gridOptions: GridOptions = {};
-  public gridState: GridState | undefined;
+  public gridState: NtsGridState | undefined;
 
   public stateToggle = {
     gridState1: gridState1,
@@ -43,7 +43,7 @@ export class GridComponent implements OnInit {
     }
   }
 
-  public gridStateChange(gridState: GridState) {
+  public gridStateChange(gridState: NtsGridState) {
     // console.warn('gridStateChange', JSON.stringify(gridState));
     window.localStorage.setItem('qaGrid', JSON.stringify(gridState));
   }

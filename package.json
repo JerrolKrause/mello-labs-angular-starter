@@ -58,6 +58,7 @@
       "nts.angular/components/general/grid": {},
       "nts.angular/components/general/index": {},
       "nts.angular/components/general/map": {},
+      "nts.angular/components/general/table": {},
       "nts.angular/components/general/state-management": {},
       "nts.angular/pipes/pipes": {},
       "nts.angular/services/general/dom-eventsservice": {},
@@ -94,11 +95,11 @@
     "@fullcalendar/core": "4.3.1",
     "@fullcalendar/daygrid": "4.3.0",
     "@fullcalendar/interaction": "4.3.0",
+    "@fullcalendar/list": "4.3.0",
     "@fullcalendar/resource-timeline": "4.3.0",
     "@fullcalendar/timegrid": "4.3.0",
     "@nguniversal/express-engine": "8.1.1",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
-    "@nrwl/angular": "8.4.8",
     "@schematics/update": "0.802.1",
     "@types/jest": "24.0.17",
     "@types/karma": "3.0.3",
@@ -118,8 +119,7 @@
     "rxjs": "6.5.2",
     "ts-loader": "6.0.4",
     "typescript-fsa": "3.0.0-beta-2",
-    "zone.js": "0.10.1",
-    "@bit/nts.angular.components.general.table": "file:./src/app/components/general/table"
+    "zone.js": "0.10.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.802.1",

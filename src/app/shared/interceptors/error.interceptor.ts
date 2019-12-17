@@ -65,7 +65,7 @@ export class GlobalErrorHandler implements ErrorHandler {
       window.location.href = '/#/login';
     };
     // If serviceworker is enabled, remove it first befire executing reset action, otherwise just reset
-    this.sw.isEnabled ? this.sw.remove(resetAction) : resetAction();
+    this.sw.isEnabled ? this.sw.remove() : resetAction();
   }
 
   /**
