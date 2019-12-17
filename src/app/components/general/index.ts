@@ -15,4 +15,4 @@ export * from './calendar/calendar.module';
 // Generic components & services
 export * from './generic';
 // Table
-export * from 'src/app/components/general/table/table.module';
+export * from './table/table.module';

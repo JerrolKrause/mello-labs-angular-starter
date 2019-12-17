@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AuthService } from '$shared';
 import { Router, NavigationEnd } from '@angular/router';
 import {
   filter,
@@ -9,11 +8,11 @@ import {
   distinctUntilChanged,
 } from 'rxjs/operators';
 import { SettingsService } from '$settings';
-import { AuthState } from 'src/app/shared/services/project';
 
 import { MenuItem } from 'primeng/api';
 import { fromEvent } from 'rxjs';
 import { UiStateService } from '$ui';
+import { AuthService, AuthState } from 'src/app/shared/services/project/auth.service';
 
 const startCase = require('lodash/startCase');
 const toLower = require('lodash/toLower');

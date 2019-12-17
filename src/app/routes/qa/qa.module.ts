@@ -4,20 +4,13 @@ import { SiteModule } from '$site'; // Site modules
 import { QaComponent } from './qa.component';
 import { routing } from './qa.routes';
 import { ChartsComponent } from './routes/charts/charts.component';
-import {
-  NtsChartModule,
-  MapModule,
-  NtsGenericModule,
-  NtsGridModule,
-  NtsFormsModule,
-  NtsCalendarModule,
-} from '$general';
 import { MapComponent } from './routes/map/map.component';
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { TablesComponent } from './routes/tables/tables.component';
 import { GridComponent } from './routes/grid/grid.component';
 import { FormsComponent } from './routes/forms/forms.component';
 import { CalendarComponent } from './routes/calendar/calendar.component';
+import { NtsChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule } from 'src/app/components/general';
 
 @NgModule({
   imports: [

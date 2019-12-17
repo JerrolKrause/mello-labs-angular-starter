@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { NoContentComponent, LoginComponent } from '$routes'; // HomeComponent,
-
-import { LayoutMainComponent } from '$components';
-import { AuthGuard } from '$shared';
+import { LayoutMainComponent } from './components/project/masterpage';
+import { LoginComponent } from './routes/login/login.component';
+import { NoContentComponent } from './routes/no-content/no-content.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 export const ROUTES: Routes = [
   // Routes without masterpage or that do not need to be authenticated need to go first

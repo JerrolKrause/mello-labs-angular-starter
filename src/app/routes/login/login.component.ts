@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common';
 
-import { AuthService, AuthState } from '$shared';
 import { SettingsService } from '$settings';
+import { AuthState, AuthService } from 'src/app/shared/services/project/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -32,11 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     let isLogin, hasLogin;
-    if (
-      isPlatformBrowser &&
-      window.localStorage.rememberLogin &&
-      this.settings.userName
-    ) {
+    if (isPlatformBrowser && window.localStorage.rememberLogin && this.settings.userName) {
       isLogin = this.settings.userName;
     }
 
@@ -64,13 +60,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     // If remember username is set
     if (this.formMain && this.formMain.value.remember) {
       this.settings.userName = this.formMain.value.userName;
-      if (isPlatformBrowser) {
-        window.localStorage.rememberLogin = true;
-      }
+      window.localStorage.rememberLogin = true;
     } else {
-      if (isPlatformBrowser) {
-        window.localStorage.removeItem('rememberLogin');
-      }
+      window.localStorage.removeItem('rememberLogin');
     }
 
     // Authenticate

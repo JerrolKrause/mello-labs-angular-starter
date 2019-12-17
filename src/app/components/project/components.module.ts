@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { VendorModule } from '../../vendor.module';
-import { SharedModule } from '$shared';
+import { VendorModule } from 'src/app/vendor.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 // Global modals
 import { LogoutModalComponent } from './modals/logout/logout-modal.component';
@@ -15,6 +15,8 @@ import { LayoutMainComponent } from './masterpage/main/layout-main.component';
 import { LayoutSingleComponent } from './masterpage/single/layout-single.component';
 import { NavComponent } from './masterpage/nav/nav.component';
 import { NavSearchComponent } from './masterpage/nav/search/nav-search.component';
+
+
 
 // Modals include
 const APP_MODALS = [LogoutModalComponent, FeedbackModalComponent];

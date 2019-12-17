@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { VendorModule } from './vendor.module';
 
-import { SharedModule } from '$shared';
-import { ComponentsModule } from '$components';
-import { NtsStateManagementModule } from '$general';
+import { ComponentsModule } from './components/project/components.module';
+import { SharedModule } from './shared/shared.module';
+import { NtsStateManagementModule } from './components/general';
 
 @NgModule({
   imports: [

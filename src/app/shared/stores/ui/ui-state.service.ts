@@ -5,10 +5,7 @@ import { map, distinctUntilChanged, filter } from 'rxjs/operators';
 import { merge } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 import { SwUpdate } from '@angular/service-worker';
-import {
-  NtsServiceWorkerService,
-  NtsVersionManagementService,
-} from '$services';
+import { NtsServiceWorkerService, NtsVersionManagementService } from '../../services/general';
 
 @Injectable({ providedIn: 'root' })
 export class UiStateService {

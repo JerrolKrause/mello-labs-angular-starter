@@ -7,7 +7,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { enableAkitaProdMode, persistState } from '@datorama/akita';
 
-// Global vendor modules
+import { SiteModule } from '$site';
+import { LoginComponent } from './routes/login/login.component';
+import { NoContentComponent } from './routes/no-content/no-content.component';
+import { GlobalErrorHandler } from './shared/interceptors/error.interceptor';
+import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
 
 // Main entrypoint component
 import { AppComponent } from './app.component';
@@ -57,18 +61,6 @@ persistState({
 // Enables faster prod mode, does disable some dirty error checking though
 enableProdMode();
 
-// Shared
-import {
-  // AppConfigService, // App config/env settings
-
-  // Interceptors
-  HttpInterceptorService,
-  GlobalErrorHandler,
-} from '$shared';
-
-// Non-lazy loaded routes
-import { LoginComponent, NoContentComponent } from '$routes';
-import { SiteModule } from '$site';
 
 // Components
 export const APP_COMPONENTS = [

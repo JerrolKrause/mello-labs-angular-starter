@@ -7,7 +7,7 @@ import {
 import { DemoModalComponent } from './components/modal/demo-modal/demo-modal.component';
 import { LogoutModalComponent, FeedbackModalComponent } from '$modals';
 import { filter } from 'rxjs/operators';
-import { NtsServiceWorkerService } from '$services';
+import { NtsServiceWorkerService } from 'src/app/shared/services/general';
 
 @Component({
   selector: 'app-qa',
