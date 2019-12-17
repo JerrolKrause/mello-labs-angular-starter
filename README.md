@@ -121,6 +121,25 @@ Additional Info:
 - When components are ready to have their changes exported, first run `bit tag --all` or `bit tag --all 1.0.0` to set a new semver version and then export with `bit export nts.angular`
 - Add a new component to a namespaced project with `bit add src/app/component/general/new-component --namespace components/general`. See https://bit.dev/nts/angular for the locations and namespaces of components.
 
+Add bit to a new project
+1. In the root directory, run `bit init`
+2. Add `.bit/` to your root .gitignore file
+3. In the root package.json directory, change the bit entry to the following. Update the componentsDefaultDirectory if necessary
+``
+"bit": {
+    "env": {},
+    "componentsDefaultDirectory": "src/app/{name}",
+    "saveDependenciesAsComponents": true,
+    "packageManager": "npm",
+    "resolveModules": {
+      "modulesDirectories": [
+        "./"
+      ]
+    }
+  }
+```
+4. Navigate to the newly created component folder, IE src/app/components/general and delete the node_modules folder and package.json files
+
 ## Useful Info
 
 Lazy load libraries. Normally libraries that are shared between lazy loaded routes are all bundled into a single master bundle. This approach will bundle them separately.
