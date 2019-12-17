@@ -25,7 +25,7 @@ See Angular CLI github page for full usage: https://github.com/angular/angular-c
 
 ```bash
 # Serve dev on http://localhost:4200/
-ng serve --aot
+ng serve
 
 # Prod Build for targeted environment. Files will appear in the dist folder
 npm run build:qa # Uses settings from environment.qa.ts
@@ -125,7 +125,7 @@ Add bit to a new project
 1. In the root directory, run `bit init`
 2. Add `.bit/` to your root .gitignore file
 3. In the root package.json directory, change the bit entry to the following. Update the componentsDefaultDirectory if necessary
-``
+```
 "bit": {
     "env": {},
     "componentsDefaultDirectory": "src/app/{name}",
