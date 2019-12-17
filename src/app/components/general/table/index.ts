@@ -1,1 +1,1 @@
-import './table.module';
+export * from './table.module';

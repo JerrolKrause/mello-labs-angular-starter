@@ -48,6 +48,10 @@
       white-space: nowrap;
     }
   }
+  &.nts-table-compact{
+    th,td{padding: 0.25em 0.3em!important; }
+    .ui-widget{font-size: 12px!important;}
+  }
 }
 @keyframes slideInFromRight {
   from {

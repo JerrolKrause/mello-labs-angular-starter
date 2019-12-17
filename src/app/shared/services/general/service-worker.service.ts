@@ -53,9 +53,7 @@ export interface PushResponse {
  * Check chrome://gcm-internals/ and look under the 'Receive Message Log' to see if your browser is getting the push response
  * Make sure the payload being sent from the server to the browser is the correct format: https://stackoverflow.com/a/53763526
  */
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class NtsServiceWorkerService {
   public updateAvailable$ = new BehaviorSubject<boolean>(false);
   /** Is the service worker enabled */

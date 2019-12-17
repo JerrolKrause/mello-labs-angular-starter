@@ -1,4 +1,4 @@
-<div [ngStyle]="{'min-height' : height + 'px'}">
+<div [ngStyle]="{ 'min-height': height + 'px' }">
   <full-calendar
     #fc
     *ngIf="visible$ | async"
@@ -8,8 +8,10 @@
     [header]="header"
     [plugins]="calendarPlugins"
     [selectable]="selectable"
-    (dateClick)="dateClick($event)"
-    (eventClick)="eventClick($event)"
+    [minTime]="minTime"
+    [maxTime]="maxTime"
+    (dateClick)="dateClick.emit($event)"
+    (eventClick)="handleEventClick($event)"
     (select)="select($event)"
   ></full-calendar>
 </div>

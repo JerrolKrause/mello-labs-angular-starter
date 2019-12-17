@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'phoneNumber',
 })
 export class PhoneNumberPipe implements PipeTransform {
-  transform(val: string, makeClickable = false) {
+  transform(val: string | undefined | null, makeClickable = false) {
     // If no value supplied or val is a blank value, return same value
     if (!val || val === '') {
       return val;

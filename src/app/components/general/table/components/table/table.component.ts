@@ -52,6 +52,8 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   /** Enable paginate and only display this many entries */
   @Input() paginateRows: number | undefined;
 
+  @Input() compact = false;
+
   public columnWidthsPercent: number[] | null = null;
 
   /** Holds custom DOM templates passed from parent */
@@ -97,7 +99,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   /**
-   * Reset/remove the sort order after user toggles through each state
+   * Reset/remove the sort order after user toggles through each state 
    * @param sort
    */
   public onSort(sort: { field: string; order: number }) {

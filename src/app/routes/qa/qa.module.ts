@@ -10,20 +10,10 @@ import { TablesComponent } from './routes/tables/tables.component';
 import { GridComponent } from './routes/grid/grid.component';
 import { FormsComponent } from './routes/forms/forms.component';
 import { CalendarComponent } from './routes/calendar/calendar.component';
-import { NtsChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule } from 'src/app/components/general';
+import { NtsChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule, NtsTableModule } from 'src/app/components/general';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SiteModule,
-    routing,
-    NtsChartModule,
-    MapModule,
-    NtsGenericModule,
-    NtsGridModule,
-    NtsFormsModule,
-    NtsCalendarModule,
-  ],
+  imports: [CommonModule, SiteModule, routing, NtsChartModule, MapModule, NtsGenericModule, NtsGridModule, NtsFormsModule, NtsCalendarModule, NtsTableModule],
   declarations: [
     QaComponent,
     ChartsComponent,

@@ -1,4 +1,4 @@
-<div class="nts-table">
+<div class="nts-table" [ngClass]="{ 'nts-table-compact': compact }">
   <p-table
     #tt
     [value]="rows"
@@ -7,7 +7,7 @@
     (onSort)="onSort($event)"
     [paginator]="rows?.length && paginateRows && rows?.length > paginateRows ? !!paginateRows : false"
     [rows]="paginateRows"
-    [autoLayout]="false"
+    [autoLayout]="false" 
   >
     <!-- Global filter-->
     <ng-template pTemplate="caption" *ngIf="showFilter || headerText">
