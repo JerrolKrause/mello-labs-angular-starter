@@ -1,3 +1,0 @@
-interface StaticState {
-  todos: any[];
-}

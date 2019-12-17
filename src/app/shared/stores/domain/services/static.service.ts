@@ -2,22 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Query, Store, StoreConfig } from '@datorama/akita';
 
-/** Store */
-@Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'static' })
-export class StaticStore extends Store<StaticState> {
-  constructor() {
-    super({ todos: [] });
-  }
-}
-
-/** Query */
-// tslint:disable-next-line:max-classes-per-file
-@Injectable({ providedIn: 'root' })
-export class StaticQuery extends Query<StaticState> {
-  constructor(protected store: StaticStore) {
-    super(store);
-  }
+interface StaticState {
+  todos: any[];
 }
 
 /**
@@ -44,3 +30,24 @@ export class StaticService {
       .subscribe(todos => this.simpleStore.update({ todos: todos }));
   }
 }
+
+/** Store */
+// tslint:disable-next-line:max-classes-per-file
+@Injectable({ providedIn: 'root' })
+@StoreConfig({ name: 'static' })
+export class StaticStore extends Store<StaticState> {
+  constructor() {
+    super({ todos: [] });
+  }
+}
+
+/** Query */
+// tslint:disable-next-line:max-classes-per-file
+@Injectable({ providedIn: 'root' })
+export class StaticQuery extends Query<StaticState> {
+  constructor(protected store: StaticStore) {
+    super(store);
+  }
+}
+
+
