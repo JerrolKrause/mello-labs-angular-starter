@@ -1,7 +1,7 @@
 // @angular modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, enableProdMode, ErrorHandler } from '@angular/core'; // APP_INITIALIZER,
+import { NgModule, enableProdMode, ErrorHandler, Injector } from '@angular/core'; // APP_INITIALIZER,
 import { RouterModule, PreloadAllModules, NoPreloading } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -79,6 +79,8 @@ export const APP_COMPONENTS = [
   NoContentComponent,
 ];
 
+export let InjectorInstance: Injector;
+
 @NgModule({
   declarations: [APP_COMPONENTS],
   imports: [
@@ -87,15 +89,12 @@ export const APP_COMPONENTS = [
     BrowserAnimationsModule,
     RouterModule.forRoot(ROUTES, {
       useHash: true,
-      preloadingStrategy: environment.settings.preloadRoutes
-        ? PreloadAllModules
-        : NoPreloading,
+      preloadingStrategy: environment.settings.preloadRoutes ? PreloadAllModules : NoPreloading,
       scrollPositionRestoration: 'enabled',
     }),
 
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled:
-        environment.production && environment.settings.enableServiceWorker,
+      enabled: environment.production && environment.settings.enableServiceWorker,
       registrationStrategy: 'registerImmediately',
     }),
 
@@ -127,7 +126,11 @@ export const APP_COMPONENTS = [
   bootstrap: [AppComponent],
   entryComponents: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private injector: Injector) {
+    InjectorInstance = this.injector;
+  }
+}
 
 /**
  * Check if environment settings are already present, if not load first before the rest of the app

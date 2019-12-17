@@ -5,40 +5,29 @@ import { throwError } from 'rxjs';
 import { applyTransaction, EntityState, EntityStore, QueryEntity, StoreConfig } from '@datorama/akita';
 import { environment } from '$env';
 
-/** Configuration */
-interface StoreState extends EntityState<Models.User> {}
-const url = environment.endpoints.apiUrl + '//jsonplaceholder.typicode.com/users';
+/**
+ * New Domain Store Instructions:
+ * 1. Copy/paste this file 
+ * 2. Do a case sensitive rename of Temp => NewStoreName
+ * 3. Change name of store query from users$ => StoreData
+ * 4. Update localization information below
+ * 5. An an entry to the api hub file: domain.service.ts
+ */
+
+/** BEGIN Localization */
+const apiUrl = environment.endpoints.apiUrl + '//jsonplaceholder.typicode.com/users';
 const uniqueId = 'id';
-
-/** Store */
-@Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'users', idKey: uniqueId, resettable: true }) // , cache: { ttl: null }
-export class TempStore extends EntityStore<StoreState, Models.User> {
-  constructor() {
-    super({ modifying: false, loading: false });
-  }
-}
-
-/** Query */
-// tslint:disable-next-line:max-classes-per-file
-@Injectable({ providedIn: 'root' })
-export class TempQuery extends QueryEntity<StoreState, Models.User> {
-  public users$ = this.select();
-
-  constructor(protected store: TempStore) {
-    super(store);
-  }
-}
+const storeName = 'users';
+type StoreModel = Models.User;
+/** END Localization */
 
 /** Service */
 // tslint:disable-next-line:max-classes-per-file
 @Injectable({ providedIn: 'root' })
 export class TempService {
-  constructor(
-    public store: TempStore,
-    public query: TempQuery,
-    private http: HttpClient,
-  ) {}
+  public users$ = this.query.select();
+
+  constructor(public store: TempStore, public query: TempQuery, private http: HttpClient) {}
 
   /**
    * Get entities and load into store
@@ -49,7 +38,7 @@ export class TempService {
     // If not cached or refresh cache is specified, make http call and load store
     if (refreshCache || !this.query.getHasCache()) {
       this.store.setLoading(true);
-      return this.http.get<Models.User[]>(url).pipe(
+      return this.http.get<StoreModel[]>(apiUrl).pipe(
         tap(entities => this.store.set(entities)), // On success, add response to store
         catchError(err => {
           applyTransaction(() => {
@@ -68,12 +57,12 @@ export class TempService {
    * Create new entity
    * @param entity
    */
-  public post(entity: Models.User) {
+  public post(entity: StoreModel) {
     applyTransaction(() => {
       this.store.update({ modifying: true });
       this.store.setError(null);
     });
-    return this.http.post<Models.User>(url, entity).pipe(
+    return this.http.post<StoreModel>(apiUrl, entity).pipe(
       tap(res => {
         applyTransaction(() => {
           this.store.add(res || entity); // If no response, add entity from argument
@@ -94,40 +83,38 @@ export class TempService {
    * Create new entity
    * @param entity
    */
-  public put(entity: Models.User) {
+  public put(entity: StoreModel) {
     applyTransaction(() => {
       this.store.update({ modifying: true });
       this.store.setError(null);
     });
-    return this.http
-      .put<Models.User>(url + '/' + entity[uniqueId], entity)
-      .pipe(
-        tap(res => {
-          applyTransaction(() => {
-            this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
-            this.store.update({ modifying: false });
-          });
-        }),
-        catchError(err => {
-          applyTransaction(() => {
-            this.store.setError(err);
-            this.store.update({ modifying: false });
-          });
-          return throwError(err);
-        }),
-      );
+    return this.http.put<StoreModel>(apiUrl + '/' + entity[uniqueId], entity).pipe(
+      tap(res => {
+        applyTransaction(() => {
+          this.store.update(entity[uniqueId], res || entity); // If no response, add entity from argument
+          this.store.update({ modifying: false });
+        });
+      }),
+      catchError(err => {
+        applyTransaction(() => {
+          this.store.setError(err);
+          this.store.update({ modifying: false });
+        });
+        return throwError(err);
+      }),
+    );
   }
 
   /**
    * Delete entity
    * @param entity
    */
-  public delete(entity: Models.User) {
+  public delete(entity: StoreModel) {
     applyTransaction(() => {
       this.store.update({ modifying: true });
       this.store.setError(null);
     });
-    return this.http.delete<Models.User>(url + '/' + entity[uniqueId]).pipe(
+    return this.http.delete<StoreModel>(apiUrl + '/' + entity[uniqueId]).pipe(
       tap(() => {
         applyTransaction(() => {
           this.store.remove(entity[uniqueId]);
@@ -149,5 +136,24 @@ export class TempService {
    */
   public reset() {
     this.store.reset();
+  }
+}
+
+/** Store */
+// tslint:disable-next-line:max-classes-per-file
+@Injectable({ providedIn: 'root' })
+@StoreConfig({ name: storeName, idKey: uniqueId, resettable: true }) // , cache: { ttl: null }
+export class TempStore extends EntityStore<EntityState<StoreModel>, StoreModel> {
+  constructor() {
+    super({ modifying: false, loading: false });
+  }
+}
+
+/** Query */
+// tslint:disable-next-line:max-classes-per-file
+@Injectable({ providedIn: 'root' })
+export class TempQuery extends QueryEntity<EntityState<StoreModel>, StoreModel> {
+  constructor(protected store: TempStore) {
+    super(store);
   }
 }
