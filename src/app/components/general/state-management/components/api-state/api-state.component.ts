@@ -20,7 +20,7 @@ export class NtsDomainStateComponent implements OnInit {
   /** Custom error message */
   @Input() errorMessage!: string;
   /** Should the loader be shown when data is already present in state */
-  @Input() loaderDisabled = true;
+  @Input() loaderDisabled = false;
 
   constructor() {}
 

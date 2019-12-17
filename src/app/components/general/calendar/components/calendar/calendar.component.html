@@ -1,12 +1,15 @@
-<full-calendar
-  #fc
-  [defaultView]="defaultView"
-  [events]="events"
-  [height]="height"
-  [header]="header"
-  [plugins]="calendarPlugins"
-  [selectable]="selectable"
-  (dateClick)="dateClick($event)"
-  (eventClick)="eventClick($event)"
-  (select)="select($event)"
-></full-calendar>
+<div [ngStyle]="{'min-height' : height + 'px'}">
+  <full-calendar
+    #fc
+    *ngIf="visible$ | async"
+    [defaultView]="defaultView"
+    [events]="events"
+    [height]="height"
+    [header]="header"
+    [plugins]="calendarPlugins"
+    [selectable]="selectable"
+    (dateClick)="dateClick($event)"
+    (eventClick)="eventClick($event)"
+    (select)="select($event)"
+  ></full-calendar>
+</div>

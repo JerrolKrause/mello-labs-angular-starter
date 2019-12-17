@@ -30,8 +30,7 @@ const chartSrc = 'assets/scripts/canvasjs.min.js';
   styleUrls: ['./chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChartComponent
-  implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class ChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   /** TEMP */
   @ViewChild('element', { static: false }) element!: ElementRef;
   @ViewChild('tooltipCustom', { static: false }) tooltipCustom!: ElementRef;
@@ -60,11 +59,17 @@ export class ChartComponent
   @Input() data!: CanvasJS.ChartDataSeriesOptions[];
   @Input() options!: Partial<CanvasJS.ChartOptions>;
   @Input() stacked!: boolean;
+  /** Text Color for title and labels */
+  @Input() color = '#000';
+  /** Background color */
+  @Input() backgroundColor = '#fff';
+  /** Limit the number of datapoints displayed */
+  @Input() limit: number | undefined;
 
   /** Colors for data points in RGB */
   @Input() colorSet!: string;
   @Input() colorGradient!: [string, string];
-  @Input() colorsCustom: string[] = [];
+  @Input() colorsCustom: string[] | undefined;
 
   // Format Elements
   @Input() formatTooltip: any;
@@ -101,7 +106,7 @@ export class ChartComponent
   public uniqueId = 'chart' + Math.floor(Math.random() * 1000000);
 
   /** Chart reference */
-  private chart: CanvasJS.Chart | null = null;
+  private chart: CanvasJS.Chart | undefined;
 
   /** If custom colors supplied, this is the auto-generated name of the color scheme */
   private colorScheme: string | undefined;
@@ -155,12 +160,7 @@ export class ChartComponent
    */
   private chartInit() {
     // Make sure DOM element exists
-    if (
-      this.element &&
-      this.element.nativeElement &&
-      window.CanvasJS &&
-      document.getElementById(this.uniqueId)
-    ) {
+    if (this.element && this.element.nativeElement && window.CanvasJS && document.getElementById(this.uniqueId)) {
       //  && this.dataSets
       // Clean up any previous references before reinitializing the chart
       this.ngOnDestroy();
@@ -172,10 +172,7 @@ export class ChartComponent
 
       // Create chart from WINDOW reference not import
       // Due to bug with plugins registered with global instance and not being available via imports
-      this.chart = new window.CanvasJS.Chart(
-        this.uniqueId,
-        this.chartOptionsCreate(),
-      );
+      this.chart = new window.CanvasJS.Chart(this.uniqueId, this.chartOptionsCreate());
       if (this.chart) {
         this.chart.render();
       }
@@ -189,17 +186,8 @@ export class ChartComponent
    */
   public chartOptionsCreate() {
     // If color gradient is specified, create it to match datapoint range
-    if (
-      this.colorGradient &&
-      this.data &&
-      this.data[0] &&
-      this.data[0].dataPoints.length
-    ) {
-      this.colorsCustom = this.getColorScheme(
-        this.colorGradient[0],
-        this.colorGradient[1],
-        this.data[0].dataPoints.length,
-      );
+    if (this.colorGradient && this.data && this.data[0] && this.data[0].dataPoints.length) {
+      this.colorsCustom = this.getColorScheme(this.colorGradient[0], this.colorGradient[1], this.limit ||  this.data[0].dataPoints.length);
     }
 
     // If custom colors supplied, register with chart plugin
@@ -213,9 +201,11 @@ export class ChartComponent
       animationEnabled: true,
       exportEnabled: false,
       animationDuration: 600,
+      backgroundColor: this.backgroundColor,
       title: {
         text: this.titleChart,
         fontSize: 18,
+        fontColor: this.color,
         fontFamily: this.styling.fontFamily,
         fontWeight: this.styling.fontWeight,
       },
@@ -230,27 +220,21 @@ export class ChartComponent
         cursor: 'pointer',
         // Enable the legend to toggle dataseries on or off
         itemclick: e => {
-          e.dataSeries.visible =
-            typeof e.dataSeries.visible === 'undefined' || e.dataSeries.visible
-              ? false
-              : true;
+          e.dataSeries.visible = typeof e.dataSeries.visible === 'undefined' || e.dataSeries.visible ? false : true;
           if (this.chart) {
             this.chart.render();
           }
         },
       },
       // Use built in color set if supplied, use custom colors if not
-      colorSet: this.colorSet
-        ? this.colorSet
-        : this.colorScheme
-        ? this.colorScheme
-        : null,
+      colorSet: this.colorSet ? this.colorSet : this.colorScheme ? this.colorScheme : null,
       data: this.mapChartData(),
       axisX: {
         title: this.titleXAxis,
         titleFontSize: 16,
         interval: 1,
         labelFontSize: this.styling.fontSize,
+        labelFontColor: this.color,
         labelFontFamily: this.styling.fontFamily,
         labelFormatter:
           this.formatXLabels || this.showXAxisLabels === false
@@ -265,6 +249,7 @@ export class ChartComponent
       axisY: {
         title: this.titleYAxis,
         titleFontSize: 16,
+        labelFontColor: this.color,
         labelFontSize: this.styling.fontSize,
         labelFontFamily: this.styling.fontFamily,
         labelFormatter:
@@ -291,9 +276,12 @@ export class ChartComponent
         showInLegend: this.showLegend,
         indexLabel: this.showIndexLabel ? '{y}' : null,
         indexLabelFontSize: 10,
+        ...data,
+        dataPoints: this.limit
+          ? [...data.dataPoints].sort((a, b) => (a.y && b.y && a.y > b.y) ? -1 : 1).slice(0, this.limit).reverse()
+          : data.dataPoints,
         // indexLabelFontColor: '#fff',
         // legendText: this.data[0].label,
-        ...data,
       };
     });
   }
@@ -318,11 +306,7 @@ export class ChartComponent
    * @param endColor - Hex end color
    * @param percent
    */
-  private getGradientStep(
-    startColor: string,
-    endColor: string,
-    percent: number,
-  ) {
+  private getGradientStep(startColor: string, endColor: string, percent: number) {
     // Strip the leading # if it's there
     startColor = startColor.replace(/^\s*#|\s*$/g, '');
     endColor = endColor.replace(/^\s*#|\s*$/g, '');
@@ -351,12 +335,8 @@ export class ChartComponent
     const diffBlue = endBlue - startBlue;
 
     let diffRedStr = (diffRed * percent + startRed).toString(16).split('.')[0];
-    let diffGreenStr = (diffGreen * percent + startGreen)
-      .toString(16)
-      .split('.')[0];
-    let diffBlueStr = (diffBlue * percent + startBlue)
-      .toString(16)
-      .split('.')[0];
+    let diffGreenStr = (diffGreen * percent + startGreen).toString(16).split('.')[0];
+    let diffBlueStr = (diffBlue * percent + startBlue).toString(16).split('.')[0];
 
     // ensure 2 digits by color
     if (diffRedStr.length === 1) {
@@ -425,7 +405,7 @@ export class ChartComponent
     if (this.chart) {
       this.chart.destroy();
       if (this.chart) {
-        this.chart = null;
+        delete this.chart;
       }
     }
   }

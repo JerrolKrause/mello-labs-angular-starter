@@ -1,8 +1,8 @@
 import { map } from 'rxjs/operators';
 import { EntityState } from '@datorama/akita';
 
-export const entityWithData = <t>(state?: EntityState<t>) =>
-  map(() => {
+export const entityWithData = <t>() =>
+  map((state?: EntityState<t>) => {
     if (state && state.ids) {
       return {
         ...state,

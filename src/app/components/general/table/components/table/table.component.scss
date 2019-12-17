@@ -1,6 +1,9 @@
 .nts-table {
   .ui-table {
     border: 0;
+    table {
+      table-layout: auto;
+    }
     .ui-table-wrapper {
       border: 1px solid #e3e3e3;
       border-bottom: 0;
@@ -16,8 +19,41 @@
       border: 0;
       border-bottom: 1px solid #e3e3e3;
     }
+    .ui-table-tbody > tr > td {
+      word-break: break-word; 
+    }
     .nts-table-no-content {
       border-bottom: 0 !important;
     }
+    td {
+      position: relative;
+    }
+  }
+  .nts-table-anim-slide-in-from-right {
+    animation: slideInFromRight 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: forwards;
+    transform: translate(20px, 0px);
+  }
+  @media (max-width: 998px) {
+    overflow-x: auto;
+    &:before {
+      content: '\f0ec \00a0 \f0a6 \00a0 Swipe to scroll left to right';
+      font-family: FontAwesome, Arial;
+      font-size: 0.75rem;
+      padding-left: 5px;
+      color: #a94442;
+    }
+    td,
+    th {
+      white-space: nowrap;
+    }
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    transform: translate(20px, 0px);
+  }
+  to {
+    transform: translate(0px, 0px);
   }
 }

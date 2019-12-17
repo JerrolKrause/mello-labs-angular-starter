@@ -1,4 +1,4 @@
-<div class="nts-filter-field">
+<div class="nts-filter-field" [ngClass]="{'nts-filter-small' : small }">
   <div class="ui-inputgroup">
     <span class="ui-inputgroup-addon"> <i class="fa fa-search"></i></span>
     <input
@@ -12,7 +12,7 @@
       style="width:auto"
     />
   </div>
-  <a class="filter-clear" (click)="onChanges(null)" *ngIf="filterTerm">
+  <a class="filter-clear" (click)="onChanges(null)" *ngIf="filterTerm" tabindex="">
     <i class="fa fa-remove"></i>
   </a>
 </div>

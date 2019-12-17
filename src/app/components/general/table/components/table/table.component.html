@@ -5,6 +5,9 @@
     [columns]="columns"
     sortMode="single"
     (onSort)="onSort($event)"
+    [paginator]="rows?.length && paginateRows && rows?.length > paginateRows ? !!paginateRows : false"
+    [rows]="paginateRows"
+    [autoLayout]="false"
   >
     <!-- Global filter-->
     <ng-template pTemplate="caption" *ngIf="showFilter || headerText">
@@ -21,11 +24,7 @@
             (input)="tt.filterGlobal($event.target.value, 'contains')"
             style="width:auto"
           />
-          <a
-            class="filter-clear"
-            (click)="tt.filterGlobal(null, 'contains'); filter.value = null"
-            *ngIf="filter.value"
-          >
+          <a class="filter-clear" (click)="tt.filterGlobal(null, 'contains'); filter.value = null" *ngIf="filter.value">
             <i class="fa fa-remove"></i>
           </a>
         </div>
@@ -35,16 +34,13 @@
     <ng-template pTemplate="header" let-columns *ngIf="showHeader">
       <tr style="height:30px">
         <th
-          *ngFor="let col of columns"
+          *ngFor="let col of columns; let i = index"
           [pSortableColumn]="col.field"
           [pSortableColumnDisabled]="!sortable"
+          #th
+          [ngStyle]="{ width: columnWidthsPercent && columnWidthsPercent[i] ? columnWidthsPercent[i] + '%' : null }"
         >
-          <ng-container
-            *ngIf="
-              templates[col.field] && templates[col.field].templateHeader;
-              else headerDefault
-            "
-          >
+          <ng-container *ngIf="templates[col.field] && templates[col.field].templateHeader; else headerDefault">
             <ng-container
               *ngTemplateOutlet="
                 templates[col.field].templateHeader;
@@ -64,14 +60,15 @@
       </tr>
     </ng-template>
     <!-- Table Body -->
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+      <!--
+         [ngClass]="{'nts-table-anim-slide-in-from-right' : !loaded}" [ngStyle]="{'animation-delay' : (rowIndex / 25) +'s'}"
+      -->
       <tr>
         <!-- Loop through columns -->
         <td *ngFor="let col of columns">
           <!-- Custom cell templates -->
-          <ng-container
-            *ngIf="templates[col.field] && templates[col.field].templateCell"
-          >
+          <ng-container *ngIf="templates[col.field] && templates[col.field].templateCell">
             <ng-container
               *ngTemplateOutlet="
                 templates[col.field].templateCell;
@@ -85,18 +82,11 @@
             ></ng-container>
           </ng-container>
 
-          <ng-container
-            *ngIf="
-              !templates[col.field] ||
-              (templates[col.field] && !templates[col.field].templateCell)
-            "
-          >
+          <ng-container *ngIf="!templates[col.field] || (templates[col.field] && !templates[col.field].templateCell)">
             <ng-container [ngSwitch]="col.type">
               <!-- Email -->
               <ng-container *ngSwitchCase="'email'">
-                <a href="mailto:{{ rowData[col.field] }}">{{
-                  rowData[col.field]
-                }}</a>
+                <a href="mailto:{{ rowData[col.field] }}">{{ rowData[col.field] }}</a>
               </ng-container>
               <!-- Date -->
               <ng-container *ngSwitchCase="'date'">
@@ -108,10 +98,7 @@
               </ng-container>
               <!-- Currency -->
               <ng-container *ngSwitchCase="'currency'">
-                {{
-                  rowData[col.field]
-                    | currency: '$':'symbol':col.typeArgs || '1.2-2'
-                }}
+                {{ rowData[col.field] | currency: '$':'symbol':col.typeArgs || '1.2-2' }}
               </ng-container>
               <!--
               <ng-container *ngSwitchCase="'phoneNumber'">

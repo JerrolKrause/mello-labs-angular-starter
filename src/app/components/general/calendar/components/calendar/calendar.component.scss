@@ -2,4 +2,7 @@ nts-calendar {
   .nts-calendar-header-hide .fc-toolbar.fc-header-toolbar {
     display: none;
   }
+  a:not([href]):not([tabindex]).fc-day-grid-event {
+    cursor: default;
+  }
 }

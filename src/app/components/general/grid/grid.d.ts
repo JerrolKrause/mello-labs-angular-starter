@@ -1,4 +1,4 @@
-declare interface GridState {
+declare interface NtsGridState {
   columnDefs: ColDef[];
   columnsState: ColumnState[];
   sorts: { colId: string; sort: string }[];

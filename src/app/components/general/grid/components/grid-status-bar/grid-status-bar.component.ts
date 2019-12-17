@@ -15,7 +15,7 @@ const cloneDeep = require('lodash/cloneDeep');
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridStatusBarComponent implements OnInit {
-  public gridState: GridState = {
+  public gridState: NtsGridState = {
     columnDefs: [],
     sorts: [],
     groupsColumns: [],
@@ -43,7 +43,7 @@ export class GridStatusBarComponent implements OnInit {
    * When the grid state is changed. This is passed from the parent component
    * @param gridState
    */
-  public gridStateChange(gridState: GridState) {
+  public gridStateChange(gridState: NtsGridState) {
     // Don't update if resetting
     if (!this.resetting) {
       // Local reference to grid state

@@ -3,23 +3,43 @@ import { SwUpdate, SwPush } from '@angular/service-worker';
 import { interval, Observable, BehaviorSubject } from 'rxjs';
 import { delay } from 'helpful-decorators';
 import { HttpClient } from '@angular/common/http';
+import { take, filter, map } from 'rxjs/operators';
 
-export type Permission = 'denied' | 'granted' | 'default';
+/** Model that needs to be sent from the server to the service worker */
+export interface NotificationServerResponse {
+  notification: NotificationServer;
+}
 
-export interface PushNotification {
+export interface NotificationOptions {
+  dir?: NotificationDirection;
+  lang?: string;
   body?: string;
-  icon?: string;
   tag?: string;
-  data?: any;
+  image?: string;
+  icon?: string;
+  badge?: string;
+  sound?: string;
+  vibrate?: number | number[];
+  timestamp?: number;
   renotify?: boolean;
   silent?: boolean;
-  sound?: string;
-  noscreen?: boolean;
-  sticky?: boolean;
-  dir?: 'auto' | 'ltr' | 'rtl';
-  lang?: string;
-  vibrate?: number[];
+  requireInteraction?: boolean;
+  data?: any;
 }
+
+interface NotificationServer extends NotificationOptions {
+  title: string; // Title is only required field
+  actions?: NotificationAction[];
+}
+
+interface NotificationAction {
+  action: string;
+  title: string;
+  icon?: string;
+}
+
+export type NotificationPermission = 'default' | 'denied' | 'granted';
+export type NotificationDirection = 'auto' | 'ltr' | 'rtl';
 
 export interface PushResponse {
   notification: Notification;
@@ -27,6 +47,12 @@ export interface PushResponse {
   type: 'show' | 'click';
 }
 
+/**
+ * Manage service worker functionality including push notifications
+ * TROUBLESHOOTING:
+ * Check chrome://gcm-internals/ and look under the 'Receive Message Log' to see if your browser is getting the push response
+ * Make sure the payload being sent from the server to the browser is the correct format: https://stackoverflow.com/a/53763526
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -34,15 +60,17 @@ export class NtsServiceWorkerService {
   public updateAvailable$ = new BehaviorSubject<boolean>(false);
   /** Is the service worker enabled */
   public isEnabled = this.sw.isEnabled;
+  /** Does the user have an active push subscription */
+  public isPushActive$ = this.swPush.subscription.pipe(map(x => !!x));
+  /** Handle click events on notifications */
+  public notificationClicks$ = this.swPush.notificationClicks;
   /** Does this app have permission to send push notifications? */
-  private permission =
-    'Notification' in window ? Notification.permission : 'denied';
+  private permission: NotificationPermission = 'Notification' in window ? Notification.permission : 'denied';
 
-  constructor(
-    private sw: SwUpdate,
-    private push: SwPush,
-    private http: HttpClient,
-  ) {}
+  constructor(private sw: SwUpdate, private swPush: SwPush, private http: HttpClient) {
+    // Convenience method to unsub from push for debugging purposes
+    (<any>window).PushSubscriptionRemove = () => this.pushSubscriptionRemove();
+  }
 
   /**
    * Ask the user for permission to send push notifications
@@ -58,10 +86,7 @@ export class NtsServiceWorkerService {
    * @param title
    * @param options
    */
-  public sendNotification(
-    title: string,
-    options?: PushNotification,
-  ): Observable<PushResponse> {
+  public sendNotification(title: string, options?: NotificationOptions): Observable<PushResponse> {
     return new Observable<PushResponse>(obs => {
       // Check if notification api is available
       if (!('Notification' in window)) {
@@ -72,19 +97,15 @@ export class NtsServiceWorkerService {
       // Check if permission was granted
       if (this.permission !== 'granted') {
         this.requestPermission(); // Ask for permission
-        obs.error(
-          `The user hasn't granted you permission to send push notifications`,
-        );
+        obs.error(`The user hasn't granted you permission to send push notifications`);
         obs.complete();
       }
 
       // Create new notification
       const n = new Notification(title, options);
       // Handle responses to notification popup
-      n.onshow = e =>
-        obs.next({ notification: n, event: e, type: <'show'>e.type });
-      n.onclick = e =>
-        obs.next({ notification: n, event: e, type: <'click'>e.type });
+      n.onshow = e => obs.next({ notification: n, event: e, type: <'show'>e.type });
+      n.onclick = e => obs.next({ notification: n, event: e, type: <'click'>e.type });
       n.onerror = e => obs.error({ notification: n, event: e, type: e.type });
       n.onclose = () => obs.complete();
     });
@@ -109,51 +130,51 @@ export class NtsServiceWorkerService {
 
   /**
    * Get a push subscription, pass to the backend for use with web push
-   * NOT TESTED
+   * @param pathToApi URL to location to pass the subscription to
+   * @param publicKey A VAPID public key
+   * @param callback
    */
-  public getPushSubscription(
-    pathToApi: string,
-    licenses: { publicKey: string; privateKey: string },
-    callback?: Function,
-  ) {
-    // Throw a warning if the dev vapid licenses was used
-    if (
-      licenses.publicKey ===
-      'BIZ-IPJrxKxtdL9O9CnK42-XWcepJDPMQDfj8pb_vCfQxa7j1LoC4exdzZ5MhPWaF_5eWPglkj3V32xRswQEm6Q'
-    ) {
-      console.warn(
-        'Please change your VAPID keys to one unique to this environment',
-      );
-      console.warn(
-        `Generate new key with 'npm install web-push -g' then 'web-push generate-vapid-keys --json'`,
-      );
-    }
+  public pushSubscriptionCreate(pathToApi: string, publicKey: string) {
+    this.swPush.subscription
+      .pipe(
+        take(1),
+        filter(sub => !sub),
+      )
+      .subscribe(() => {
+        this.swPush
+          .requestSubscription({ serverPublicKey: publicKey })
+          .then(sub => this.http.post(pathToApi, sub).subscribe()) // Pass subscription to backend
+          .catch(err => console.error('Could not subscribe to notifications: ', err));
+      });
+  }
 
-    this.push
-      .requestSubscription({
-        serverPublicKey: licenses.publicKey,
-      })
-      .then(sub => {
-        // When subscription comes back from request, pass subscription to backend, execute callback
-        this.http.post(pathToApi, sub).subscribe(res => {
-          if (callback) {
-            callback(res);
-          }
-        });
-      })
-      .catch(err => console.error('Could not subscribe to notifications', err));
+  /**
+   * Unsubscribe to the current push subscription if present
+   * @param pathToApi If supplied will send a delete request to the supplied path
+   */
+  public pushSubscriptionRemove(pathToApi?: string) {
+    this.swPush.subscription
+      .pipe(
+        take(1),
+        filter(sub => !!sub),
+      )
+      .subscribe(() => {
+        this.swPush
+          .unsubscribe()
+          .then(() => {
+            if (pathToApi) {
+              this.http.delete(pathToApi).subscribe();
+            }
+          })
+          .catch(error => console.error('Error unsubbing from push subscription: ', error));
+      });
   }
 
   /**
    * Unregister and remove all service workers
    * @param callback Function to execute after sw has been unregistered
    */
-  public remove(callback?: Function) {
-    navigator.serviceWorker
-      .getRegistrations()
-      .then(registrations => registrations.forEach(reg => reg.unregister()));
-    if (callback) {
-      callback();
-    }
+  public remove() {
+    navigator.serviceWorker.getRegistrations().then(registrations => registrations.forEach(reg => reg.unregister()));
   }
 }
